@@ -1,0 +1,16 @@
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\bin\Debug\net8.0-windows\IME.exe
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\bin\Debug\net8.0-windows\IME.deps.json
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\bin\Debug\net8.0-windows\IME.runtimeconfig.json
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\bin\Debug\net8.0-windows\IME.dll
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\bin\Debug\net8.0-windows\IME.pdb
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.Form1.resources
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.csproj.GenerateResource.cache
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.AssemblyInfoInputs.cache
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.AssemblyInfo.cs
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.csproj.CoreCompileInputs.cache
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.dll
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\refint\IME.dll
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.pdb
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.genruntimeconfig.cache
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\ref\IME.dll
