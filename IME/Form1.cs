@@ -1,19 +1,38 @@
+using System.Net.NetworkInformation;
+
 namespace IME
 {
     public partial class Form1 : Form
     {
-        private Dictionary<string, List<Button>> buttonGroups = new Dictionary<string, List<Button>>();
+        private Dictionary<string, string[]> buttonDict;
 
-        private void InitializeButtons()
-        {
-            
-            // ïKóvÇ…âûÇ∂Çƒí«â¡
-        }
+
 
         public Form1()
         {
             InitializeComponent();
+
+            CriateButtonDict();
+            SetupButtonValue();
+
         }
+
+        private void CriateButtonDict()
+        {
+            this.buttonDict = new Dictionary<string, string[]>();
+            string[] B1value = ["Ç†ÅJ", "Ç¢", "Ç§", "Ç¶", "Ç®"];
+            string[] B2value = ["Ç©", "Ç´", "Ç≠", "ÇØ", "Ç±"];
+
+
+            buttonDict.Add("B1", B1value);
+            buttonDict.Add("B2", B2value);
+        }
+
+        private void SetupButtonValue()
+        {
+            B1.Text = buttonDict["B1"][0];
+        }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -45,7 +64,7 @@ namespace IME
 
         }
 
-        private void openUI(object sender, MouseEventArgs e)
+        private void B7clicked(object sender, MouseEventArgs e)
         {
             b7_8.Visible = true;
             b7_6.Visible = true;
@@ -53,7 +72,7 @@ namespace IME
             b7_2.Visible = true;
         }
 
-        private void closeUI(object sender, MouseEventArgs e)
+        private void B7awayed(object sender, MouseEventArgs e)
         {
             b7_8.Visible = false;
             b7_6.Visible = false;

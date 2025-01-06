@@ -28,247 +28,217 @@
         /// </summary>
         private void InitializeComponent()
         {
-            b7 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
-            button7 = new Button();
-            button8 = new Button();
-            button9 = new Button();
-            button10 = new Button();
-            button11 = new Button();
-            button12 = new Button();
-            button13 = new Button();
-            button14 = new Button();
-            button15 = new Button();
-            button16 = new Button();
-            button17 = new Button();
-            button18 = new Button();
-            button19 = new Button();
-            button20 = new Button();
-            button21 = new Button();
-            button22 = new Button();
-            button23 = new Button();
+            B1 = new Button();
+            B2 = new Button();
+            B3 = new Button();
+            B4 = new Button();
+            B5 = new Button();
+            B6 = new Button();
+            B7 = new Button();
+            B8 = new Button();
+            B9 = new Button();
+            B10 = new Button();
+            transform = new Button();
+            B11 = new Button();
+            Return = new Button();
+            Parette = new Button();
+            Cry = new Button();
+            symbol = new Button();
+            BackSpace = new Button();
+            move = new Button();
+            Space = new Button();
+            Enter = new Button();
             b7_8 = new Button();
             b7_6 = new Button();
             b7_2 = new Button();
             b7_4 = new Button();
             SuspendLayout();
             // 
-            // b7
+            // B1
             // 
-            b7.Location = new Point(75, 70);
-            b7.Name = "b7";
-            b7.Size = new Size(52, 52);
-            b7.TabIndex = 0;
-            b7.Text = "あ";
-            b7.UseVisualStyleBackColor = true;
-            b7.MouseDown += openUI;
-            b7.MouseUp += closeUI;
+            B1.Location = new Point(64, 70);
+            B1.Name = "B1";
+            B1.Size = new Size(52, 52);
+            B1.TabIndex = 0;
+            B1.Text = "あ";
+            B1.UseVisualStyleBackColor = true;
+            B1.MouseDown += B7clicked;
+            B1.MouseUp += B7awayed;
             // 
-            // button2
+            // B2
             // 
-            button2.Location = new Point(125, 70);
-            button2.Name = "button2";
-            button2.Size = new Size(52, 52);
-            button2.TabIndex = 1;
-            button2.Text = "か";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            B2.Location = new Point(114, 70);
+            B2.Name = "B2";
+            B2.Size = new Size(52, 52);
+            B2.TabIndex = 1;
+            B2.Text = "か";
+            B2.UseVisualStyleBackColor = true;
+            B2.Click += button2_Click;
             // 
-            // button3
+            // B3
             // 
-            button3.Location = new Point(175, 70);
-            button3.Name = "button3";
-            button3.Size = new Size(52, 52);
-            button3.TabIndex = 2;
-            button3.Text = "さ";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            B3.Location = new Point(164, 70);
+            B3.Name = "B3";
+            B3.Size = new Size(52, 52);
+            B3.TabIndex = 2;
+            B3.Text = "さ";
+            B3.UseVisualStyleBackColor = true;
+            B3.Click += button3_Click;
             // 
-            // button4
+            // B4
             // 
-            button4.Location = new Point(75, 120);
-            button4.Name = "button4";
-            button4.Size = new Size(52, 52);
-            button4.TabIndex = 3;
-            button4.Text = "た";
-            button4.UseVisualStyleBackColor = true;
+            B4.Location = new Point(64, 120);
+            B4.Name = "B4";
+            B4.Size = new Size(52, 52);
+            B4.TabIndex = 3;
+            B4.Text = "た";
+            B4.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // B5
             // 
-            button5.Location = new Point(125, 120);
-            button5.Name = "button5";
-            button5.Size = new Size(52, 52);
-            button5.TabIndex = 4;
-            button5.Text = "な";
-            button5.UseVisualStyleBackColor = true;
+            B5.Location = new Point(114, 120);
+            B5.Name = "B5";
+            B5.Size = new Size(52, 52);
+            B5.TabIndex = 4;
+            B5.Text = "な";
+            B5.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // B6
             // 
-            button6.Location = new Point(175, 120);
-            button6.Name = "button6";
-            button6.Size = new Size(52, 52);
-            button6.TabIndex = 5;
-            button6.Text = "は";
-            button6.UseVisualStyleBackColor = true;
-            button6.Click += button6_Click;
+            B6.Location = new Point(164, 120);
+            B6.Name = "B6";
+            B6.Size = new Size(52, 52);
+            B6.TabIndex = 5;
+            B6.Text = "は";
+            B6.UseVisualStyleBackColor = true;
+            B6.Click += button6_Click;
             // 
-            // button7
+            // B7
             // 
-            button7.Location = new Point(75, 170);
-            button7.Name = "button7";
-            button7.Size = new Size(52, 52);
-            button7.TabIndex = 6;
-            button7.Text = "ま";
-            button7.UseVisualStyleBackColor = true;
+            B7.Location = new Point(64, 170);
+            B7.Name = "B7";
+            B7.Size = new Size(52, 52);
+            B7.TabIndex = 6;
+            B7.Text = "ま";
+            B7.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // B8
             // 
-            button8.Location = new Point(125, 170);
-            button8.Name = "button8";
-            button8.Size = new Size(52, 52);
-            button8.TabIndex = 7;
-            button8.Text = "や";
-            button8.UseVisualStyleBackColor = true;
+            B8.Location = new Point(114, 170);
+            B8.Name = "B8";
+            B8.Size = new Size(52, 52);
+            B8.TabIndex = 7;
+            B8.Text = "や";
+            B8.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // B9
             // 
-            button9.Location = new Point(175, 170);
-            button9.Name = "button9";
-            button9.Size = new Size(52, 52);
-            button9.TabIndex = 8;
-            button9.Text = "ら";
-            button9.UseVisualStyleBackColor = true;
-            button9.Click += button9_Click;
+            B9.Location = new Point(164, 170);
+            B9.Name = "B9";
+            B9.Size = new Size(52, 52);
+            B9.TabIndex = 8;
+            B9.Text = "ら";
+            B9.UseVisualStyleBackColor = true;
+            B9.Click += button9_Click;
             // 
-            // button10
+            // B10
             // 
-            button10.Location = new Point(125, 220);
-            button10.Name = "button10";
-            button10.Size = new Size(52, 52);
-            button10.TabIndex = 9;
-            button10.Text = "わ";
-            button10.UseVisualStyleBackColor = true;
+            B10.Location = new Point(114, 220);
+            B10.Name = "B10";
+            B10.Size = new Size(52, 52);
+            B10.TabIndex = 9;
+            B10.Text = "わ";
+            B10.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // transform
             // 
-            button11.Location = new Point(75, 220);
-            button11.Name = "button11";
-            button11.Size = new Size(52, 52);
-            button11.TabIndex = 10;
-            button11.Text = "小文字";
-            button11.UseVisualStyleBackColor = true;
+            transform.Location = new Point(64, 220);
+            transform.Name = "transform";
+            transform.Size = new Size(52, 52);
+            transform.TabIndex = 10;
+            transform.Text = "小文字/゛/゜";
+            transform.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // B11
             // 
-            button12.Location = new Point(175, 220);
-            button12.Name = "button12";
-            button12.Size = new Size(52, 52);
-            button12.TabIndex = 11;
-            button12.Text = "、。！？";
-            button12.UseVisualStyleBackColor = true;
+            B11.Location = new Point(164, 220);
+            B11.Name = "B11";
+            B11.Size = new Size(52, 52);
+            B11.TabIndex = 11;
+            B11.Text = "、。！？";
+            B11.UseVisualStyleBackColor = true;
             // 
-            // button13
+            // Return
             // 
-            button13.Location = new Point(25, 70);
-            button13.Name = "button13";
-            button13.Size = new Size(52, 52);
-            button13.TabIndex = 12;
-            button13.Text = "Return";
-            button13.UseVisualStyleBackColor = true;
+            Return.Location = new Point(14, 70);
+            Return.Name = "Return";
+            Return.Size = new Size(52, 52);
+            Return.TabIndex = 12;
+            Return.Text = "Return/Option";
+            Return.UseVisualStyleBackColor = true;
             // 
-            // button14
+            // Parette
             // 
-            button14.Location = new Point(25, 120);
-            button14.Name = "button14";
-            button14.Size = new Size(52, 52);
-            button14.TabIndex = 13;
-            button14.Text = "←";
-            button14.UseVisualStyleBackColor = true;
+            Parette.Location = new Point(14, 120);
+            Parette.Name = "Parette";
+            Parette.Size = new Size(52, 52);
+            Parette.TabIndex = 13;
+            Parette.Text = "Parette";
+            Parette.UseVisualStyleBackColor = true;
             // 
-            // button15
+            // Cry
             // 
-            button15.Location = new Point(25, 170);
-            button15.Name = "button15";
-            button15.Size = new Size(52, 52);
-            button15.TabIndex = 14;
-            button15.Text = "記号/絵文字";
-            button15.UseVisualStyleBackColor = true;
+            Cry.Location = new Point(14, 170);
+            Cry.Name = "Cry";
+            Cry.Size = new Size(52, 52);
+            Cry.TabIndex = 14;
+            Cry.Text = "Cry";
+            Cry.UseVisualStyleBackColor = true;
             // 
-            // button16
+            // symbol
             // 
-            button16.Location = new Point(25, 220);
-            button16.Name = "button16";
-            button16.Size = new Size(52, 52);
-            button16.TabIndex = 15;
-            button16.Text = "゛/゜";
-            button16.UseVisualStyleBackColor = true;
+            symbol.Location = new Point(14, 220);
+            symbol.Name = "symbol";
+            symbol.Size = new Size(52, 52);
+            symbol.TabIndex = 15;
+            symbol.Text = "記号/絵文字";
+            symbol.UseVisualStyleBackColor = true;
             // 
-            // button17
+            // BackSpace
             // 
-            button17.Location = new Point(225, 70);
-            button17.Name = "button17";
-            button17.Size = new Size(52, 52);
-            button17.TabIndex = 16;
-            button17.Text = "Back Space";
-            button17.UseVisualStyleBackColor = true;
+            BackSpace.Location = new Point(214, 70);
+            BackSpace.Name = "BackSpace";
+            BackSpace.Size = new Size(52, 52);
+            BackSpace.TabIndex = 16;
+            BackSpace.Text = "Back Space";
+            BackSpace.UseVisualStyleBackColor = true;
             // 
-            // button18
+            // move
             // 
-            button18.Location = new Point(225, 120);
-            button18.Name = "button18";
-            button18.Size = new Size(52, 52);
-            button18.TabIndex = 17;
-            button18.Text = "→";
-            button18.UseVisualStyleBackColor = true;
+            move.Location = new Point(214, 120);
+            move.Name = "move";
+            move.Size = new Size(52, 52);
+            move.TabIndex = 17;
+            move.Text = "→";
+            move.UseVisualStyleBackColor = true;
             // 
-            // button19
+            // Space
             // 
-            button19.Location = new Point(225, 170);
-            button19.Name = "button19";
-            button19.Size = new Size(52, 52);
-            button19.TabIndex = 18;
-            button19.Text = "Space";
-            button19.UseVisualStyleBackColor = true;
+            Space.Location = new Point(214, 170);
+            Space.Name = "Space";
+            Space.Size = new Size(52, 52);
+            Space.TabIndex = 18;
+            Space.Text = "Space";
+            Space.UseVisualStyleBackColor = true;
             // 
-            // button20
+            // Enter
             // 
-            button20.Location = new Point(225, 220);
-            button20.Name = "button20";
-            button20.Size = new Size(52, 52);
-            button20.TabIndex = 19;
-            button20.Text = "Enter";
-            button20.UseVisualStyleBackColor = true;
-            // 
-            // button21
-            // 
-            button21.Location = new Point(225, 40);
-            button21.Name = "button21";
-            button21.Size = new Size(52, 24);
-            button21.TabIndex = 20;
-            button21.Text = "Parette";
-            button21.UseVisualStyleBackColor = true;
-            // 
-            // button22
-            // 
-            button22.Location = new Point(175, 40);
-            button22.Name = "button22";
-            button22.Size = new Size(52, 24);
-            button22.TabIndex = 21;
-            button22.Text = "Cry";
-            button22.UseVisualStyleBackColor = true;
-            // 
-            // button23
-            // 
-            button23.Location = new Point(25, 40);
-            button23.Name = "button23";
-            button23.Size = new Size(52, 24);
-            button23.TabIndex = 22;
-            button23.Text = "Option";
-            button23.UseVisualStyleBackColor = true;
+            Enter.Location = new Point(214, 220);
+            Enter.Name = "Enter";
+            Enter.Size = new Size(52, 52);
+            Enter.TabIndex = 19;
+            Enter.Text = "Enter";
+            Enter.UseVisualStyleBackColor = true;
             // 
             // b7_8
             // 
@@ -320,29 +290,26 @@
             Controls.Add(b7_2);
             Controls.Add(b7_6);
             Controls.Add(b7_8);
-            Controls.Add(button23);
-            Controls.Add(button22);
-            Controls.Add(button21);
-            Controls.Add(button20);
-            Controls.Add(button19);
-            Controls.Add(button18);
-            Controls.Add(button17);
-            Controls.Add(button16);
-            Controls.Add(button15);
-            Controls.Add(button14);
-            Controls.Add(button13);
-            Controls.Add(button12);
-            Controls.Add(button11);
-            Controls.Add(button10);
-            Controls.Add(button9);
-            Controls.Add(button8);
-            Controls.Add(button7);
-            Controls.Add(button6);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(b7);
+            Controls.Add(Enter);
+            Controls.Add(Space);
+            Controls.Add(move);
+            Controls.Add(BackSpace);
+            Controls.Add(symbol);
+            Controls.Add(Cry);
+            Controls.Add(Parette);
+            Controls.Add(Return);
+            Controls.Add(B11);
+            Controls.Add(transform);
+            Controls.Add(B10);
+            Controls.Add(B9);
+            Controls.Add(B8);
+            Controls.Add(B7);
+            Controls.Add(B6);
+            Controls.Add(B5);
+            Controls.Add(B4);
+            Controls.Add(B3);
+            Controls.Add(B2);
+            Controls.Add(B1);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -350,29 +317,26 @@
 
         #endregion
 
-        private Button b7;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
-        private Button button6;
-        private Button button7;
-        private Button button8;
-        private Button button9;
-        private Button button10;
-        private Button button11;
-        private Button button12;
-        private Button button13;
-        private Button button14;
-        private Button button15;
-        private Button button16;
-        private Button button17;
-        private Button button18;
-        private Button button19;
-        private Button button20;
-        private Button button21;
-        private Button button22;
-        private Button button23;
+        private Button B1;
+        private Button B2;
+        private Button B3;
+        private Button B4;
+        private Button B5;
+        private Button B6;
+        private Button B7;
+        private Button B8;
+        private Button B9;
+        private Button B10;
+        private Button transform;
+        private Button B11;
+        private Button Return;
+        private Button Parette;
+        private Button Cry;
+        private Button symbol;
+        private Button BackSpace;
+        private Button move;
+        private Button Space;
+        private Button Enter;
         private Button b7_8;
         private Button b7_6;
         private Button b7_2;
