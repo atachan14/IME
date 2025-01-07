@@ -16,7 +16,6 @@ C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.g
 C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\ref\IME.dll
 C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.sourcelink.json
 D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.Form1.resources
-D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.Form2.resources
 D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.csproj.GenerateResource.cache
 D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.GeneratedMSBuildEditorConfig.editorconfig
 D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.AssemblyInfoInputs.cache
@@ -34,3 +33,8 @@ D:\source\repos\C#\IME\IME\bin\Debug\net8.0-windows\IME.pdb
 D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.genruntimeconfig.cache
 D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\ref\IME.dll
 C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.Form3.resources
+D:\source\repos\C#\IME\IME\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.csproj.AssemblyReference.cache
+D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.Form3.resources
+D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.csproj.Up2Date
+D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.OutPad.resources
