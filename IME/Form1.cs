@@ -1,83 +1,65 @@
-using System.Net.NetworkInformation;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace IME
 {
     public partial class Form1 : Form
     {
-        private Dictionary<string, string[]> buttonDict;
-
-
-
         public Form1()
         {
             InitializeComponent();
 
-            CriateButtonDict();
-            SetupButtonValue();
-
+            GenerateButtons();
         }
 
-        private void CriateButtonDict()
+        private void GenerateButtons()
         {
-            this.buttonDict = new Dictionary<string, string[]>();
-            string[] B1value = ["���J", "��", "��", "��", "��"];
-            string[] B2value = ["��", "��", "��", "��", "��"];
+            int buttonWidth = 50; // ボタンの幅
+            int buttonHeight = 50; // ボタンの高さ
+            int startX = 10; // 配置開始位置（X座標）
+            int startY = 10; // 配置開始位置（Y座標）
 
+            for (int y = 0; y < 4; y++)
+            {
+                for (int x = 0; x < 5; x++) // 10個のボタンを生成
+                {
+                    Button btn = new Button();
+                    btn.Width = buttonWidth;
+                    btn.Height = buttonHeight;
+                    btn.Name = "B" + (y + 1) + (x + 1); // ボタンのテキスト
+                    btn.Text = btn.Name;
+                    btn.Left = startX + (buttonWidth) * x; // 配置位置（X）
+                    btn.Top = startY + (buttonHeight) * y; // 配置位置（Y）
 
-            buttonDict.Add("B1", B1value);
-            buttonDict.Add("B2", B2value);
+                    // ボタンクリック時のイベントを登録
+                    btn.Click += Button_Click;
+
+                    // フォームに追加
+                    this.Controls.Add(btn);
+                }
+            }
         }
 
-        private void SetupButtonValue()
+        private void Button_Click(object sender, EventArgs e)
         {
-            B1.Text = buttonDict["B1"][0];
+            Button clickedButton = sender as Button;
+            if (clickedButton != null)
+            {
+                MessageBox.Show($"You clicked: {clickedButton.Text}");
+            }
         }
 
-
-        private void button2_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button24_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void B7clicked(object sender, MouseEventArgs e)
-        {
-            b7_8.Visible = true;
-            b7_6.Visible = true;
-            b7_4.Visible = true;
-            b7_2.Visible = true;
-        }
-
-        private void B7awayed(object sender, MouseEventArgs e)
-        {
-            b7_8.Visible = false;
-            b7_6.Visible = false;
-            b7_4.Visible = false;
-            b7_2.Visible = false;
         }
     }
+
 }
