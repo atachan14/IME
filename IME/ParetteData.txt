@@ -1,0 +1,13 @@
+﻿<<id>>B13<</id>>
+<<innerValue0List>>あ@@@ぁ@@@あ゛<</innerValue0List>>
+<<innerValue1List>>い@@@ぃ@@@い゛<</innerValue1List>>
+<<innerValue2List>>う@@@ぅ@@@う゛<</innerValue2List>>
+<<innerValue3List>>え@@@ぇ@@@え゛<</innerValue3List>>
+<<innerValue4List>>お@@@ぉ@@@お゛<</innerValue4List>>
+
+<<id>>B14<</id>>
+<<innerValue0List>>か@@@ヵ@@@が<</innerValue0List>>
+<<innerValue1List>>き@@@ぎ<</innerValue1List>>
+<<innerValue2List>>く@@@ぐ<</innerValue2List>>
+<<innerValue3List>>け@@@ヶ@@@げ<</innerValue3List>>
+<<innerValue4List>>こ@@@ご<</innerValue04List>>
