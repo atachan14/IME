@@ -5,7 +5,23 @@
     "Value1": [ "い", "ぃ", "い゛" ],
     "Value2": [ "う", "ぅ", "う゛" ],
     "Value3": [ "え", "ぇ", "え゛" ],
-    "Value4": [ "お", "ぉ", "お゛" ]
+    "Value4": [ "お", "ぉ", "お゛" ],
+    "ExeTags": {
+      "Short": {
+        "0": "write0",
+        "1": "write1",
+        "2": "write2",
+        "3": "write3",
+        "4": "write4"
+      },
+      "Long": {
+        "0": "temp0",
+        "1": "temp2",
+        "2": "temp3",
+        "3": "temp4",
+        "4": "temp5"
+      }
+    }
   },
   {
     "Id": "B13",
@@ -13,7 +29,23 @@
     "Value1": [ "き", "ぎ" ],
     "Value2": [ "く", "ぐ" ],
     "Value3": [ "け", "ヶ", "げ" ],
-    "Value4": [ "こ", "ご" ]
+    "Value4": [ "こ", "ご" ],
+    "ExeTags": {
+      "Short": {
+        "0": "write0",
+        "1": "write1",
+        "2": "write2",
+        "3": "write3",
+        "4": "write4"
+      },
+      "Long": {
+        "0": "write0",
+        "1": "write1",
+        "2": "write2",
+        "3": "write3",
+        "4": "write4"
+      }
+    }
   },
   {
     "Id": "B23",
@@ -21,7 +53,23 @@
     "Value1": [ "に" ],
     "Value2": [ "ぬ" ],
     "Value3": [ "ね" ],
-    "Value4": [ "の" ]
+    "Value4": [ "の" ],
+    "ExeTags": {
+      "Short": {
+        "0": "write0",
+        "1": "write1",
+        "2": "write2",
+        "3": "write3",
+        "4": "write4"
+      },
+      "Long": {
+        "0": "write0",
+        "1": "write1",
+        "2": "write2",
+        "3": "write3",
+        "4": "write4"
+      }
+    }
   },
   {
     "Id": "B24",
@@ -29,12 +77,45 @@
     "Value1": [ "ひ", "び", "ぴ" ],
     "Value2": [ "ふ", "ぶ", "ぷ" ],
     "Value3": [ "へ", "べ", "ぺ" ],
-    "Value4": [ "ほ", "ぼ", "ぽ" ]
+    "Value4": [ "ほ", "ぼ", "ぽ" ],
+    "ExeTags": {
+      "Short": {
+        "0": "write0",
+        "1": "write1",
+        "2": "write2",
+        "3": "write3",
+        "4": "write4"
+      },
+      "Long": {
+        "0": "write0",
+        "1": "write1",
+        "2": "write2",
+        "3": "write3",
+        "4": "write4"
+      }
+    }
   },
   {
     "Id": "B43",
     "Value0": [ "わ", "ゎ" ],
     "Value1": [ "を" ],
-    "Value2": [ "ん"]
+    "Value2": [ "ん" ],
+    "Value4": [ "" ],
+    "ExeTags": {
+      "Short": {
+        "0": "write0",
+        "1": "write1",
+        "2": "write2",
+        "3": "none",
+        "4": "write4"
+      },
+      "Long": {
+        "0": "write0",
+        "1": "write1",
+        "2": "write2",
+        "3": "none",
+        "4": "write4"
+      }
+    }
   }
 ]

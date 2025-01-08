@@ -38,3 +38,8 @@ D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.csproj.AssemblyReference
 D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.Form3.resources
 D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.csproj.Up2Date
 D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.OutPad.resources
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.csproj.AssemblyReference.cache
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.OutPad.resources
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.csproj.Up2Date
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.DebugForm.resources

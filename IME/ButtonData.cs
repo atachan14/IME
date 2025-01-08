@@ -14,5 +14,8 @@ namespace IME
         public List<string>? Value2 { get; set; }
         public List<string>? Value3 { get; set; }
         public List<string>? Value4 { get; set; }
+
+        public Dictionary<string, Dictionary<string, string>>? ExeTags { get; set; }
+
     }
 }
