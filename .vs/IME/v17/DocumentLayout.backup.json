@@ -3,14 +3,6 @@
   "WorkspaceRootPath": "D:\\source\\repos\\C#\\IME\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|d:\\source\\repos\\c#\\ime\\ime\\parettedata.json||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\parettedata.json||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|d:\\source\\repos\\c#\\ime\\ime\\buttondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\buttondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|d:\\source\\repos\\c#\\ime\\ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -19,8 +11,24 @@
       "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\outpad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|d:\\source\\repos\\c#\\ime\\ime\\parettedata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\parettedata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|d:\\source\\repos\\c#\\ime\\ime\\buttondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\buttondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|D:\\source\\repos\\C#\\IME\\ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|D:\\source\\repos\\C#\\IME\\ime\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|D:\\source\\repos\\C#\\IME\\ime\\debugform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\debugform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|d:\\source\\repos\\c#\\ime\\ime\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,52 +58,52 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "OutPad.cs",
               "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\OutPad.cs",
               "RelativeDocumentMoniker": "IME\\OutPad.cs",
               "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\OutPad.cs",
               "RelativeToolTip": "IME\\OutPad.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAAYwD8AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-07T20:51:11.429Z",
+              "WhenOpened": "2025-01-08T16:39:57.907Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ParetteData.json",
-              "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\ParetteData.json",
-              "RelativeDocumentMoniker": "IME\\ParetteData.json",
-              "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\ParetteData.json",
-              "RelativeToolTip": "IME\\ParetteData.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-01-07T11:22:19.896Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "Form1.cs",
               "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\Form1.cs",
               "RelativeDocumentMoniker": "IME\\Form1.cs",
               "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\Form1.cs",
               "RelativeToolTip": "IME\\Form1.cs",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAAAG0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJcAAAAAAAAAAAAowKIAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-07T09:06:54.382Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "ParetteData.json",
+              "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\ParetteData.json",
+              "RelativeDocumentMoniker": "IME\\ParetteData.json",
+              "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\ParetteData.json",
+              "RelativeToolTip": "IME\\ParetteData.json",
+              "ViewState": "AgIAACsAAAAAAAAAAAAiwFIAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-07T23:00:08.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "ButtonData.cs",
               "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\ButtonData.cs",
               "RelativeDocumentMoniker": "IME\\ButtonData.cs",
               "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\ButtonData.cs",
               "RelativeToolTip": "IME\\ButtonData.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAuwCUAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-31T11:34:53.799Z",
               "EditorCaption": ""
@@ -109,11 +117,36 @@
               "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
               "RelativeToolTip": "IME\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-31T07:59:25.232Z"
+              "WhenOpened": "2024-12-31T07:59:25.232Z",
+              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "Form3.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\Form3.cs",
+              "RelativeDocumentMoniker": "IME\\Form3.cs",
+              "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\Form3.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "RelativeToolTip": "IME\\Form3.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-08T08:37:26.328Z",
+              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DebugForm.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\DebugForm.cs",
+              "RelativeDocumentMoniker": "IME\\DebugForm.cs",
+              "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\DebugForm.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "RelativeToolTip": "IME\\DebugForm.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-08T11:34:12.65Z",
+              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\Program.cs",
               "RelativeDocumentMoniker": "IME\\Program.cs",
@@ -125,7 +158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "IME\\Form1.Designer.cs",
@@ -133,22 +166,24 @@
               "RelativeToolTip": "IME\\Form1.Designer.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-07T09:06:21.361Z"
+              "WhenOpened": "2025-01-07T09:06:21.361Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Form1.resx",
               "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\Form1.resx",
               "RelativeDocumentMoniker": "IME\\Form1.resx",
               "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\Form1.resx",
               "RelativeToolTip": "IME\\Form1.resx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2025-01-07T09:06:24.709Z"
+              "WhenOpened": "2025-01-07T09:06:24.709Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "Form3.cs",
               "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\Form3.cs",
               "RelativeDocumentMoniker": "IME\\Form3.cs",

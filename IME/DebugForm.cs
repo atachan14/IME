@@ -12,14 +12,29 @@ namespace IME
 {
     public partial class DebugForm : Form
     {
-        public DebugForm()
+
+        private System.Windows.Forms.Timer debugTimer;
+        private Form1 form1;
+
+        public DebugForm(Form1 parentForm)
         {
             InitializeComponent();
+            form1 = parentForm;
+            debugTimer = new System.Windows.Forms.Timer
+            {
+                Interval = 100 // 100msごとにチェック
+            };
+            debugTimer.Tick += (s, e) =>
+            {
+                debug1.Text = $"isPressing: {form1.IsPressing}";
+                debug2.Text = $"debugCount: {form1.DebugCount}";
+            };
+            debugTimer.Start();
         }
 
-        public void Display(string value)
+        private void debugLabel_Click(object sender, EventArgs e)
         {
-            debugLabel.Text=value; 
+
         }
     }
 }
