@@ -14,8 +14,8 @@ namespace IME
     public partial class OutPad : Form
     {
         private Form1 form1;
-        string[] conf = "";
-        string[] pending = "";
+        string[] conf = ["", ""];
+        string[] pending = ["", ""];
         string current = "";
 
 
@@ -58,11 +58,19 @@ namespace IME
             updateDisplay();
         }
 
+        public void UpdatePendingAndCurrent(string fpen, string current,string bpen)
+        {
+
+            pending[0]= fpen;
+            this.current = current;
+            pending[1]= bpen;
+            updateDisplay();
+        }
         public void Confirmed()
         {
             pending[0] += current;
-            frontConf += pending[0];
-            backConf += pending[1];
+            conf[0] += pending[0];
+            conf[0] += pending[1];
             pending[0] = "";
             current = "";
             pending[1] = "";
@@ -74,20 +82,20 @@ namespace IME
             string[] target;
             if (current != "")
             {
-                target = [pending[0], backPending];
+                target = pending;
             }
             else
             {
-                target = [frontConf, backConf];
+                target = conf;
             }
             switch (ftag1)
             {
                 case "1":
-                    
-                    if (target[0] == "") return;
 
+                    if (target[0] == "") return;
                     target[1] = target[0].Substring(target[0].Length - 1) + target[1];
                     target[0] = target[0].Substring(0, target[0].Length - 1);
+
                     updateDisplay();
                     return;
 
@@ -110,12 +118,11 @@ namespace IME
         public void updateDisplay()
         {
             richTextBox1.Clear();
-
-            richTextBox1.AppendText(frontConf);
+            richTextBox1.AppendText(conf[0]);
 
             int start = richTextBox1.Text.Length;
-            richTextBox1.AppendText(frontPending);
-            richTextBox1.Select(start, frontPending.Length);
+            richTextBox1.AppendText(pending[0]);
+            richTextBox1.Select(start, pending[0].Length);
             richTextBox1.SelectionColor = Color.Blue;
             richTextBox1.SelectionBackColor = Color.LightCyan;
 
@@ -132,20 +139,16 @@ namespace IME
             richTextBox1.SelectionBackColor = Color.White;
 
             start = richTextBox1.Text.Length;
-            richTextBox1.AppendText(backPending);
-            richTextBox1.Select(start, backPending.Length);
+            richTextBox1.AppendText(pending[1]);
+            richTextBox1.Select(start, pending[1].Length);
             richTextBox1.SelectionColor = Color.Blue;
             richTextBox1.SelectionBackColor = Color.LightCyan;
 
-
-
             start = richTextBox1.Text.Length;
-            richTextBox1.AppendText(backConf);
-            richTextBox1.Select(start, backConf.Length);
+            richTextBox1.AppendText(conf[1]);
+            richTextBox1.Select(start, conf[1].Length);
             richTextBox1.SelectionColor = richTextBox1.ForeColor;
             richTextBox1.SelectionBackColor = richTextBox1.BackColor;
-
-
         }
 
         private void OpenIME_Click(object sender, EventArgs e)

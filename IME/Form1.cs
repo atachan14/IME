@@ -30,12 +30,18 @@ namespace IME
         private int threshold = 10;
         private int longPressThreshold = 10000;
 
-        private string[] currentValues;
-        private string currentValuesIndex;
-        private string pending;
 
-
-
+        
+        private List<string[]> frontPending = new();
+        private List<int> frontPendingIndex =new();
+        private string[]? currentValues;
+        private int currentValuesIndex;
+        private List<string[]> backPending = new();
+        private List<int> backPendingIndex = new();
+        
+        private List<(string[] values, int index)>  frontPT = new();
+        private (string[] values, int index) currentPT = new();
+        private List<(string[] values, int index)> backPT = new();
 
 
         private int debugCount = 0;
@@ -166,6 +172,7 @@ namespace IME
                     return;
 
                 case "move":
+                    ExeMove(ftag[1]);
                     outPad.CursorMove(ftag[1]);
                     return;
 
@@ -174,12 +181,12 @@ namespace IME
                     return;
 
                 case "return":
-                    outPad.Confirmed();
+                    ExeEnter();
                     this.Dispose();
                     return;
 
                 case "Enter":
-                    outPad.Confirmed();
+                    ExeEnter();
                     return;
 
                 default:
@@ -188,9 +195,48 @@ namespace IME
             }
         }
 
+        void ExeMove(string ftag1)
+        {
+            if (currentValues != null)
+            {
+                PendingMove(ftag1);
+            }
+            else
+            {
+                //outPad.ConfMove(ftag1);
+            }
+        }
+        void PendingMove(string ftag1) 
+        {
+            switch (ftag1)
+            {
+                case "1":
+                    if (frontPending == null) return;
+                    backPending.Insert(0, currentValues);
+                    currentValues = frontPending.Last();
+                    frontPending.RemoveAt(frontPending.Count - 1);
+                    SendPendingAndCurrent();
+                    return;
+
+                    case "3":
+                    if (backPending == null) return;
+                    frontPending.Add(currentValues);
+                    currentValues = backPending[0];
+                    backPending.RemoveAt(0);
+                    SendPendingAndCurrent();
+                    return;
+            }
+        }
+        
+
         private void ExeCurrent(string ftag1, ButtonData selectBd)
         {
+            if (currentValues != null)
+            {
+                frontPending.Add(currentValues);
+                frontPendingIndex.Add(currentValuesIndex);
 
+            }
             switch (ftag1)
             {
                 case "0":
@@ -212,21 +258,49 @@ namespace IME
                     MessageBox.Show("ftag1 error");
                     return;
             }
-            outPad.NextCurrent(currentValues[0]);
-            currentValuesIndex = "0";
+            
+            currentValuesIndex = 0;
+            SendPendingAndCurrent();
         }
 
         private void ExeTrans(string ftag1)
         {
-            if (currentValuesIndex == ftag1)
+            int index = int.Parse(ftag1);
+            if (currentValuesIndex == index)
             {
                 outPad.TransCurrent(currentValues[0]);
-                currentValuesIndex = "0";
+                currentValuesIndex = 0;
                 return;
             }
-            outPad.TransCurrent(currentValues[int.Parse(ftag1)]);
-            currentValuesIndex = ftag1;
+            
+            currentValuesIndex = index;
+            SendPendingAndCurrent();
             return;
+        }
+
+        private void SendPendingAndCurrent()
+        {
+            string fpen = "";
+            string bpen = "";
+            for (int i = 0; i < frontPending.Count; i++)
+            {
+                fpen += frontPending[i][frontPendingIndex[i]];
+            }
+            for (int i = 0; i < backPending.Count; i++)
+            {
+                bpen += backPending[i][backPendingIndex[i]];
+            }
+            outPad.UpdatePendingAndCurrent(fpen,currentValues[currentValuesIndex],bpen);
+        }
+
+        void ExeEnter()
+        {
+            outPad.Confirmed();
+            frontPending.Clear();
+            frontPendingIndex.Clear();
+            currentValues = null;
+            backPending.Clear();
+            backPendingIndex.Clear();
         }
 
         private string CalcSwipePos(Point dragEndPoint)
