@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             richTextBox1 = new RichTextBox();
+            OpenIME = new Button();
             SuspendLayout();
             // 
             // richTextBox1
@@ -37,15 +38,26 @@
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
             richTextBox1.ScrollBars = RichTextBoxScrollBars.Vertical;
-            richTextBox1.Size = new Size(274, 299);
+            richTextBox1.Size = new Size(274, 410);
             richTextBox1.TabIndex = 0;
             richTextBox1.Text = "";
+            // 
+            // OpenIME
+            // 
+            OpenIME.Location = new Point(173, 416);
+            OpenIME.Name = "OpenIME";
+            OpenIME.Size = new Size(101, 42);
+            OpenIME.TabIndex = 1;
+            OpenIME.Text = "↑";
+            OpenIME.UseVisualStyleBackColor = true;
+            OpenIME.Click += OpenIME_Click;
             // 
             // OutPad
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(275, 461);
+            Controls.Add(OpenIME);
             Controls.Add(richTextBox1);
             Name = "OutPad";
             Text = "OutPad";
@@ -55,5 +67,6 @@
         #endregion
 
         private RichTextBox richTextBox1;
+        private Button OpenIME;
     }
 }

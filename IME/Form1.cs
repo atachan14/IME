@@ -109,7 +109,7 @@ namespace IME
             }
             else
             {
-                MessageBox.Show("BDL生成完了 BDL.Count" + BDL.Count);
+                //MessageBox.Show("BDL生成完了 BDL.Count" + BDL.Count);
             }
         }
 
@@ -134,7 +134,7 @@ namespace IME
         {
             string[] ftag = new string[2];
 
-            var match = Regex.Match(exeTags, @"^(current|trans)");
+            var match = Regex.Match(exeTags, @"^(current|trans|move)");
 
             if (match.Success)
             {
@@ -147,6 +147,45 @@ namespace IME
                 ftag[1] = "";     // ftag[1]は空文字
             }
             return ftag;
+        }
+        
+        private void ButtonExe(string exeTags, ButtonData selectBd)
+        {
+            string[] ftag = ToFtag(exeTags);
+            switch (ftag[0])
+            {
+                case "none":
+                    return;
+
+                case "current":
+                    ExeCurrent(ftag[1], selectBd);
+                    return;
+
+                case "trans":
+                    ExeTrans(ftag[1]);
+                    return;
+
+                case "move":
+                    outPad.CursorMove(ftag[1]);
+                    return;
+
+                case "backSpace":
+                    outPad.BackSpace();
+                    return;
+
+                case "return":
+                    outPad.Confirmed();
+                    this.Dispose();
+                    return;
+
+                case "Enter":
+                    outPad.Confirmed();
+                    return;
+
+                default:
+                    MessageBox.Show("不明なボタン処理");
+                    return;
+            }
         }
 
         private void ExeCurrent(string ftag1, ButtonData selectBd)
@@ -188,31 +227,6 @@ namespace IME
             outPad.TransCurrent(currentValues[int.Parse(ftag1)]);
             currentValuesIndex = ftag1;
             return;
-        }
-        private void ButtonExe(string exeTags, ButtonData selectBd)
-        {
-            string[] ftag = ToFtag(exeTags);
-            switch (ftag[0])
-            {
-                case "none":
-                    return;
-
-                case "current":
-                    ExeCurrent(ftag[1], selectBd);
-                    return;
-
-                case "trans":
-                    ExeTrans(ftag[1]);
-                    return;
-
-                case "Enter":
-                    outPad.Confirmed();
-                    return;
-
-                default:
-                    MessageBox.Show("不明なボタン処理");
-                    return;
-            }
         }
 
         private string CalcSwipePos(Point dragEndPoint)

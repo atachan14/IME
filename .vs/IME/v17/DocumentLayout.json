@@ -7,20 +7,20 @@
       "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\outpad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|c:\\users\\240925pm\\desktop\\murota atari\\c#\\ime\\ime\\outpad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\outpad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|c:\\users\\240925pm\\desktop\\murota atari\\c#\\ime\\ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|c:\\users\\240925pm\\desktop\\murota atari\\c#\\ime\\ime\\parettedata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\parettedata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|c:\\users\\240925pm\\desktop\\murota atari\\c#\\ime\\ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\ime\\outpad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\outpad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|c:\\users\\240925pm\\desktop\\murota atari\\c#\\ime\\ime\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -62,7 +62,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "OutPad.cs [\u30C7\u30B6\u30A4\u30F3]",
               "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\OutPad.cs",
               "RelativeDocumentMoniker": "IME\\OutPad.cs",
@@ -80,48 +80,47 @@
               "RelativeDocumentMoniker": "IME\\OutPad.cs",
               "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\OutPad.cs",
               "RelativeToolTip": "IME\\OutPad.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAAAB0AAAAWAAAA",
+              "ViewState": "AQIAAEQAAAAAAAAAAAAcwEwAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-08T16:39:57.907Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form1.cs",
               "RelativeDocumentMoniker": "IME\\Form1.cs",
               "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form1.cs",
               "RelativeToolTip": "IME\\Form1.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAQwEEAAAAcAAAA",
+              "ViewState": "AQIAAJcAAAAAAAAAAAAAwKwAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-07T09:06:54.382Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "ParetteData.json",
               "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\ParetteData.json",
               "RelativeDocumentMoniker": "IME\\ParetteData.json",
               "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\ParetteData.json",
               "RelativeToolTip": "IME\\ParetteData.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAzAAAA",
+              "ViewState": "AQIAAFIAAAAAAAAAAADwv18AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-01-07T23:00:08.096Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
               "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form1.cs",
               "RelativeDocumentMoniker": "IME\\Form1.cs",
               "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
               "RelativeToolTip": "IME\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-31T07:59:25.232Z",
-              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
+              "WhenOpened": "2024-12-31T07:59:25.232Z"
             },
             {
               "$type": "Document",
@@ -142,8 +141,7 @@
               "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\DebugForm.cs [\u30C7\u30B6\u30A4\u30F3]",
               "RelativeToolTip": "IME\\DebugForm.cs [\u30C7\u30B6\u30A4\u30F3]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-08T11:34:12.65Z",
-              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
+              "WhenOpened": "2025-01-08T11:34:12.65Z"
             },
             {
               "$type": "Document",
@@ -155,8 +153,7 @@
               "RelativeToolTip": "IME\\Program.cs",
               "ViewState": "AQIAAAIAAAAAAAAAAAAswA0AAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-07T09:06:08.329Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-07T09:06:08.329Z"
             },
             {
               "$type": "Document",
@@ -180,8 +177,7 @@
               "RelativeToolTip": "IME\\Form1.Designer.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-07T09:06:21.361Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-07T09:06:21.361Z"
             },
             {
               "$type": "Document",
@@ -192,8 +188,7 @@
               "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form1.resx",
               "RelativeToolTip": "IME\\Form1.resx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2025-01-07T09:06:24.709Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-07T09:06:24.709Z"
             },
             {
               "$type": "Document",

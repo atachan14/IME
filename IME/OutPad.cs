@@ -14,26 +14,25 @@ namespace IME
     public partial class OutPad : Form
     {
         private Form1 form1;
-        string frontConf = "";
-        string pending = "";
+        string[] conf = "";
+        string[] pending = "";
         string current = "";
-        string backConf = "";
 
-        
+
         public OutPad()
         {
             InitializeComponent();
             updateDisplay();
-            ShowIME();
+            OpenIme();
         }
 
-        void ShowIME()
+        void OpenIme()
         {
             form1 = new Form1(this);
             form1.TopLevel = false;  // 子ウィンドウとして扱う
             form1.FormBorderStyle = FormBorderStyle.None;  // 枠を消す
             form1.Dock = DockStyle.Bottom;  // 下部に配置
-            
+
             this.Controls.Add(form1);
             form1.Show();
             form1.BringToFront();
@@ -41,7 +40,7 @@ namespace IME
 
         public void NextCurrent(string value)
         {
-            pending += current;
+            pending[0] += current;
             current = value;
             updateDisplay();
         }
@@ -54,18 +53,57 @@ namespace IME
 
         public void TransPending(string value)
         {
-            pending = value;
+            pending[0] = value;
             current = "";
             updateDisplay();
         }
 
         public void Confirmed()
         {
-            pending += current;
-            frontConf += pending;
+            pending[0] += current;
+            frontConf += pending[0];
+            backConf += pending[1];
+            pending[0] = "";
             current = "";
-            pending = "";
+            pending[1] = "";
             updateDisplay();
+        }
+
+        public void CursorMove(string ftag1)
+        {
+            string[] target;
+            if (current != "")
+            {
+                target = [pending[0], backPending];
+            }
+            else
+            {
+                target = [frontConf, backConf];
+            }
+            switch (ftag1)
+            {
+                case "1":
+                    
+                    if (target[0] == "") return;
+
+                    target[1] = target[0].Substring(target[0].Length - 1) + target[1];
+                    target[0] = target[0].Substring(0, target[0].Length - 1);
+                    updateDisplay();
+                    return;
+
+                case "3":
+                    if (target[1] == "") return;
+                    target[0] += target[1].Substring(0, 1);  // backPending の最初の文字を frontPending の末尾に追加
+                    target[1] = target[1].Substring(1);
+                    updateDisplay();
+                    return;
+
+            }
+        }
+
+        public void BackSpace()
+        {
+
         }
 
 
@@ -75,24 +113,44 @@ namespace IME
 
             richTextBox1.AppendText(frontConf);
 
-            int start = richTextBox1.Text.Length;  // 現在のカーソル位置
-            richTextBox1.AppendText(pending);  // pendingを追加
-            richTextBox1.Select(start, pending.Length);
+            int start = richTextBox1.Text.Length;
+            richTextBox1.AppendText(frontPending);
+            richTextBox1.Select(start, frontPending.Length);
             richTextBox1.SelectionColor = Color.Blue;
             richTextBox1.SelectionBackColor = Color.LightCyan;
 
-            start = richTextBox1.Text.Length; 
-            richTextBox1.AppendText(current);  // current
+            start = richTextBox1.Text.Length;
+            richTextBox1.AppendText(current);
             richTextBox1.Select(start, current.Length);
-            richTextBox1.SelectionColor = Color.Blue;  
+            richTextBox1.SelectionColor = Color.Blue;
             richTextBox1.SelectionBackColor = Color.LightBlue;
+
+            start = richTextBox1.Text.Length;
+            richTextBox1.AppendText("|");
+            richTextBox1.Select(start, "|".Length);
+            richTextBox1.SelectionColor = Color.Purple;
+            richTextBox1.SelectionBackColor = Color.White;
+
+            start = richTextBox1.Text.Length;
+            richTextBox1.AppendText(backPending);
+            richTextBox1.Select(start, backPending.Length);
+            richTextBox1.SelectionColor = Color.Blue;
+            richTextBox1.SelectionBackColor = Color.LightCyan;
+
+
 
             start = richTextBox1.Text.Length;
             richTextBox1.AppendText(backConf);
             richTextBox1.Select(start, backConf.Length);
-            richTextBox1.SelectionColor = richTextBox1.ForeColor; 
+            richTextBox1.SelectionColor = richTextBox1.ForeColor;
             richTextBox1.SelectionBackColor = richTextBox1.BackColor;
+
+
         }
-        
+
+        private void OpenIME_Click(object sender, EventArgs e)
+        {
+            OpenIme();
+        }
     }
 }
