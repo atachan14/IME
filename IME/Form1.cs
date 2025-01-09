@@ -17,7 +17,7 @@ namespace IME
 {
     public partial class Form1 : Form
     {
-        private OutPad outPadForm;
+        private OutPad outPad;
         //private DebugForm df;
 
         private List<ButtonData>? BDL;
@@ -31,7 +31,7 @@ namespace IME
         private int longPressThreshold = 10000;
 
         private string[] currentValues;
-        private int currentValuesIndex;
+        private string currentValuesIndex;
         private string pending;
 
 
@@ -42,16 +42,16 @@ namespace IME
         public bool IsPressing { get => isPressing; set => isPressing = value; }
         public int DebugCount { get => debugCount; set => debugCount = value; }
 
-        public Form1()
+        public Form1(OutPad outPad)
         {
             InitializeComponent();
 
+            this.outPad = outPad;
             GenerateBL();
             JsonToBDL();
             SetupButtonText();
 
-            outPadForm = new OutPad();
-            outPadForm.Show();
+            
 
             //df = new DebugForm(this);
             //df.Show();
@@ -62,8 +62,8 @@ namespace IME
         {
             int buttonWidth = 55; // ボタンの幅
             int buttonHeight = 55; // ボタンの高さ
-            int startX = 1; // 配置開始位置（X座標）
-            int startY = 40; // 配置開始位置（Y座標）
+            int startX = 0; // 配置開始位置（X座標）
+            int startY = 0; // 配置開始位置（Y座標）
 
 
             for (int y = 0; y < 4; y++)
@@ -127,128 +127,86 @@ namespace IME
                     continue;
                 }
                 match.b.Text = match.bd.Value0[0];
-                //MessageBox.Show($"{match.b.Name}に{match.bd.Value0[0]}を登録");
             }
-            //MessageBox.Show("SetupEnd");
         }
 
         private string[] ToFtag(string exeTags)
         {
-            // 結果を格納する配列
             string[] ftag = new string[2];
 
-            // 正規表現で文頭の特定文字列を抽出 (例: "current" or "trans")
             var match = Regex.Match(exeTags, @"^(current|trans)");
 
             if (match.Success)
             {
-                // マッチした場合
                 ftag[0] = match.Value;                     // "current" または "trans"
                 ftag[1] = exeTags.Substring(match.Length);  // 残りの部分
             }
             else
             {
-                // マッチしなかった場合
                 ftag[0] = exeTags;  // 丸ごとftag[0]に入れる
                 ftag[1] = "";     // ftag[1]は空文字
             }
-
             return ftag;
         }
 
         private void ExeCurrent(string ftag1, ButtonData selectBd)
         {
-            currentValues = selectBd.Value0;
+
+            switch (ftag1)
+            {
+                case "0":
+                    currentValues = selectBd.Value0;
+                    break;
+                case "1":
+                    currentValues = selectBd.Value1;
+                    break;
+                case "2":
+                    currentValues = selectBd.Value2;
+                    break;
+                case "3":
+                    currentValues = selectBd.Value3;
+                    break;
+                case "4":
+                    currentValues = selectBd.Value4;
+                    break;
+                default:
+                    MessageBox.Show("ftag1 error");
+                    return;
+            }
+            outPad.NextCurrent(currentValues[0]);
+            currentValuesIndex = "0";
+        }
+
+        private void ExeTrans(string ftag1)
+        {
+            if (currentValuesIndex == ftag1)
+            {
+                outPad.TransCurrent(currentValues[0]);
+                currentValuesIndex = "0";
+                return;
+            }
+            outPad.TransCurrent(currentValues[int.Parse(ftag1)]);
+            currentValuesIndex = ftag1;
+            return;
         }
         private void ButtonExe(string exeTags, ButtonData selectBd)
         {
-            
-            switch (exeTags)
+            string[] ftag = ToFtag(exeTags);
+            switch (ftag[0])
             {
                 case "none":
                     return;
 
-                case "current0":
-                    outPadForm.NextCurrent(selectBd.Value0[0]);
-                    currentValues = selectBd.Value0;
-                    currentValuesIndex = 0;
-                    return;
-                case "current1":
-                    outPadForm.NextCurrent(selectBd.Value1[0]);
-                    currentValues = selectBd.Value1;
-                    currentValuesIndex = 0;
-                    return;
-                case "current2":
-                    outPadForm.NextCurrent(selectBd.Value2[0]);
-                    currentValues = selectBd.Value2;
-                    currentValuesIndex = 0;
-                    return;
-                case "current3":
-                    outPadForm.NextCurrent(selectBd.Value3[0]);
-                    currentValues = selectBd.Value3;
-                    currentValuesIndex = 0;
-                    return;
-                case "current4":
-                    outPadForm.NextCurrent(selectBd.Value4[0]);
-                    currentValues = selectBd.Value4;
-                    currentValuesIndex = 0;
+                case "current":
+                    ExeCurrent(ftag[1], selectBd);
                     return;
 
-                case "trans1":
-                    if (currentValuesIndex == 1)
-                    {
-                        outPadForm.TransCurrent(currentValues[0]);
-                        currentValuesIndex = 0;
-                        return;
-                    }
-                    outPadForm.TransCurrent(currentValues[1]);
-                    currentValuesIndex = 1;
+                case "trans":
+                    ExeTrans(ftag[1]);
                     return;
-                case "trans2":
-                    if (currentValuesIndex == 2)
-                    {
-                        outPadForm.TransCurrent(currentValues[0]);
-                        currentValuesIndex = 0;
-                        return;
-                    }
-                    outPadForm.TransCurrent(currentValues[2]);
-                    currentValuesIndex = 2;
-                    return;
-                case "trans3":
-                    if (currentValuesIndex == 3)
-                    {
-                        outPadForm.TransCurrent(currentValues[0]);
-                        currentValuesIndex = 0;
-                        return;
-                    }
-                    outPadForm.TransCurrent(currentValues[3]);
-                    currentValuesIndex = 3;
-                    return;
-                case "trans4":
-                    if (currentValuesIndex == 4)
-                    {
-                        outPadForm.TransCurrent(currentValues[0]);
-                        currentValuesIndex = 0;
-                        return;
-                    }
-                    outPadForm.TransCurrent(currentValues[4]);
-                    currentValuesIndex = 4;
-                    return;
-                case "trans5":
-                    if (currentValuesIndex == 5)
-                    {
-                        outPadForm.TransCurrent(currentValues[0]);
-                        currentValuesIndex = 0;
-                        return;
-                    }
-                    outPadForm.TransCurrent(currentValues[5]);
-                    currentValuesIndex = 5;
-                    return;
-
-
 
                 case "Enter":
-                    outPadForm.Confirmed();
+                    outPad.Confirmed();
                     return;
 
                 default:
@@ -330,6 +288,11 @@ namespace IME
                     }
                 }
             }
+        }
+
+        private void IME_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

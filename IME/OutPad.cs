@@ -7,19 +7,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
 
 namespace IME
 {
     public partial class OutPad : Form
     {
+        private Form1 form1;
         string frontConf = "";
         string pending = "";
         string current = "";
         string backConf = "";
+
+        
         public OutPad()
         {
             InitializeComponent();
             updateDisplay();
+            ShowIME();
+        }
+
+        void ShowIME()
+        {
+            form1 = new Form1(this);
+            form1.TopLevel = false;  // 子ウィンドウとして扱う
+            form1.FormBorderStyle = FormBorderStyle.None;  // 枠を消す
+            form1.Dock = DockStyle.Bottom;  // 下部に配置
+            
+            this.Controls.Add(form1);
+            form1.Show();
+            form1.BringToFront();
         }
 
         public void NextCurrent(string value)
@@ -76,14 +93,6 @@ namespace IME
             richTextBox1.SelectionColor = richTextBox1.ForeColor; 
             richTextBox1.SelectionBackColor = richTextBox1.BackColor;
         }
-        public void DisplayText(string value)
-        {
-            richTextBox1.AppendText(value);
-        }
-
-        public void DisplayCurrent(string value)
-        {
-
-        }
+        
     }
 }
