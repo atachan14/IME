@@ -70,39 +70,32 @@ namespace IME
         {
             pending[0] += current;
             conf[0] += pending[0];
-            conf[0] += pending[1];
-            pending[0] = "";
+            conf[1] = pending[1] + conf[1];
+
             current = "";
+            pending[0] = "";
             pending[1] = "";
+            
             updateDisplay();
         }
 
-        public void CursorMove(string ftag1)
+        public void ConfMove(string ftag1)
         {
-            string[] target;
-            if (current != "")
-            {
-                target = pending;
-            }
-            else
-            {
-                target = conf;
-            }
             switch (ftag1)
             {
                 case "1":
 
-                    if (target[0] == "") return;
-                    target[1] = target[0].Substring(target[0].Length - 1) + target[1];
-                    target[0] = target[0].Substring(0, target[0].Length - 1);
+                    if (conf[0] == "") return;
+                    conf[1] = conf[0].Substring(conf[0].Length - 1) + conf[1];
+                    conf[0] = conf[0].Substring(0, conf[0].Length - 1);
 
                     updateDisplay();
                     return;
 
                 case "3":
-                    if (target[1] == "") return;
-                    target[0] += target[1].Substring(0, 1);  // backPending の最初の文字を frontPending の末尾に追加
-                    target[1] = target[1].Substring(1);
+                    if (conf[1] == "") return;
+                    conf[0] += conf[1].Substring(0, 1); 
+                    conf[1] = conf[1].Substring(1);
                     updateDisplay();
                     return;
 
@@ -132,23 +125,23 @@ namespace IME
             richTextBox1.SelectionColor = Color.Blue;
             richTextBox1.SelectionBackColor = Color.LightBlue;
 
-            start = richTextBox1.Text.Length;
-            richTextBox1.AppendText("|");
-            richTextBox1.Select(start, "|".Length);
-            richTextBox1.SelectionColor = Color.Purple;
-            richTextBox1.SelectionBackColor = Color.White;
+            //start = richTextBox1.Text.Length;
+            //richTextBox1.AppendText("|");
+            //richTextBox1.Select(start, "|".Length);
+            //richTextBox1.SelectionColor = Color.Purple;
+            //richTextBox1.SelectionBackColor = Color.White;
 
             start = richTextBox1.Text.Length;
             richTextBox1.AppendText(pending[1]);
             richTextBox1.Select(start, pending[1].Length);
             richTextBox1.SelectionColor = Color.Blue;
-            richTextBox1.SelectionBackColor = Color.LightCyan;
+            richTextBox1.SelectionBackColor = Color.Yellow;
 
             start = richTextBox1.Text.Length;
             richTextBox1.AppendText(conf[1]);
             richTextBox1.Select(start, conf[1].Length);
             richTextBox1.SelectionColor = richTextBox1.ForeColor;
-            richTextBox1.SelectionBackColor = richTextBox1.BackColor;
+            richTextBox1.SelectionBackColor = Color.LightGray;
         }
 
         private void OpenIME_Click(object sender, EventArgs e)
