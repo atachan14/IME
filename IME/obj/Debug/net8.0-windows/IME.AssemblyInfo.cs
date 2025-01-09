@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IME")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+82a6b22f6949dcfe0dd243c8dc186dcff0c1b4d3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e23a6ed3b9cc3ff7428dd840cf2fc7d0321c30da")]
 [assembly: System.Reflection.AssemblyProductAttribute("IME")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IME")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

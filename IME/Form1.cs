@@ -31,6 +31,7 @@ namespace IME
         private int longPressThreshold = 10000;
 
         private string[] currentValues;
+        private int currentValuesIndex;
         private string pending;
 
 
@@ -38,7 +39,6 @@ namespace IME
 
 
         private int debugCount = 0;
-
         public bool IsPressing { get => isPressing; set => isPressing = value; }
         public int DebugCount { get => debugCount; set => debugCount = value; }
 
@@ -132,8 +132,37 @@ namespace IME
             //MessageBox.Show("SetupEnd");
         }
 
+        private string[] ToFtag(string exeTags)
+        {
+            // 結果を格納する配列
+            string[] ftag = new string[2];
+
+            // 正規表現で文頭の特定文字列を抽出 (例: "current" or "trans")
+            var match = Regex.Match(exeTags, @"^(current|trans)");
+
+            if (match.Success)
+            {
+                // マッチした場合
+                ftag[0] = match.Value;                     // "current" または "trans"
+                ftag[1] = exeTags.Substring(match.Length);  // 残りの部分
+            }
+            else
+            {
+                // マッチしなかった場合
+                ftag[0] = exeTags;  // 丸ごとftag[0]に入れる
+                ftag[1] = "";     // ftag[1]は空文字
+            }
+
+            return ftag;
+        }
+
+        private void ExeCurrent(string ftag1, ButtonData selectBd)
+        {
+            currentValues = selectBd.Value0;
+        }
         private void ButtonExe(string exeTags, ButtonData selectBd)
         {
+            
             switch (exeTags)
             {
                 case "none":
@@ -142,38 +171,78 @@ namespace IME
                 case "current0":
                     outPadForm.NextCurrent(selectBd.Value0[0]);
                     currentValues = selectBd.Value0;
+                    currentValuesIndex = 0;
                     return;
                 case "current1":
                     outPadForm.NextCurrent(selectBd.Value1[0]);
                     currentValues = selectBd.Value1;
+                    currentValuesIndex = 0;
                     return;
                 case "current2":
                     outPadForm.NextCurrent(selectBd.Value2[0]);
                     currentValues = selectBd.Value2;
+                    currentValuesIndex = 0;
                     return;
                 case "current3":
                     outPadForm.NextCurrent(selectBd.Value3[0]);
                     currentValues = selectBd.Value3;
+                    currentValuesIndex = 0;
                     return;
                 case "current4":
                     outPadForm.NextCurrent(selectBd.Value4[0]);
                     currentValues = selectBd.Value4;
+                    currentValuesIndex = 0;
                     return;
 
                 case "trans1":
+                    if (currentValuesIndex == 1)
+                    {
+                        outPadForm.TransCurrent(currentValues[0]);
+                        currentValuesIndex = 0;
+                        return;
+                    }
                     outPadForm.TransCurrent(currentValues[1]);
+                    currentValuesIndex = 1;
                     return;
                 case "trans2":
+                    if (currentValuesIndex == 2)
+                    {
+                        outPadForm.TransCurrent(currentValues[0]);
+                        currentValuesIndex = 0;
+                        return;
+                    }
                     outPadForm.TransCurrent(currentValues[2]);
+                    currentValuesIndex = 2;
                     return;
                 case "trans3":
+                    if (currentValuesIndex == 3)
+                    {
+                        outPadForm.TransCurrent(currentValues[0]);
+                        currentValuesIndex = 0;
+                        return;
+                    }
                     outPadForm.TransCurrent(currentValues[3]);
+                    currentValuesIndex = 3;
                     return;
                 case "trans4":
+                    if (currentValuesIndex == 4)
+                    {
+                        outPadForm.TransCurrent(currentValues[0]);
+                        currentValuesIndex = 0;
+                        return;
+                    }
                     outPadForm.TransCurrent(currentValues[4]);
+                    currentValuesIndex = 4;
                     return;
                 case "trans5":
+                    if (currentValuesIndex == 5)
+                    {
+                        outPadForm.TransCurrent(currentValues[0]);
+                        currentValuesIndex = 0;
+                        return;
+                    }
                     outPadForm.TransCurrent(currentValues[5]);
+                    currentValuesIndex = 5;
                     return;
 
 
