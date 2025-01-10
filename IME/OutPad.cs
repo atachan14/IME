@@ -5,8 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.DataFormats;
 
 namespace IME
@@ -71,7 +73,7 @@ namespace IME
             this.current = current;
             pending[1] = bpen;
 
-            if (this.current == "\n") this.current = "9\n";
+            if (this.current == "\n") this.current = "\n ";
             updateDisplay();
         }
         public void Confirmed()
@@ -89,21 +91,68 @@ namespace IME
 
         public void ConfMove(string ftag1)
         {
+            string[] frontLines = Regex.Split(conf[0], @"(?<=\r\n|\n)");
+            int maxX = frontLines[frontLines.Length - 1].Length;
             switch (ftag1)
             {
                 case "1":
-
                     if (conf[0] == "") return;
                     conf[1] = conf[0].Substring(conf[0].Length - 1) + conf[1];
                     conf[0] = conf[0].Substring(0, conf[0].Length - 1);
-
                     updateDisplay();
                     return;
 
+                case "2":
+                    if (conf[0] == "") return;
+                    
+                    if (frontLines.Length == 1)
+                    {
+                        conf[1] = conf[0] + conf[1];
+                        conf[0] = "";
+                        updateDisplay();
+                        return;
+                    }
+
+                    conf[1] = frontLines[frontLines.Length - 1] + conf[1];
+                    frontLines[frontLines.Length - 1] = "";
+
+                    if (maxX < frontLines[frontLines.Length - 2].Length)
+                    {
+                        conf[1] = frontLines[frontLines.Length - 2].Substring(maxX) + conf[1];
+                        frontLines[frontLines.Length - 2] = frontLines[frontLines.Length - 2].Substring(0, maxX);
+                    }
+
+                    conf[0] = string.Join("", frontLines);
+                    updateDisplay();
+                    return;
                 case "3":
                     if (conf[1] == "") return;
                     conf[0] += conf[1].Substring(0, 1);
                     conf[1] = conf[1].Substring(1);
+                    updateDisplay();
+                    return;
+
+                case "4":
+                    if (conf[1] == "") return;
+                    string[] backLines = Regex.Split(conf[1], @"(?<=\r\n|\n)");
+                    if (backLines.Length == 1)
+                    {
+                        conf[0] += conf[1];
+                        conf[1] = "";
+                        updateDisplay();
+                        return;
+                    }
+                   
+                    conf[0] += backLines[0];
+                    backLines[0] = "";
+
+                    if (maxX < backLines[1].Length)
+                    {
+                        conf[0] += backLines[1].Substring(0,maxX);
+                        backLines[1] = backLines[1].Substring(maxX);
+                    }
+
+                    conf[1] = string.Join("", backLines);
                     updateDisplay();
                     return;
 

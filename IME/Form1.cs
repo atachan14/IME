@@ -202,7 +202,7 @@ namespace IME
             if (currentPT.values != null)
             {
                 frontPT.Add(currentPT);
-                
+
             }
             currentPT = new(["\n"], 0);
 
@@ -216,12 +216,12 @@ namespace IME
             string type = match.Value;
             string direction = ftag1.Substring(match.Length);
 
-            switch ((type,currentPT.values!=null))
+            switch ((type, currentPT.values != null))
             {
-                case ("Short",true):
+                case ("Short", true):
                     PendingShortDelete(direction);
                     return;
-                case ("Long",true):
+                case ("Long", true):
                     PendingLongDelete(direction);
                     return;
                 case ("Short", false):
@@ -248,7 +248,7 @@ namespace IME
                     SendPendingAndCurrent();
                     return;
                 case "3":
-                    if(backPT.Count == 0) return;
+                    if (backPT.Count == 0) return;
                     backPT.RemoveAt(0);
                     SendPendingAndCurrent();
                     return;
@@ -341,6 +341,7 @@ namespace IME
             if (currentPT.index == index)
             {
                 currentPT.index = 0;
+                SendPendingAndCurrent();
                 return;
             }
 
