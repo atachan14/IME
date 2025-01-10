@@ -31,10 +31,10 @@ namespace IME
         private int longPressThreshold = 10000;
 
 
-        
-        
-        
-        private List<(string[] values, int index)>  frontPT = new();
+
+
+
+        private List<(string[] values, int index)> frontPT = new();
         private (string[] values, int index) currentPT = new();
         private List<(string[] values, int index)> backPT = new();
 
@@ -52,7 +52,7 @@ namespace IME
             JsonToBDL();
             SetupButtonText();
 
-            
+
 
             //df = new DebugForm(this);
             //df.Show();
@@ -135,7 +135,7 @@ namespace IME
         {
             string[] ftag = new string[2];
 
-            var match = Regex.Match(exeTags, @"^(current|trans|move)");
+            var match = Regex.Match(exeTags, @"^(current|trans|move|delete)");
 
             if (match.Success)
             {
@@ -149,7 +149,7 @@ namespace IME
             }
             return ftag;
         }
-        
+
         private void ButtonExe(string exeTags, ButtonData selectBd)
         {
             string[] ftag = ToFtag(exeTags);
@@ -170,8 +170,8 @@ namespace IME
                     ExeMove(ftag[1]);
                     return;
 
-                case "backSpace":
-                    outPad.BackSpace();
+                case "delete":
+                    ExeDelete(ftag[1]);
                     return;
 
                 case "return":
@@ -189,6 +189,57 @@ namespace IME
             }
         }
 
+        void ExeDelete(string ftag1)
+        {
+            var match = Regex.Match(ftag1, @"^(Long|Short)");
+            string type = match.Value;
+            string direction = ftag1.Substring(match.Length);
+
+            switch ((type,currentPT.values!=null))
+            {
+                case ("Short",true):
+                    PendingShortDelete(direction);
+                    return;
+                case ("Long",true):
+                    PendingLongDelete(direction);
+                    return;
+                case ("Short", false):
+                    outPad.ConfShortDelete(direction);
+                    return;
+                case ("Long", false):
+                    outPad.ConfLongDelete(direction);
+                    return;
+            }
+        }
+
+        void PendingShortDelete(string direction)
+        {
+            switch (direction)
+            {
+                case "1":
+                    if (frontPT.Count == 0) return;
+                    currentPT = frontPT.Last();
+                    frontPT.RemoveAt(frontPT.Count - 1);
+                    SendPendingAndCurrent();
+                    return;
+                case "3":
+                    if(backPT.Count == 0) return;
+                    backPT.RemoveAt(0);
+                    SendPendingAndCurrent();
+                    return;
+
+                default:
+                    MessageBox.Show("未実装PendingShortDelete direction:" + direction);
+                    return;
+            }
+        }
+
+        void PendingLongDelete(string direction)
+        {
+            MessageBox.Show("未実装PendingLongDelete");
+            return;
+        }
+
         void ExeMove(string ftag1)
         {
             if (currentPT.values != null)
@@ -200,7 +251,7 @@ namespace IME
                 outPad.ConfMove(ftag1);
             }
         }
-        void PendingMove(string ftag1) 
+        void PendingMove(string ftag1)
         {
             switch (ftag1)
             {
@@ -212,16 +263,20 @@ namespace IME
                     SendPendingAndCurrent();
                     return;
 
-                    case "3":
+                case "3":
                     if (backPT.Count == 0) return;
                     frontPT.Add(currentPT);
                     currentPT = backPT[0];
                     backPT.RemoveAt(0);
                     SendPendingAndCurrent();
                     return;
+
+                default:
+                    MessageBox.Show("未実装:" + ftag1);
+                    return;
             }
         }
-        
+
 
         private void ExeCurrent(string ftag1, ButtonData selectBd)
         {
@@ -282,7 +337,7 @@ namespace IME
             {
                 bpen += backPT[i].values[backPT[i].index];
             }
-            outPad.UpdatePendingAndCurrent(fpen,currentPT.values[currentPT.index],bpen);
+            outPad.UpdatePendingAndCurrent(fpen, currentPT.values[currentPT.index], bpen);
         }
 
         void ExeEnter()

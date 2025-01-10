@@ -38,24 +38,27 @@ namespace IME
             form1.BringToFront();
         }
 
-        public void NextCurrent(string value)
+        public void ConfShortDelete(string direction)
         {
-            pending[0] += current;
-            current = value;
-            updateDisplay();
+            switch (direction) { 
+             case "1":
+                if (conf[0] == "") return;
+                conf[0] = conf[0].Substring(0, conf[0].Length - 1);
+                updateDisplay();
+                return;
+
+            case "3":
+                if (conf[1] == "") return;
+                conf[1] = conf[1].Substring(1);
+                updateDisplay();
+                return;
+            }
         }
 
-        public void TransCurrent(string value)
+        public void ConfLongDelete(string direction)
         {
-            current = value;
-            updateDisplay();
-        }
-
-        public void TransPending(string value)
-        {
-            pending[0] = value;
-            current = "";
-            updateDisplay();
+            MessageBox.Show("未実装ConfLongDelete");
+            return;
         }
 
         public void UpdatePendingAndCurrent(string fpen, string current,string bpen)

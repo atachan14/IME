@@ -48,18 +48,18 @@
     "Value4": [ "" ],
     "ExeTags": {
       "Short": {
-        "0": "delete",
-        "1": "backSpace",
-        "2": "upSpace",
+        "0": "deleteShort3",
+        "1": "deleteShort1",
+        "2": "deleteShort2",
         "3": "none",
-        "4": "restoration"
+        "4": "deleteShort4"
       },
       "Long": {
-        "0": "none",
-        "1": "none",
-        "2": "allDelete",
+        "0": "deleteLong3",
+        "1": "deleteLong1",
+        "2": "deleteLong2",
         "3": "none",
-        "4": "none"
+        "4": "deleteLong4"
       }
     }
   },
