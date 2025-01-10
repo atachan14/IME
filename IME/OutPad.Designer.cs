@@ -30,6 +30,7 @@
         {
             richTextBox1 = new RichTextBox();
             OpenIME = new Button();
+            showSource = new Button();
             SuspendLayout();
             // 
             // richTextBox1
@@ -52,11 +53,22 @@
             OpenIME.UseVisualStyleBackColor = true;
             OpenIME.Click += OpenIME_Click;
             // 
+            // showSource
+            // 
+            showSource.Location = new Point(0, 416);
+            showSource.Name = "showSource";
+            showSource.Size = new Size(97, 42);
+            showSource.TabIndex = 2;
+            showSource.Text = "showSource";
+            showSource.UseVisualStyleBackColor = true;
+            showSource.Click += ShowSource_Click;
+            // 
             // OutPad
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(275, 461);
+            Controls.Add(showSource);
             Controls.Add(OpenIME);
             Controls.Add(richTextBox1);
             Name = "OutPad";
@@ -68,5 +80,6 @@
 
         private RichTextBox richTextBox1;
         private Button OpenIME;
+        private Button showSource;
     }
 }

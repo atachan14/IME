@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|c:\\users\\240925pm\\desktop\\murota atari\\c#\\ime\\ime\\memo.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\memo.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|c:\\users\\240925pm\\desktop\\murota atari\\c#\\ime\\ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,32 +15,24 @@
       "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\outpad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\ime\\outpad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\outpad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|c:\\users\\240925pm\\desktop\\murota atari\\c#\\ime\\ime\\parettedata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\parettedata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|c:\\users\\240925pm\\desktop\\murota atari\\c#\\ime\\ime\\form3.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\form3.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\ime\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\ime\\outpad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\outpad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|c:\\users\\240925pm\\desktop\\murota atari\\c#\\ime\\ime\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|c:\\users\\240925pm\\desktop\\murota atari\\c#\\ime\\ime\\buttondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\buttondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\ime\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\ime\\debugform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -62,54 +58,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Form3.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form3.Designer.cs",
-              "RelativeDocumentMoniker": "IME\\Form3.Designer.cs",
-              "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form3.Designer.cs",
-              "RelativeToolTip": "IME\\Form3.Designer.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAqwFIBAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T16:20:48.391Z"
+              "DocumentIndex": 0,
+              "Title": "memo.md",
+              "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\memo.md",
+              "RelativeDocumentMoniker": "IME\\memo.md",
+              "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\memo.md",
+              "RelativeToolTip": "IME\\memo.md",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-01-10T10:38:22.674Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "OutPad.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\OutPad.cs",
-              "RelativeDocumentMoniker": "IME\\OutPad.cs",
-              "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\OutPad.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "RelativeToolTip": "IME\\OutPad.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T09:12:33.815Z",
-              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "OutPad.cs",
               "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\OutPad.cs",
               "RelativeDocumentMoniker": "IME\\OutPad.cs",
               "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\OutPad.cs",
               "RelativeToolTip": "IME\\OutPad.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAAwDAAAAAAAAAA",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAIwEEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-08T16:39:57.907Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form1.cs",
               "RelativeDocumentMoniker": "IME\\Form1.cs",
               "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form1.cs",
               "RelativeToolTip": "IME\\Form1.cs",
-              "ViewState": "AQIAAMQAAAAAAAAAAAAAANoAAAAZAAAA",
+              "ViewState": "AQIAAMMAAAAAAAAAAAAiwMcAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-07T09:06:54.382Z",
               "EditorCaption": ""
@@ -122,35 +107,63 @@
               "RelativeDocumentMoniker": "IME\\ParetteData.json",
               "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\ParetteData.json",
               "RelativeToolTip": "IME\\ParetteData.json",
-              "ViewState": "AQIAAC4AAAAAAAAAAAAAADcAAAAIAAAA",
+              "ViewState": "AQIAAGkAAAAAAAAAAAAAAHQAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-01-07T23:00:08.096Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Form3.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form3.cs",
+              "RelativeDocumentMoniker": "IME\\Form3.cs",
+              "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form3.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "RelativeToolTip": "IME\\Form3.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-08T08:37:26.328Z",
+              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ButtonData.cs",
+              "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\ButtonData.cs",
+              "RelativeDocumentMoniker": "IME\\ButtonData.cs",
+              "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\ButtonData.cs",
+              "RelativeToolTip": "IME\\ButtonData.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAUwBkAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-31T11:34:53.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "OutPad.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\OutPad.cs",
+              "RelativeDocumentMoniker": "IME\\OutPad.cs",
+              "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\OutPad.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "RelativeToolTip": "IME\\OutPad.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T09:12:33.815Z",
+              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
               "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form1.cs",
               "RelativeDocumentMoniker": "IME\\Form1.cs",
               "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
               "RelativeToolTip": "IME\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-31T07:59:25.232Z"
+              "WhenOpened": "2024-12-31T07:59:25.232Z",
+              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "Form3.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form3.cs",
-              "RelativeDocumentMoniker": "IME\\Form3.cs",
-              "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\Form3.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-08T08:37:26.328Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
               "Title": "DebugForm.cs [\u30C7\u30B6\u30A4\u30F3]",
               "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\DebugForm.cs",
               "RelativeDocumentMoniker": "IME\\DebugForm.cs",
@@ -161,31 +174,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Program.cs",
-              "RelativeDocumentMoniker": "IME\\Program.cs",
-              "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Program.cs",
-              "RelativeToolTip": "IME\\Program.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAswA0AAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-07T09:06:08.329Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ButtonData.cs",
-              "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\ButtonData.cs",
-              "RelativeDocumentMoniker": "IME\\ButtonData.cs",
-              "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\ButtonData.cs",
-              "RelativeToolTip": "IME\\ButtonData.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAywAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-31T11:34:53.799Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "IME\\Form1.Designer.cs",
@@ -193,22 +182,24 @@
               "RelativeToolTip": "IME\\Form1.Designer.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-07T09:06:21.361Z"
+              "WhenOpened": "2025-01-07T09:06:21.361Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "Form1.resx",
               "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form1.resx",
               "RelativeDocumentMoniker": "IME\\Form1.resx",
               "ToolTip": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form1.resx",
               "RelativeToolTip": "IME\\Form1.resx",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2025-01-07T09:06:24.709Z"
+              "WhenOpened": "2025-01-07T09:06:24.709Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 11,
               "Title": "Form3.cs",
               "DocumentMoniker": "C:\\Users\\240925PM\\Desktop\\murota atari\\C#\\IME\\IME\\Form3.cs",
               "RelativeDocumentMoniker": "IME\\Form3.cs",

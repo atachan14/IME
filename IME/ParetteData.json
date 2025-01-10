@@ -82,10 +82,10 @@
   {
     "Id": "B25",
     "Value0": [ "→" ],
-    "Value1": [ "" ],
-    "Value2": [ "" ],
+    "Value1": [ "←" ],
+    "Value2": [ "↑" ],
     "Value3": [ "" ],
-    "Value4": [ "" ],
+    "Value4": [ "↓" ],
     "ExeTags": {
       "Short": {
         "0": "move3",
@@ -93,6 +93,30 @@
         "2": "move2",
         "3": "none",
         "4": "move4"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B35",
+    "Value0": [ "　", "—", "⸺", "￣", "⸻", "＿" ],
+    "Value1": [ "cry mode" ],
+    "Value2": [ "insert line" ],
+    "Value3": [ "" ],
+    "Value4": [ "indention" ],
+    "ExeTags": {
+      "Short": {
+        "0": "current0",
+        "1": "cry mode",
+        "2": "indention",
+        "3": "none",
+        "4": "insertLine"
       },
       "Long": {
         "0": "none",

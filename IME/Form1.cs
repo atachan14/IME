@@ -174,6 +174,14 @@ namespace IME
                     ExeDelete(ftag[1]);
                     return;
 
+                case "indention":
+                    ExeIndention(false);
+                    return;
+
+                case "insertLine":
+                    ExeIndention(true);
+                    return;
+
                 case "return":
                     ExeEnter();
                     this.Dispose();
@@ -187,6 +195,19 @@ namespace IME
                     MessageBox.Show("不明なボタン処理");
                     return;
             }
+        }
+
+        void ExeIndention(bool move)
+        {
+            if (currentPT.values != null)
+            {
+                frontPT.Add(currentPT);
+                
+            }
+            currentPT = new(["\n"], 0);
+
+            SendPendingAndCurrent();
+
         }
 
         void ExeDelete(string ftag1)
@@ -211,13 +232,17 @@ namespace IME
                     return;
             }
         }
-
         void PendingShortDelete(string direction)
         {
             switch (direction)
             {
                 case "1":
-                    if (frontPT.Count == 0) return;
+                    if (frontPT.Count == 0)
+                    {
+                        currentPT = new();
+                        SendPendingAndCurrent();
+                        return;
+                    }
                     currentPT = frontPT.Last();
                     frontPT.RemoveAt(frontPT.Count - 1);
                     SendPendingAndCurrent();
@@ -283,7 +308,6 @@ namespace IME
             if (currentPT.values != null)
             {
                 frontPT.Add(currentPT);
-
             }
             switch (ftag1)
             {
