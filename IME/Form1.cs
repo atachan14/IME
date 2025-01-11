@@ -35,7 +35,6 @@ namespace IME
 
 
         private List<(string[] values, int index)> frontPT = new();
-        private (string[] values, int index) currentPT = new();
         private List<(string[] values, int index)> backPT = new();
 
 
@@ -197,17 +196,48 @@ namespace IME
             }
         }
 
-        void ExeIndention(bool move)
+        private void ExeCurrent(string ftag1, ButtonData selectBd)
         {
-            if (currentPT.values != null)
+
+            switch (ftag1)
             {
-                frontPT.Add(currentPT);
-
+                case "0":
+                    frontPT.Add((selectBd.Value0, 0));
+                    break;
+                case "1":
+                    frontPT.Add((selectBd.Value1, 0));
+                    break;
+                case "2":
+                    frontPT.Add((selectBd.Value2, 0));
+                    break;
+                case "3":
+                    frontPT.Add((selectBd.Value3, 0));
+                    break;
+                case "4":
+                    frontPT.Add((selectBd.Value4, 0));
+                    break;
+                default:
+                    MessageBox.Show("ftag1 error");
+                    return;
             }
-            currentPT = new(["\n"], 0);
-
             SendPendingAndCurrent();
+        }
 
+        private void ExeTrans(string ftag1)
+        {
+
+            int index = int.Parse(ftag1);
+            int current = frontPT.Count - 1;
+            if (frontPT.Last().index == index)
+            {
+                frontPT[current] = (frontPT[current].values, 0);
+                SendPendingAndCurrent();
+                return;
+            }
+
+            frontPT[current] = (frontPT[current].values, index);
+            SendPendingAndCurrent();
+            return;
         }
 
         void ExeDelete(string ftag1)
@@ -216,7 +246,7 @@ namespace IME
             string type = match.Value;
             string direction = ftag1.Substring(match.Length);
 
-            switch ((type, currentPT.values != null))
+            switch ((type, frontPT.Count != 0 || backPT.Count != 0))
             {
                 case ("Short", true):
                     PendingShortDelete(direction);
@@ -237,13 +267,7 @@ namespace IME
             switch (direction)
             {
                 case "1":
-                    if (frontPT.Count == 0)
-                    {
-                        currentPT = new();
-                        SendPendingAndCurrent();
-                        return;
-                    }
-                    currentPT = frontPT.Last();
+                    if (frontPT.Count == 0) return;
                     frontPT.RemoveAt(frontPT.Count - 1);
                     SendPendingAndCurrent();
                     return;
@@ -267,7 +291,7 @@ namespace IME
 
         void ExeMove(string ftag1)
         {
-            if (currentPT.values != null)
+            if (frontPT.Count > 0 || backPT.Count > 0)
             {
                 PendingMove(ftag1);
             }
@@ -282,16 +306,52 @@ namespace IME
             {
                 case "1":
                     if (frontPT.Count == 0) return;
-                    backPT.Insert(0, currentPT);
-                    currentPT = frontPT.Last();
+                    backPT.Insert(0, frontPT.Last());
                     frontPT.RemoveAt(frontPT.Count - 1);
                     SendPendingAndCurrent();
                     return;
 
+                case "2":
+                    if (frontPT.Count == 0) return;
+
+                    if (frontPT.Count == 1)
+                    {
+                        backPT.Insert(0, frontPT[0]);
+                        frontPT.Clear();
+                        SendPendingAndCurrent();
+                        return;
+                    }
+
+                    List<List<(string[]value,int index)>> frontLines = new();
+                    foreach((string[] value,int index) ft in frontPT) {
+                        if (ft.value[0] == "\n")
+                        {
+                            frontLines.Add(new List<(string[] value, int index)>());
+                        }
+                        frontLines[frontLines.Count - 1].Add(ft);
+                    }
+
+                    int c = 0;
+                    foreach ((string[] value,int index) flt in frontLines[frontLines.Count - 1])
+                    {
+                        backPT.Insert(c,flt);
+                        c++;
+                    }
+                    
+                    frontLines.RemoveAt(frontLines.Count - 1);//kokomade sumi
+                    
+                    if (maxX < frontLines[frontLines.Length - 2].Length)
+                    {
+                        conf[1] = frontLines[frontLines.Length - 2].Substring(maxX) + conf[1];
+                        frontLines[frontLines.Length - 2] = frontLines[frontLines.Length - 2].Substring(0, maxX);
+                    }
+
+                    conf[0] = string.Join("", frontLines);
+                    updateDisplay();
+                    return;
                 case "3":
                     if (backPT.Count == 0) return;
-                    frontPT.Add(currentPT);
-                    currentPT = backPT[0];
+                    frontPT.Add(backPT[0]);
                     backPT.RemoveAt(0);
                     SendPendingAndCurrent();
                     return;
@@ -303,73 +363,38 @@ namespace IME
         }
 
 
-        private void ExeCurrent(string ftag1, ButtonData selectBd)
+        void ExeIndention(bool move)
         {
-            if (currentPT.values != null)
-            {
-                frontPT.Add(currentPT);
-            }
-            switch (ftag1)
-            {
-                case "0":
-                    currentPT.values = selectBd.Value0;
-                    break;
-                case "1":
-                    currentPT.values = selectBd.Value1;
-                    break;
-                case "2":
-                    currentPT.values = selectBd.Value2;
-                    break;
-                case "3":
-                    currentPT.values = selectBd.Value3;
-                    break;
-                case "4":
-                    currentPT.values = selectBd.Value4;
-                    break;
-                default:
-                    MessageBox.Show("ftag1 error");
-                    return;
-            }
-
-            currentPT.index = 0;
+            if (!move) frontPT.Add((["\n"], 0));
+            if (move) backPT.Insert(0, (["\n"], 0));
             SendPendingAndCurrent();
-        }
-
-        private void ExeTrans(string ftag1)
-        {
-            int index = int.Parse(ftag1);
-            if (currentPT.index == index)
-            {
-                currentPT.index = 0;
-                SendPendingAndCurrent();
-                return;
-            }
-
-            currentPT.index = index;
-            SendPendingAndCurrent();
-            return;
         }
 
         private void SendPendingAndCurrent()
         {
+            string current = frontPT.Last().values[frontPT.Last().index];
+
             string fpen = "";
             string bpen = "";
-            for (int i = 0; i < frontPT.Count; i++)
+            if (frontPT.Count > 0)
             {
-                fpen += frontPT[i].values[frontPT[i].index];
+                for (int i = 0; i < frontPT.Count - 1; i++)
+                {
+                    fpen += frontPT[i].values[frontPT[i].index];
+                }
             }
             for (int i = 0; i < backPT.Count; i++)
             {
                 bpen += backPT[i].values[backPT[i].index];
             }
-            outPad.UpdatePendingAndCurrent(fpen, currentPT.values[currentPT.index], bpen);
+
+            outPad.UpdatePendingAndCurrent(fpen, current, bpen);
         }
 
         void ExeEnter()
         {
             outPad.Confirmed();
             frontPT.Clear();
-            currentPT = new();
             backPT.Clear();
         }
 

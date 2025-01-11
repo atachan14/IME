@@ -73,7 +73,6 @@ namespace IME
             this.current = current;
             pending[1] = bpen;
 
-            if (this.current == "\n") this.current = "\n ";
             updateDisplay();
         }
         public void Confirmed()
@@ -104,7 +103,7 @@ namespace IME
 
                 case "2":
                     if (conf[0] == "") return;
-                    
+
                     if (frontLines.Length == 1)
                     {
                         conf[1] = conf[0] + conf[1];
@@ -142,13 +141,13 @@ namespace IME
                         updateDisplay();
                         return;
                     }
-                   
+
                     conf[0] += backLines[0];
                     backLines[0] = "";
 
                     if (maxX < backLines[1].Length)
                     {
-                        conf[0] += backLines[1].Substring(0,maxX);
+                        conf[0] += backLines[1].Substring(0, maxX);
                         backLines[1] = backLines[1].Substring(maxX);
                     }
 
@@ -157,11 +156,6 @@ namespace IME
                     return;
 
             }
-        }
-
-        public void BackSpace()
-        {
-
         }
 
 
@@ -175,35 +169,37 @@ namespace IME
             richTextBox1.Clear();
             richTextBox1.AppendText(conf[0]);
 
+            string fPen = pending[0].Replace("\n", " \n");
             int start = richTextBox1.Text.Length;
-            richTextBox1.AppendText(pending[0]);
-            richTextBox1.Select(start, pending[0].Length);
+            richTextBox1.AppendText(fPen);
+            richTextBox1.Select(start, fPen.Length);
             richTextBox1.SelectionColor = Color.Blue;
             richTextBox1.SelectionBackColor = Color.LightCyan;
 
-            if (current != null)
-            {
-                start = richTextBox1.Text.Length;
-                richTextBox1.AppendText(current);
-                richTextBox1.Select(start, current.Length);
-                richTextBox1.SelectionColor = Color.Blue;
-                richTextBox1.SelectionBackColor = Color.LightBlue;
-            }
+            string cur = current.Replace("\n", "\n ");
+            start = richTextBox1.Text.Length;
+            richTextBox1.AppendText(cur);
+            richTextBox1.Select(start, cur.Length);
+            richTextBox1.SelectionColor = Color.Blue;
+            richTextBox1.SelectionBackColor = Color.LightBlue;
+
             //start = richTextBox1.Text.Length;
             //richTextBox1.AppendText("|");
             //richTextBox1.Select(start, "|".Length);
             //richTextBox1.SelectionColor = Color.Purple;
             //richTextBox1.SelectionBackColor = Color.White;
 
+            string bPen = pending[1].Replace("\n", " \n");
             start = richTextBox1.Text.Length;
-            richTextBox1.AppendText(pending[1]);
-            richTextBox1.Select(start, pending[1].Length);
+            richTextBox1.AppendText(bPen);
+            richTextBox1.Select(start, bPen.Length);
             richTextBox1.SelectionColor = Color.Blue;
             richTextBox1.SelectionBackColor = Color.Yellow;
 
+            string bConf = conf[1].Replace("\n", " \n");
             start = richTextBox1.Text.Length;
-            richTextBox1.AppendText(conf[1]);
-            richTextBox1.Select(start, conf[1].Length);
+            richTextBox1.AppendText(bConf);
+            richTextBox1.Select(start, bConf.Length);
             richTextBox1.SelectionColor = richTextBox1.ForeColor;
             richTextBox1.SelectionBackColor = Color.LightGray;
         }
