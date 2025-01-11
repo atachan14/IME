@@ -44,3 +44,4 @@ C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.O
 C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.csproj.Up2Date
 C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.DebugForm.resources
 D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.DebugForm.resources
+C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.CryForm.resources

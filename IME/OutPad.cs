@@ -20,8 +20,10 @@ namespace IME
         string[] pending = ["", ""];
         string current = "";
 
+        bool crySet = false;
         bool showSourceMode = false;
 
+        public bool CrySet { get => crySet; set => crySet = value; }
 
         public OutPad()
         {
@@ -75,6 +77,7 @@ namespace IME
 
             updateDisplay();
         }
+
         public void Confirmed()
         {
             pending[0] += current;
@@ -166,6 +169,21 @@ namespace IME
                 updateShowSourceDisplay();
                 return;
             }
+
+            List<(Color font, Color bg)> colors = [
+                (Color.Blue,Color.LightCyan),
+                (Color.Blue,Color.LightBlue),
+                (Color.Blue,Color.Yellow),
+                (richTextBox1.ForeColor,Color.LightGray)
+                ];
+
+            if (CrySet)
+            {
+                colors[0] = (Color.Purple,Color.Orange);
+                colors[1] = (Color.Purple, Color.Red);
+                colors[2] = (Color.Purple, Color.Yellow);
+            }
+
             richTextBox1.Clear();
             richTextBox1.AppendText(conf[0]);
 
@@ -173,15 +191,15 @@ namespace IME
             int start = richTextBox1.Text.Length;
             richTextBox1.AppendText(fPen);
             richTextBox1.Select(start, fPen.Length);
-            richTextBox1.SelectionColor = Color.Blue;
-            richTextBox1.SelectionBackColor = Color.LightCyan;
+            richTextBox1.SelectionColor = colors[0].font;
+            richTextBox1.SelectionBackColor = colors[0].bg;
 
             string cur = current.Replace("\n", "\n ");
             start = richTextBox1.Text.Length;
             richTextBox1.AppendText(cur);
             richTextBox1.Select(start, cur.Length);
-            richTextBox1.SelectionColor = Color.Blue;
-            richTextBox1.SelectionBackColor = Color.LightBlue;
+            richTextBox1.SelectionColor = colors[1].font;
+            richTextBox1.SelectionBackColor = colors[1].bg;
 
             //start = richTextBox1.Text.Length;
             //richTextBox1.AppendText("|");
@@ -193,8 +211,8 @@ namespace IME
             start = richTextBox1.Text.Length;
             richTextBox1.AppendText(bPen);
             richTextBox1.Select(start, bPen.Length);
-            richTextBox1.SelectionColor = Color.Blue;
-            richTextBox1.SelectionBackColor = Color.Yellow;
+            richTextBox1.SelectionColor = colors[2].font;
+            richTextBox1.SelectionBackColor = colors[2].bg;
 
             string bConf = conf[1].Replace("\n", " \n");
             start = richTextBox1.Text.Length;

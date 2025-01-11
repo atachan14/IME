@@ -113,7 +113,23 @@
     "ExeTags": {
       "Short": {
         "0": "current0",
-        "1": "cry mode",
+        "1": "cry",
+        "2": "indention",
+        "3": "none",
+        "4": "insertLine"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    },
+    "CryExeTags": {
+      "Short": {
+        "0": "current0",
+        "1": "cryConf",
         "2": "indention",
         "3": "none",
         "4": "insertLine"
@@ -183,4 +199,3 @@
     }
   }
 ]
-

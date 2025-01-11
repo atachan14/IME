@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
 using static System.Windows.Forms.AxHost;
+using static System.Windows.Forms.DataFormats;
 
 namespace IME
 {
@@ -30,12 +31,11 @@ namespace IME
         private int threshold = 10;
         private int longPressThreshold = 10000;
 
-
-
-
-
         private List<(string[] values, int index)> frontPT = new();
         private List<(string[] values, int index)> backPT = new();
+
+        bool crySetMode = false;
+        private List<(string[] values, int index)> cryPT = new();
 
 
         private int debugCount = 0;
@@ -181,6 +181,10 @@ namespace IME
                     ExeIndention(true);
                     return;
 
+                case "cry":
+                    ChangeCryMode();
+                    return;
+
                 case "return":
                     ExeEnter();
                     this.Dispose();
@@ -196,9 +200,21 @@ namespace IME
             }
         }
 
+        void ChangeCryMode()
+        {
+            if (!crySetMode)
+            {
+                crySetMode = true;
+                SendPendingAndCurrent();
+            }
+            else
+            {
+
+            }
+        }
         private void ExeCurrent(string ftag1, ButtonData selectBd)
         {
-
+          
             switch (ftag1)
             {
                 case "0":
@@ -222,6 +238,8 @@ namespace IME
             }
             SendPendingAndCurrent();
         }
+
+       
 
         private void ExeTrans(string ftag1)
         {
@@ -300,6 +318,22 @@ namespace IME
                 outPad.ConfMove(ftag1);
             }
         }
+
+        List<List<(string[] value, int index)>> GetFrontLines()
+        {
+            MessageBox.Show("getFrontLines start");
+            List<List<(string[] value, int index)>> frontLines = new();
+            foreach ((string[] value, int index) ft in frontPT)
+            {
+                if (ft.value[0] == "\n")
+                {
+                    frontLines.Add(new List<(string[] value, int index)>());
+                }
+                frontLines[frontLines.Count - 1].Add(ft);
+            }
+            MessageBox.Show("getFrontLines end");
+            return frontLines;
+        }
         void PendingMove(string ftag1)
         {
             switch (ftag1)
@@ -314,41 +348,52 @@ namespace IME
                 case "2":
                     if (frontPT.Count == 0) return;
 
-                    if (frontPT.Count == 1)
+                    List<List<(string[] value, int index)>> frontLines = GetFrontLines();
+                    int maxX = frontLines[frontLines.Count - 1].Count;
+
+                    MessageBox.Show($"frontLines.Count:{frontLines.Count}");
+                    if (frontLines.Count == 1)
                     {
+                        MessageBox.Show("frontLines.count:1 ");
                         backPT.Insert(0, frontPT[0]);
+                        MessageBox.Show("frontPT.count:1 ");
                         frontPT.Clear();
                         SendPendingAndCurrent();
                         return;
                     }
 
-                    List<List<(string[]value,int index)>> frontLines = new();
-                    foreach((string[] value,int index) ft in frontPT) {
-                        if (ft.value[0] == "\n")
+                    MessageBox.Show("frontPT.count > 1 ");
+
+
+                    for (int i = 0; i < frontLines[frontLines.Count].Count; i++)
+                    {
+                        backPT.Insert(i, frontLines[frontLines.Count - 1][i]);
+                    }
+                    frontLines.RemoveAt(frontLines.Count - 1);
+
+                    MessageBox.Show("");
+
+
+                    if (maxX < frontLines[frontLines.Count - 1].Count)
+                    {
+                        for (int i = 0; i < maxX; i++)
                         {
-                            frontLines.Add(new List<(string[] value, int index)>());
+                            backPT.Insert(i, frontLines[frontLines.Count - 1][i]);
+                            frontLines[frontLines.Count - 1].RemoveAt(i);
                         }
-                        frontLines[frontLines.Count - 1].Add(ft);
                     }
 
-                    int c = 0;
-                    foreach ((string[] value,int index) flt in frontLines[frontLines.Count - 1])
+                    frontPT.Clear();
+                    for (int i = 0; i < frontLines.Count; i++)
                     {
-                        backPT.Insert(c,flt);
-                        c++;
+                        for (int j = 0; j < frontLines[i].Count; j++)
+                        {
+                            frontPT.Add(frontLines[i][j]);
+                        }
                     }
-                    
-                    frontLines.RemoveAt(frontLines.Count - 1);//kokomade sumi
-                    
-                    if (maxX < frontLines[frontLines.Length - 2].Length)
-                    {
-                        conf[1] = frontLines[frontLines.Length - 2].Substring(maxX) + conf[1];
-                        frontLines[frontLines.Length - 2] = frontLines[frontLines.Length - 2].Substring(0, maxX);
-                    }
-
-                    conf[0] = string.Join("", frontLines);
-                    updateDisplay();
+                    SendPendingAndCurrent();
                     return;
+
                 case "3":
                     if (backPT.Count == 0) return;
                     frontPT.Add(backPT[0]);
@@ -373,31 +418,78 @@ namespace IME
         private void SendPendingAndCurrent()
         {
             string current = frontPT.Last().values[frontPT.Last().index];
+            string fpen = PendingTapleToString(frontPT,1);
+            string bpen = PendingTapleToString(backPT,0);
 
-            string fpen = "";
-            string bpen = "";
-            if (frontPT.Count > 0)
-            {
-                for (int i = 0; i < frontPT.Count - 1; i++)
-                {
-                    fpen += frontPT[i].values[frontPT[i].index];
-                }
-            }
-            for (int i = 0; i < backPT.Count; i++)
-            {
-                bpen += backPT[i].values[backPT[i].index];
-            }
+            if (crySetMode) outPad.CrySet = true;
 
             outPad.UpdatePendingAndCurrent(fpen, current, bpen);
         }
 
+        string PendingTapleToString(List<(string[] values, int index)> PT,int range)
+        {
+            string value = "";
+            for (int i = 0; i < PT.Count-range; i++)
+            {
+                value += PT[i].values[PT[i].index];
+            }
+            return value;
+        }
+
+        // void SendCryPT()
+        // {
+        //     string cryValues = "";
+        //   for (int i = 0; i < cryPT.Count; i++)
+        // {
+        //   cryValues += cryPT[i].values[cryPT[i].index];
+        //          }
+        //        outPad.UpdateCryValues(cryValues);
+        //  }
+
         void ExeEnter()
         {
+            if (crySetMode)
+            {
+                OpenCryForm();
+                frontPT.Clear();
+                backPT.Clear();
+                outPad.Confirmed();
+                return;
+            }
+
             outPad.Confirmed();
             frontPT.Clear();
             backPT.Clear();
         }
 
+        List<string> CatchCryValue()
+        {
+            List<string> cryValue = new List<string>();
+            foreach ((string[] value,int index) taple in frontPT)
+            {
+                cryValue.Add(taple.value[taple.index]);
+            }
+
+            foreach ((string[] value, int index) taple in backPT)
+            {
+                cryValue.Add(taple.value[taple.index]);
+            }
+
+            return cryValue;
+        }
+        void OpenCryForm()
+        {
+            List<string> cryValue =CatchCryValue();
+
+            CryForm cryForm = new CryForm(this, cryValue);
+            cryForm.TopLevel = false;  // 子ウィンドウとして扱う
+            cryForm.FormBorderStyle = FormBorderStyle.None;  // 枠を消す
+
+            this.Controls.Add(cryForm);
+            cryForm.Show();
+            cryForm.BringToFront();
+            cryForm.Show();
+        }
         private string CalcSwipePos(Point dragEndPoint)
         {
             int deltaX = dragEndPoint.X - dragStartPoint.X;
