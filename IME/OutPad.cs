@@ -78,6 +78,12 @@ namespace IME
             updateDisplay();
         }
 
+        public void WriteCryValue(string value)
+        {
+            pending[0] += value;
+            updateDisplay();
+        }
+
         public void Confirmed()
         {
             pending[0] += current;

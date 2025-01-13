@@ -1,40 +1,34 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System.Data;
+using System.Diagnostics;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
-using static System.Windows.Forms.AxHost;
-using static System.Windows.Forms.DataFormats;
 
 namespace IME
 {
     public partial class Form1 : Form
     {
         private OutPad outPad;
+        private CryForm? cryForm;
         //private DebugForm df;
 
         private List<ButtonData>? BDL;
         private readonly List<Button> BL = [];
 
         private bool isPressing = false;
+        private System.Windows.Forms.Timer pressTimer;
+
         private Point dragStartPoint;
-        private DateTime pressStartTime;
+        private Point lastMouseLocation;
+        private object lastSender;
+        private Stopwatch stopwatch = new Stopwatch();
 
         private int threshold = 10;
-        private int longPressThreshold = 10000;
+        private int longPressThreshold = 1400;
 
         private List<(string[] values, int index)> frontPT = new();
         private List<(string[] values, int index)> backPT = new();
 
-        bool crySetMode = false;
+        string cryMode = "none";
         private List<(string[] values, int index)> cryPT = new();
 
 
@@ -51,12 +45,20 @@ namespace IME
             JsonToBDL();
             SetupButtonText();
 
+            this.MouseMove += Form_MouseMove;
+
+            pressTimer = new();
+            pressTimer.Interval = 100;  // 100msごとにTickイベント発生
+            pressTimer.Tick += PressTimer_Tick;
+
 
 
             //df = new DebugForm(this);
             //df.Show();
 
         }
+
+
 
         private void GenerateBL()
         {
@@ -82,7 +84,7 @@ namespace IME
                     btn.Text = btn.Name;
                     btn.MouseDown += Button_MouseDown;
                     btn.MouseUp += Button_MouseUp;
-                    //btn.MouseMove += Button_MouseMove;
+                    btn.MouseMove += Form_MouseMove;
 
                     // フォームに追加
                     this.Controls.Add(btn);
@@ -174,11 +176,11 @@ namespace IME
                     return;
 
                 case "indention":
-                    ExeIndention(false);
+                    ExeIndention(true);
                     return;
 
                 case "insertLine":
-                    ExeIndention(true);
+                    ExeIndention(false);
                     return;
 
                 case "cry":
@@ -200,21 +202,11 @@ namespace IME
             }
         }
 
-        void ChangeCryMode()
-        {
-            if (!crySetMode)
-            {
-                crySetMode = true;
-                SendPendingAndCurrent();
-            }
-            else
-            {
 
-            }
-        }
+
         private void ExeCurrent(string ftag1, ButtonData selectBd)
         {
-          
+
             switch (ftag1)
             {
                 case "0":
@@ -239,7 +231,7 @@ namespace IME
             SendPendingAndCurrent();
         }
 
-       
+
 
         private void ExeTrans(string ftag1)
         {
@@ -303,7 +295,7 @@ namespace IME
 
         void PendingLongDelete(string direction)
         {
-            MessageBox.Show("未実装PendingLongDelete");
+            MessageBox.Show("未実装PendingLongDelete:" + direction);
             return;
         }
 
@@ -417,55 +409,71 @@ namespace IME
 
         private void SendPendingAndCurrent()
         {
-            string current = frontPT.Last().values[frontPT.Last().index];
-            string fpen = PendingTapleToString(frontPT,1);
-            string bpen = PendingTapleToString(backPT,0);
+            string current = "";
+            string fpen = "";
+            string bpen = "";
 
-            if (crySetMode) outPad.CrySet = true;
+            if (frontPT.Count > 0) current = frontPT.Last().values[frontPT.Last().index];
+            if (frontPT.Count > 0) fpen = PendingTapleToString(frontPT, 1);
+            if (backPT.Count > 0) bpen = PendingTapleToString(backPT, 0);
 
             outPad.UpdatePendingAndCurrent(fpen, current, bpen);
         }
 
-        string PendingTapleToString(List<(string[] values, int index)> PT,int range)
+        string PendingTapleToString(List<(string[] values, int index)> PT, int range)
         {
             string value = "";
-            for (int i = 0; i < PT.Count-range; i++)
+            for (int i = 0; i < PT.Count - range; i++)
             {
                 value += PT[i].values[PT[i].index];
             }
             return value;
         }
 
-        // void SendCryPT()
-        // {
-        //     string cryValues = "";
-        //   for (int i = 0; i < cryPT.Count; i++)
-        // {
-        //   cryValues += cryPT[i].values[cryPT[i].index];
-        //          }
-        //        outPad.UpdateCryValues(cryValues);
-        //  }
 
+        void ChangeCryMode()
+        {
+            (cryMode, outPad.CrySet) = cryMode switch
+            {
+                "none" => ("set", true),
+                "set" or "write" => ("none", false),
+                _ => (cryMode, outPad.CrySet)
+            };
+
+            if (cryMode == "none") CloseCryForm();
+
+            SendPendingAndCurrent();
+        }
         void ExeEnter()
         {
-            if (crySetMode)
+            switch (cryMode)
             {
-                OpenCryForm();
-                frontPT.Clear();
-                backPT.Clear();
-                outPad.Confirmed();
-                return;
+                case "none":
+                    outPad.Confirmed();
+                    frontPT.Clear();
+                    backPT.Clear();
+                    return;
+                case "set":
+                    cryMode = "write";
+                    OpenCryForm();
+
+                    frontPT.Clear();
+                    backPT.Clear();
+                    SendPendingAndCurrent();
+                    return;
+                case "write":
+                    cryMode = "none";
+                    CloseCryForm();
+                    return;
             }
 
-            outPad.Confirmed();
-            frontPT.Clear();
-            backPT.Clear();
+
         }
 
         List<string> CatchCryValue()
         {
             List<string> cryValue = new List<string>();
-            foreach ((string[] value,int index) taple in frontPT)
+            foreach ((string[] value, int index) taple in frontPT)
             {
                 cryValue.Add(taple.value[taple.index]);
             }
@@ -479,9 +487,9 @@ namespace IME
         }
         void OpenCryForm()
         {
-            List<string> cryValue =CatchCryValue();
+            List<string> cryValue = CatchCryValue();
 
-            CryForm cryForm = new CryForm(this, cryValue);
+            cryForm = new CryForm(this, outPad, cryValue);
             cryForm.TopLevel = false;  // 子ウィンドウとして扱う
             cryForm.FormBorderStyle = FormBorderStyle.None;  // 枠を消す
 
@@ -490,6 +498,12 @@ namespace IME
             cryForm.BringToFront();
             cryForm.Show();
         }
+
+        void CloseCryForm()
+        {
+            if (cryForm != null) { cryForm.Close(); }
+        }
+
         private string CalcSwipePos(Point dragEndPoint)
         {
             int deltaX = dragEndPoint.X - dragStartPoint.X;
@@ -523,46 +537,53 @@ namespace IME
 
         private void Button_MouseDown(object sender, MouseEventArgs e)
         {
+            pressTimer.Start();
+            isPressing = true;
+            lastSender = sender;
 
-            IsPressing = true;
             dragStartPoint = e.Location;
+            Debug.WriteLine($"down IsPressing: {IsPressing}, Time: {stopwatch.ElapsedMilliseconds}");
         }
-
 
         private void Button_MouseUp(object sender, MouseEventArgs e)
         {
-            string pos = CalcSwipePos(e.Location);
-            ButtonData selectBd = CatchSelectBd(sender);
-            string exeTags = CatchExeTags(selectBd, "Short", pos);
-            ButtonExe(exeTags, selectBd);
-            IsPressing = false;
-        }
-
-        private void Button_MouseMove(object sender, MouseEventArgs e)
-        {
-
             if (IsPressing)
             {
-                debugCount++;
-                // マウスが動いていないか、一定の移動距離がないかをチェック
-                int deltaX = e.X - dragStartPoint.X;
-                int deltaY = e.Y - dragStartPoint.Y;
+                pressTimer.Stop();
+                isPressing = false;
+                string pos = CalcSwipePos(e.Location);
+                ButtonData selectBd = CatchSelectBd(sender);
+                string exeTags = CatchExeTags(selectBd, "Short", pos);
+                ButtonExe(exeTags, selectBd);
+            }
+            Debug.WriteLine($"up IsPressing: {IsPressing}, Time: {stopwatch.ElapsedMilliseconds}");
+        }
 
-                // 移動が少なければ長押し判定開始
-                if (Math.Abs(deltaX) < 10 && Math.Abs(deltaY) < 10)
+
+        public void PressTimer_Tick(object? sender, EventArgs e)
+        {
+            if (isPressing)
+            {
+                if (stopwatch.ElapsedMilliseconds >= longPressThreshold)
                 {
-                    if ((DateTime.Now - pressStartTime).TotalMilliseconds >= longPressThreshold)
-                    {
-                        string pos = CalcSwipePos(e.Location);
-                        ButtonData selectBd = CatchSelectBd(sender);
-                        string exeTags = CatchExeTags(selectBd, "Long", pos);
+                    Debug.WriteLine($"Tick IsPressing: {IsPressing}, Time: {stopwatch.ElapsedMilliseconds}");
 
-                        ButtonExe(exeTags, selectBd);
+                    pressTimer.Stop();
+                    IsPressing = false;
 
-                        IsPressing = false; // 長押し処理が完了したらフラグをリセット
-                    }
+                    string pos = CalcSwipePos(lastMouseLocation);
+                    ButtonData selectBd = CatchSelectBd(lastSender);
+                    string exeTags = CatchExeTags(selectBd, "Long", pos);
+                    ButtonExe(exeTags, selectBd);
                 }
             }
+        }
+
+        void Form_MouseMove(object sender, MouseEventArgs e)
+        {
+            Debug.WriteLine($"move IsPressing: {IsPressing}, Time: {stopwatch.ElapsedMilliseconds}");
+            stopwatch.Restart();
+            lastMouseLocation = e.Location;
         }
 
         private void IME_Load(object sender, EventArgs e)
