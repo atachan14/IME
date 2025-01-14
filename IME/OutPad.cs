@@ -105,6 +105,7 @@ namespace IME
 
             pending[0] = fpen;
             this.current = current;
+            if (this.current == "") this.current = " ";
             pending[1] = bpen;
 
             updateDisplay();

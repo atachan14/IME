@@ -1,0 +1,941 @@
+[
+  {
+    "Id": "B11",
+    "Value0": [
+      "return"
+    ],
+    "Value1": [
+      ""
+    ],
+    "Value2": [
+      ""
+    ],
+    "Value3": [
+      ""
+    ],
+    "Value4": [
+      ""
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "return",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      },
+      "Long": {
+        "0": "return",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B15",
+    "Value0": [
+      "BackSpace"
+    ],
+    "Value1": [
+      ""
+    ],
+    "Value2": [
+      ""
+    ],
+    "Value3": [
+      ""
+    ],
+    "Value4": [
+      ""
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "deleteShort1",
+        "1": "ctrlz",
+        "2": "deleteShort3",
+        "3": "none",
+        "4": "ctrly"
+      },
+      "Long": {
+        "0": "deleteLong3",
+        "1": "deleteLong1",
+        "2": "deleteLong2",
+        "3": "none",
+        "4": "deleteLong4"
+      }
+    }
+  },
+  {
+    "Id": "B25",
+    "Value0": [
+      "\u2192"
+    ],
+    "Value1": [
+      "\u2190"
+    ],
+    "Value2": [
+      "\u2191"
+    ],
+    "Value3": [
+      ""
+    ],
+    "Value4": [
+      "\u2193"
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "move3",
+        "1": "move1",
+        "2": "move2",
+        "3": "none",
+        "4": "move4"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B35",
+    "Value0": [
+      "\u3000",
+      "\u2014",
+      "\u2E3A",
+      "\uFFE3",
+      "\u2E3B",
+      "\uFF3F"
+    ],
+    "Value1": [
+      "cry mode"
+    ],
+    "Value2": [
+      "insert line"
+    ],
+    "Value3": [
+      ""
+    ],
+    "Value4": [
+      "indention"
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "current0",
+        "1": "cry",
+        "2": "indention",
+        "3": "none",
+        "4": "insertLine"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B42",
+    "Value0": [
+      "\u5C0F\u6587\u5B57/\u309B/\u309C"
+    ],
+    "Value1": [
+      "\u309B"
+    ],
+    "Value2": [
+      "\u309C"
+    ],
+    "Value3": [
+      ""
+    ],
+    "Value4": [
+      ""
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "trans1",
+        "1": "trans2",
+        "2": "trans3",
+        "3": "trans4",
+        "4": "trans5"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B45",
+    "Value0": [
+      "Enter"
+    ],
+    "Value1": [
+      ""
+    ],
+    "Value2": [
+      ""
+    ],
+    "Value3": null,
+    "Value4": [
+      ""
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "Enter",
+        "1": "edit",
+        "2": "Enter",
+        "3": "none",
+        "4": "none"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B11",
+    "Value0": [
+      "return"
+    ],
+    "Value1": [
+      ""
+    ],
+    "Value2": [
+      ""
+    ],
+    "Value3": [
+      ""
+    ],
+    "Value4": [
+      ""
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "return",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      },
+      "Long": {
+        "0": "return",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B15",
+    "Value0": [
+      "BackSpace"
+    ],
+    "Value1": [
+      ""
+    ],
+    "Value2": [
+      ""
+    ],
+    "Value3": [
+      ""
+    ],
+    "Value4": [
+      ""
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "deleteShort1",
+        "1": "ctrlz",
+        "2": "deleteShort3",
+        "3": "none",
+        "4": "ctrly"
+      },
+      "Long": {
+        "0": "deleteLong3",
+        "1": "deleteLong1",
+        "2": "deleteLong2",
+        "3": "none",
+        "4": "deleteLong4"
+      }
+    }
+  },
+  {
+    "Id": "B25",
+    "Value0": [
+      "\u2192"
+    ],
+    "Value1": [
+      "\u2190"
+    ],
+    "Value2": [
+      "\u2191"
+    ],
+    "Value3": [
+      ""
+    ],
+    "Value4": [
+      "\u2193"
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "move3",
+        "1": "move1",
+        "2": "move2",
+        "3": "none",
+        "4": "move4"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B35",
+    "Value0": [
+      "\u3000",
+      "\u2014",
+      "\u2E3A",
+      "\uFFE3",
+      "\u2E3B",
+      "\uFF3F"
+    ],
+    "Value1": [
+      "cry mode"
+    ],
+    "Value2": [
+      "insert line"
+    ],
+    "Value3": [
+      ""
+    ],
+    "Value4": [
+      "indention"
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "current0",
+        "1": "cry",
+        "2": "indention",
+        "3": "none",
+        "4": "insertLine"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B42",
+    "Value0": [
+      "\u5C0F\u6587\u5B57/\u309B/\u309C"
+    ],
+    "Value1": [
+      "\u309B"
+    ],
+    "Value2": [
+      "\u309C"
+    ],
+    "Value3": [
+      ""
+    ],
+    "Value4": [
+      ""
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "trans1",
+        "1": "trans2",
+        "2": "trans3",
+        "3": "trans4",
+        "4": "trans5"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B45",
+    "Value0": [
+      "Enter"
+    ],
+    "Value1": [
+      ""
+    ],
+    "Value2": [
+      ""
+    ],
+    "Value3": null,
+    "Value4": [
+      ""
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "Enter",
+        "1": "edit",
+        "2": "Enter",
+        "3": "none",
+        "4": "none"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B11",
+    "Value0": [
+      "return"
+    ],
+    "Value1": [
+      ""
+    ],
+    "Value2": [
+      ""
+    ],
+    "Value3": [
+      ""
+    ],
+    "Value4": [
+      ""
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "return",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      },
+      "Long": {
+        "0": "return",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B15",
+    "Value0": [
+      "BackSpace"
+    ],
+    "Value1": [
+      ""
+    ],
+    "Value2": [
+      ""
+    ],
+    "Value3": [
+      ""
+    ],
+    "Value4": [
+      ""
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "deleteShort1",
+        "1": "ctrlz",
+        "2": "deleteShort3",
+        "3": "none",
+        "4": "ctrly"
+      },
+      "Long": {
+        "0": "deleteLong3",
+        "1": "deleteLong1",
+        "2": "deleteLong2",
+        "3": "none",
+        "4": "deleteLong4"
+      }
+    }
+  },
+  {
+    "Id": "B25",
+    "Value0": [
+      "\u2192"
+    ],
+    "Value1": [
+      "\u2190"
+    ],
+    "Value2": [
+      "\u2191"
+    ],
+    "Value3": [
+      ""
+    ],
+    "Value4": [
+      "\u2193"
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "move3",
+        "1": "move1",
+        "2": "move2",
+        "3": "none",
+        "4": "move4"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B35",
+    "Value0": [
+      "\u3000",
+      "\u2014",
+      "\u2E3A",
+      "\uFFE3",
+      "\u2E3B",
+      "\uFF3F"
+    ],
+    "Value1": [
+      "cry mode"
+    ],
+    "Value2": [
+      "insert line"
+    ],
+    "Value3": [
+      ""
+    ],
+    "Value4": [
+      "indention"
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "current0",
+        "1": "cry",
+        "2": "indention",
+        "3": "none",
+        "4": "insertLine"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B42",
+    "Value0": [
+      "\u5C0F\u6587\u5B57/\u309B/\u309C"
+    ],
+    "Value1": [
+      "\u309B"
+    ],
+    "Value2": [
+      "\u309C"
+    ],
+    "Value3": [
+      ""
+    ],
+    "Value4": [
+      ""
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "trans1",
+        "1": "trans2",
+        "2": "trans3",
+        "3": "trans4",
+        "4": "trans5"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B45",
+    "Value0": [
+      "Enter"
+    ],
+    "Value1": [
+      ""
+    ],
+    "Value2": [
+      ""
+    ],
+    "Value3": null,
+    "Value4": [
+      ""
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "Enter",
+        "1": "edit",
+        "2": "Enter",
+        "3": "none",
+        "4": "none"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B12",
+    "Value0": [
+      "\u3042",
+      "\u3041",
+      "\u3042\u309B",
+      "\u3041\u309B",
+      "\u3042\u309C",
+      "\u3041\u309C"
+    ],
+    "Value1": [
+      "\u3044",
+      "\u3043",
+      "\u3044\u309B",
+      "\u3043\u309B",
+      "\u3044\u309C",
+      "\u3043\u309C"
+    ],
+    "Value2": [
+      "\u3046",
+      "\u3045",
+      "\u3046\u309B",
+      "\u3045\u309B",
+      "\u3046\u309C",
+      "\u3045\u309C"
+    ],
+    "Value3": [
+      "\u3048",
+      "\u3047",
+      "\u3048\u309B",
+      "\u3047\u309B",
+      "\u3048\u309C",
+      "\u3047\u309C"
+    ],
+    "Value4": [
+      "\u304A",
+      "\u3049",
+      "\u304A\u309B",
+      "\u3049\u309B",
+      "\u304A\u309C",
+      "\u3049\u309C"
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "current0",
+        "1": "current1",
+        "2": "current2",
+        "3": "current3",
+        "4": "current4"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B13",
+    "Value0": [
+      "\u304B",
+      "\u30F5",
+      "\u304C",
+      "\u304B",
+      "\u304B",
+      "\u304B"
+    ],
+    "Value1": [
+      "\u304D",
+      "\u304D",
+      "\u304E",
+      "\u304D",
+      "\u304D",
+      "\u304D"
+    ],
+    "Value2": [
+      "\u304F",
+      "\u304F",
+      "\u3050",
+      "\u304F",
+      "\u304F",
+      "\u304F"
+    ],
+    "Value3": [
+      "\u3051",
+      "\u30F6",
+      "\u3052",
+      "\u3051",
+      "\u3051",
+      "\u3051"
+    ],
+    "Value4": [
+      "\u3053",
+      "\u3053",
+      "\u3054",
+      "\u3053",
+      "\u3053",
+      "\u3053"
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "current0",
+        "1": "current1",
+        "2": "current2",
+        "3": "current3",
+        "4": "current4"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B23",
+    "Value0": [
+      "\u306A",
+      "\u306A",
+      "\u306A",
+      "\u306A",
+      "\u306A",
+      "\u306A"
+    ],
+    "Value1": [
+      "\u306B",
+      "\u306B",
+      "\u306B",
+      "\u306B",
+      "\u306B",
+      "\u306B"
+    ],
+    "Value2": [
+      "\u306C",
+      "\u306C",
+      "\u306C",
+      "\u306C",
+      "\u306C",
+      "\u306C"
+    ],
+    "Value3": [
+      "\u306A\u304B\u3042",
+      "\u306D",
+      "\u306D",
+      "\u306D",
+      "\u306D",
+      "\u306D"
+    ],
+    "Value4": [
+      "\u306E",
+      "\u306E",
+      "\u306E",
+      "\u306E",
+      "\u306E",
+      "\u306E"
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "current0",
+        "1": "current1",
+        "2": "current2",
+        "3": "current3",
+        "4": "current4"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B24",
+    "Value0": [
+      "\u306F",
+      "\u306F",
+      "\u3070",
+      "\u306F",
+      "\u3071",
+      "\u306F"
+    ],
+    "Value1": [
+      "\u3072",
+      "\u3072",
+      "\u3073",
+      "\u3072",
+      "\u3074",
+      "\u3072"
+    ],
+    "Value2": [
+      "\u3075",
+      "\u3075",
+      "\u3076",
+      "\u3077",
+      "\u3075",
+      "\u3075"
+    ],
+    "Value3": [
+      "\u3078",
+      "\u3078",
+      "\u3079",
+      "\u307A",
+      "\u3078",
+      "\u3078"
+    ],
+    "Value4": [
+      "\u307B",
+      "\u307B",
+      "\u307C",
+      "\u307D",
+      "\u307B",
+      "\u307B"
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "current0",
+        "1": "current1",
+        "2": "current2",
+        "3": "current3",
+        "4": "current4"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
+    "Id": "B43",
+    "Value0": [
+      "\u308F",
+      "\u308E",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "Value1": [
+      "\u3093",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "Value2": [
+      "\u30FC",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "Value3": [
+      "\uFF5E",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "Value4": [
+      "\u3092",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "TagType": {},
+    "ExeTags": {
+      "Short": {
+        "0": "current0",
+        "1": "current1",
+        "2": "current2",
+        "3": "current3",
+        "4": "current4"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  }
+]
