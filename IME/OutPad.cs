@@ -20,10 +20,10 @@ namespace IME
         string[] pending = ["", ""];
         string current = "";
 
-        bool crySet = false;
+        string outMode = "none";
         bool showSourceMode = false;
 
-        public bool CrySet { get => crySet; set => crySet = value; }
+        public string OutMode { get => outMode; set => outMode = value; }
 
         public OutPad()
         {
@@ -42,6 +42,24 @@ namespace IME
             this.Controls.Add(form1);
             form1.Show();
             form1.BringToFront();
+        }
+
+        public void ChangeOutMode(string mode)
+        {
+            outMode = mode;
+            switch (mode)
+            {
+                case "edit":
+                    editSetup();
+                    return;
+                default:
+                    return;
+            }
+        }
+
+        void editSetup()
+        {
+
         }
 
         public void ConfShortDelete(string direction)
@@ -64,6 +82,20 @@ namespace IME
 
         public void ConfLongDelete(string direction)
         {
+            switch (direction)
+            {
+                case "2":
+                    if (conf[0] == "") return;
+                    conf[0] = "";
+                    updateDisplay();
+                    return;
+
+                case "4":
+                    if (conf[1] == "") return;
+                    conf[1] = "";
+                    updateDisplay();
+                    return;
+            }
             MessageBox.Show("未実装ConfLongDelete");
             return;
         }
@@ -163,7 +195,6 @@ namespace IME
                     conf[1] = string.Join("", backLines);
                     updateDisplay();
                     return;
-
             }
         }
 
@@ -183,11 +214,17 @@ namespace IME
                 (richTextBox1.ForeColor,Color.LightGray)
                 ];
 
-            if (CrySet)
+            if (OutMode=="cry")
             {
-                colors[0] = (Color.Purple,Color.Orange);
+                colors[0] = (Color.Purple, Color.Orange);
                 colors[1] = (Color.Purple, Color.Red);
                 colors[2] = (Color.Purple, Color.Yellow);
+            }
+            if (OutMode == "edit")
+            {
+                colors[0] = (Color.Blue, Color.LightGreen);
+                colors[1] = (Color.Blue, Color.Green);
+                colors[2] = (Color.Blue, Color.Yellow);
             }
 
             richTextBox1.Clear();

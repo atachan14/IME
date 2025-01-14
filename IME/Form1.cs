@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace IME
 {
@@ -28,8 +29,12 @@ namespace IME
         private List<(string[] values, int index)> frontPT = new();
         private List<(string[] values, int index)> backPT = new();
 
-        string cryMode = "none";
+        private string mode = "none";
         private List<(string[] values, int index)> cryPT = new();
+
+        private bool exeMode;
+        private string newValue = "";
+        private (ButtonData, int pos, int trans) editIT = new();
 
 
         private int debugCount = 0;
@@ -101,6 +106,7 @@ namespace IME
                 MessageBox.Show("JSONファイルが見つかりません: " + jsonFilePath);
                 return;
             }
+
             string json = File.ReadAllText(jsonFilePath);
             BDL = JsonSerializer.Deserialize<List<ButtonData>>(json);
 
@@ -109,9 +115,12 @@ namespace IME
                 MessageBox.Show("JSONデータが無効です" + json);
                 return;
             }
-            else
+
+            foreach (ButtonData bd in BDL)
             {
-                //MessageBox.Show("BDL生成完了 BDL.Count" + BDL.Count);
+                bd.TagType["none"] = bd.ExeTags;
+                bd.TagType["cry"] = bd.CrySetTags;
+                bd.TagType["edit"] = bd.EditTags;
             }
         }
 
@@ -196,6 +205,14 @@ namespace IME
                     ExeEnter();
                     return;
 
+                case "edit":
+                    ExeEdit();
+                    return;
+
+                case "EditEnter":
+                    ExeEditEnter();
+                    return;
+
                 default:
                     MessageBox.Show("不明なボタン処理");
                     return;
@@ -206,7 +223,11 @@ namespace IME
 
         private void ExeCurrent(string ftag1, ButtonData selectBd)
         {
-
+            if (mode == "edit")
+            {
+                EditCurrent(ftag1, selectBd);
+                return;
+            }
             switch (ftag1)
             {
                 case "0":
@@ -231,6 +252,33 @@ namespace IME
             SendPendingAndCurrent();
         }
 
+        void EditCurrent(string ftag1, ButtonData selectBd)
+        {
+            switch (ftag1)
+            {
+                case "0":
+                    newValue += selectBd.Value0[0];
+                    break;
+                case "1":
+                    newValue += selectBd.Value1[0];
+                    break;
+                case "2":
+                    newValue += selectBd.Value2[0];
+                    break;
+                case "3":
+                    newValue += selectBd.Value3[0];
+                    break;
+                case "4":
+                    newValue += selectBd.Value4[0];
+                    break;
+                default:
+                    MessageBox.Show("ftag1 error");
+                    return;
+            }
+            SendEditValue();
+        }
+
+        
 
 
         private void ExeTrans(string ftag1)
@@ -295,8 +343,23 @@ namespace IME
 
         void PendingLongDelete(string direction)
         {
-            MessageBox.Show("未実装PendingLongDelete:" + direction);
-            return;
+            switch (direction)
+            {
+                case "2":
+                    if (frontPT.Count == 0) return;
+                    frontPT.Clear();
+                    SendPendingAndCurrent();
+                    return;
+                case "4":
+                    if (backPT.Count == 0) return;
+                    backPT.Clear();
+                    SendPendingAndCurrent();
+                    return;
+
+                default:
+                    MessageBox.Show("未実装PendingShortDelete direction:" + direction);
+                    return;
+            }
         }
 
         void ExeMove(string ftag1)
@@ -420,6 +483,24 @@ namespace IME
             outPad.UpdatePendingAndCurrent(fpen, current, bpen);
         }
 
+        void SendEditValue()
+        {
+            if(mode!= "edit")
+            {
+                MessageBox.Show("SendEditValue Error -> mode:" + mode);
+                return;
+            }
+            string current = "";
+            string fpen = "";
+            string bpen = "";
+
+            if (frontPT.Count > 0) current = newValue;
+            if (frontPT.Count > 0) fpen = PendingTapleToString(frontPT, 1);
+            if (backPT.Count > 0) bpen = PendingTapleToString(backPT, 0);
+
+            outPad.UpdatePendingAndCurrent(fpen, current, bpen);
+        }
+
         string PendingTapleToString(List<(string[] values, int index)> PT, int range)
         {
             string value = "";
@@ -429,24 +510,22 @@ namespace IME
             }
             return value;
         }
-
-
         void ChangeCryMode()
         {
-            (cryMode, outPad.CrySet) = cryMode switch
+            (mode, outPad.OutMode) = mode switch
             {
-                "none" => ("set", true),
-                "set" or "write" => ("none", false),
-                _ => (cryMode, outPad.CrySet)
+                "none" => ("set", "cry"),
+                "set" or "write" => ("none", "none"),
+                _ => (mode, outPad.OutMode)
             };
 
-            if (cryMode == "none") CloseCryForm();
+            if (mode == "none") CloseCryForm();
 
             SendPendingAndCurrent();
         }
         void ExeEnter()
         {
-            switch (cryMode)
+            switch (mode)
             {
                 case "none":
                     outPad.Confirmed();
@@ -454,7 +533,7 @@ namespace IME
                     backPT.Clear();
                     return;
                 case "set":
-                    cryMode = "write";
+                    mode = "write";
                     OpenCryForm();
 
                     frontPT.Clear();
@@ -462,7 +541,7 @@ namespace IME
                     SendPendingAndCurrent();
                     return;
                 case "write":
-                    cryMode = "none";
+                    mode = "none";
                     CloseCryForm();
                     return;
             }
@@ -504,6 +583,24 @@ namespace IME
             if (cryForm != null) { cryForm.Close(); }
         }
 
+        void ExeEdit()
+        {
+            outPad.ChangeOutMode("edit");
+            mode = "edit";
+        }
+
+        void ExeEditEnter()
+        {
+
+        }
+
+        void SaveButtonData(string jsonFilePath)
+        {
+            string updatedJson = JsonSerializer.Serialize(BDL, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(jsonFilePath, updatedJson);
+
+            Debug.Write("JSONファイルを保存しました！");
+        }
         private string CalcSwipePos(Point dragEndPoint)
         {
             int deltaX = dragEndPoint.X - dragStartPoint.X;
@@ -520,6 +617,7 @@ namespace IME
         }
 
 
+
         private ButtonData CatchSelectBd(object sender)
         {
             Button b = sender as Button;
@@ -532,7 +630,7 @@ namespace IME
         }
         private string CatchExeTags(ButtonData selectBd, string type, string pos)
         {
-            return selectBd.ExeTags[type][pos];
+            return selectBd.TagType[mode][type][pos];
         }
 
         private void Button_MouseDown(object sender, MouseEventArgs e)

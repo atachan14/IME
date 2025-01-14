@@ -15,7 +15,7 @@
         "4": "none"
       },
       "Long": {
-        "0": "none",
+        "0": "return",
         "1": "none",
         "2": "none",
         "3": "none",
@@ -41,18 +41,18 @@
   },
   {
     "Id": "B15",
-    "Value0": [ "delete" ],
+    "Value0": [ "BackSpace" ],
     "Value1": [ "" ],
     "Value2": [ "" ],
     "Value3": [ "" ],
     "Value4": [ "" ],
     "ExeTags": {
       "Short": {
-        "0": "deleteShort3",
-        "1": "deleteShort1",
-        "2": "deleteShort2",
+        "0": "deleteShort1",
+        "1": "ctrlz",
+        "2": "deleteShort3",
         "3": "none",
-        "4": "deleteShort4"
+        "4": "ctrly"
       },
       "Long": {
         "0": "deleteLong3",
@@ -126,7 +126,7 @@
         "4": "none"
       }
     },
-    "CryExeTags": {
+    "CryTags": {
       "Short": {
         "0": "current0",
         "1": "cryConf",
@@ -184,10 +184,42 @@
     "ExeTags": {
       "Short": {
         "0": "Enter",
-        "1": "Enter",
+        "1": "edit",
         "2": "Enter",
-        "3": "Enter",
-        "4": "Enter"
+        "3": "none",
+        "4": "none"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    },
+    "CryTags": {
+      "Short": {
+        "0": "Enter",
+        "1": "edit",
+        "2": "Enter",
+        "3": "none",
+        "4": "none"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    },
+    "EditTags": {
+      "Short": {
+        "0": "EditEnter",
+        "1": "edit",
+        "2": "Enter",
+        "3": "none",
+        "4": "none"
       },
       "Long": {
         "0": "none",

@@ -1,5 +1,9 @@
-﻿#優先
+﻿#次
+-JSONとButtonDataちょっとだけ改善
+	-
+	-
 -
+
 
 #放置バグ
 -カーソル移動系
@@ -8,10 +12,8 @@
 -
 
 #要実装
--LongExeの判定
--Cry
--Parette系
 -custamize系
+-Parette系
 -UI表示
 -ボタン変化
 -

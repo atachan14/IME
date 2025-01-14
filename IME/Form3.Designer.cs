@@ -281,11 +281,11 @@
             b7_4.UseVisualStyleBackColor = true;
             b7_4.Visible = false;
             // 
-            // Form1
+            // Form3
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(304, 281);
+            ClientSize = new Size(283, 281);
             Controls.Add(b7_4);
             Controls.Add(b7_2);
             Controls.Add(b7_6);
@@ -310,7 +310,7 @@
             Controls.Add(B3);
             Controls.Add(B2);
             Controls.Add(B1);
-            Name = "Form1";
+            Name = "Form3";
             Text = "Form1";
             ResumeLayout(false);
         }
