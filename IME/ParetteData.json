@@ -1,28 +1,5 @@
 ﻿[
-  {
-    "Id": "B11",
-    "Value0": [ "return" ],
-    "Value1": [ "" ],
-    "Value2": [ "" ],
-    "Value3": [ "" ],
-    "Value4": [ "" ],
-    "ExeTags": {
-      "Short": {
-        "0": "return",
-        "1": "none",
-        "2": "none",
-        "3": "none",
-        "4": "none"
-      },
-      "Long": {
-        "0": "return",
-        "1": "none",
-        "2": "none",
-        "3": "none",
-        "4": "none"
-      }
-    }
-  },
+
   {
     "Id": "B12",
     "Value0": [ "あ", "ぁ", "あ゛", "ぁ゛", "あ゜", "ぁ゜" ],
@@ -39,30 +16,7 @@
     "Value3": [ "け", "ヶ", "げ", "け", "け", "け" ],
     "Value4": [ "こ", "こ", "ご", "こ", "こ", "こ" ]
   },
-  {
-    "Id": "B15",
-    "Value0": [ "BackSpace" ],
-    "Value1": [ "" ],
-    "Value2": [ "" ],
-    "Value3": [ "" ],
-    "Value4": [ "" ],
-    "ExeTags": {
-      "Short": {
-        "0": "deleteShort1",
-        "1": "ctrlz",
-        "2": "deleteShort3",
-        "3": "none",
-        "4": "ctrly"
-      },
-      "Long": {
-        "0": "deleteLong3",
-        "1": "deleteLong1",
-        "2": "deleteLong2",
-        "3": "none",
-        "4": "deleteLong4"
-      }
-    }
-  },
+
   {
     "Id": "B23",
     "Value0": [ "な", "な", "な", "な", "な", "な" ],
@@ -79,94 +33,9 @@
     "Value3": [ "へ", "へ", "べ", "ぺ", "へ", "へ" ],
     "Value4": [ "ほ", "ほ", "ぼ", "ぽ", "ほ", "ほ" ]
   },
-  {
-    "Id": "B25",
-    "Value0": [ "→" ],
-    "Value1": [ "←" ],
-    "Value2": [ "↑" ],
-    "Value3": [ "" ],
-    "Value4": [ "↓" ],
-    "ExeTags": {
-      "Short": {
-        "0": "move3",
-        "1": "move1",
-        "2": "move2",
-        "3": "none",
-        "4": "move4"
-      },
-      "Long": {
-        "0": "none",
-        "1": "none",
-        "2": "none",
-        "3": "none",
-        "4": "none"
-      }
-    }
-  },
-  {
-    "Id": "B35",
-    "Value0": [ "　", "—", "⸺", "￣", "⸻", "＿" ],
-    "Value1": [ "cry mode" ],
-    "Value2": [ "insert line" ],
-    "Value3": [ "" ],
-    "Value4": [ "indention" ],
-    "ExeTags": {
-      "Short": {
-        "0": "current0",
-        "1": "cry",
-        "2": "indention",
-        "3": "none",
-        "4": "insertLine"
-      },
-      "Long": {
-        "0": "none",
-        "1": "none",
-        "2": "none",
-        "3": "none",
-        "4": "none"
-      }
-    },
-    "CryTags": {
-      "Short": {
-        "0": "current0",
-        "1": "cryConf",
-        "2": "indention",
-        "3": "none",
-        "4": "insertLine"
-      },
-      "Long": {
-        "0": "none",
-        "1": "none",
-        "2": "none",
-        "3": "none",
-        "4": "none"
-      }
-    }
-  },
-  {
-    "Id": "B42",
-    "Value0": [ "小文字/゛/゜" ],
-    "Value1": [ "゛" ],
-    "Value2": [ "゜" ],
-    "Value3": [ "" ],
-    "Value4": [ "" ],
-    "ExeTags": {
-      "Short": {
-        "0": "trans1",
-        "1": "trans2",
-        "2": "trans3",
-        "3": "trans4",
-        "4": "trans5"
-      },
-      "Long": {
-        "0": "none",
-        "1": "none",
-        "2": "none",
-        "3": "none",
-        "4": "none"
-      }
-    }
-  },
+
+
+
   {
     "Id": "B43",
     "Value0": [ "わ", "ゎ", "", "", "", "" ],
@@ -174,60 +43,6 @@
     "Value2": [ "ー", "", "", "", "", "" ],
     "Value3": [ "～", "", "", "", "", "" ],
     "Value4": [ "を", "", "", "", "", "" ]
-  },
-  {
-    "Id": "B45",
-    "Value0": [ "Enter" ],
-    "Value1": [ "" ],
-    "Value2": [ "" ],
-    "Value4": [ "" ],
-    "ExeTags": {
-      "Short": {
-        "0": "Enter",
-        "1": "edit",
-        "2": "Enter",
-        "3": "none",
-        "4": "none"
-      },
-      "Long": {
-        "0": "none",
-        "1": "none",
-        "2": "none",
-        "3": "none",
-        "4": "none"
-      }
-    },
-    "CryTags": {
-      "Short": {
-        "0": "Enter",
-        "1": "edit",
-        "2": "Enter",
-        "3": "none",
-        "4": "none"
-      },
-      "Long": {
-        "0": "none",
-        "1": "none",
-        "2": "none",
-        "3": "none",
-        "4": "none"
-      }
-    },
-    "EditTags": {
-      "Short": {
-        "0": "EditEnter",
-        "1": "edit",
-        "2": "Enter",
-        "3": "none",
-        "4": "none"
-      },
-      "Long": {
-        "0": "none",
-        "1": "none",
-        "2": "none",
-        "3": "none",
-        "4": "none"
-      }
-    }
   }
+
 ]

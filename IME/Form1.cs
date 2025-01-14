@@ -24,7 +24,7 @@ namespace IME
         private Stopwatch stopwatch = new Stopwatch();
 
         private int threshold = 10;
-        private int longPressThreshold = 1400;
+        private int longPressThreshold = 1000;
 
         private List<(string[] values, int index)> frontPT = new();
         private List<(string[] values, int index)> backPT = new();
@@ -100,26 +100,33 @@ namespace IME
 
         private void JsonToBDL()
         {
-            string jsonFilePath = @"..\..\..\ParetteData.json";
-            if (!File.Exists(jsonFilePath))
+            string startParettePath = @"..\..\..\ParetteData.json";
+            string ABDataPath = @"..\..\..\ActionButtonData.json";
+            if (!File.Exists(startParettePath))
             {
-                MessageBox.Show("JSONファイルが見つかりません: " + jsonFilePath);
+                MessageBox.Show("JSONファイルが見つかりません: " + startParettePath);
                 return;
             }
 
-            string json = File.ReadAllText(jsonFilePath);
-            BDL = JsonSerializer.Deserialize<List<ButtonData>>(json);
+            string ABData = File.ReadAllText(ABDataPath);
+            BDL = JsonSerializer.Deserialize<List<ButtonData>>(ABData);
 
-            if (BDL == null)
+            List<ButtonData> startBDL = new List<ButtonData>();
+            string startParette = File.ReadAllText(startParettePath);
+            startBDL = JsonSerializer.Deserialize<List<ButtonData>>(startParette);
+
+            foreach(ButtonData bd in startBDL)
             {
-                MessageBox.Show("JSONデータが無効です" + json);
-                return;
+                BDL.Add(bd);
             }
+
+            
 
             foreach (ButtonData bd in BDL)
             {
                 bd.TagType["none"] = bd.ExeTags;
-                bd.TagType["cry"] = bd.CrySetTags;
+                bd.TagType["set"] = bd.CrySetTags;
+                bd.TagType["write"] = bd.CryWriteTags;
                 bd.TagType["edit"] = bd.EditTags;
             }
         }
@@ -278,7 +285,7 @@ namespace IME
             SendEditValue();
         }
 
-        
+
 
 
         private void ExeTrans(string ftag1)
@@ -485,7 +492,7 @@ namespace IME
 
         void SendEditValue()
         {
-            if(mode!= "edit")
+            if (mode != "edit")
             {
                 MessageBox.Show("SendEditValue Error -> mode:" + mode);
                 return;
@@ -587,11 +594,13 @@ namespace IME
         {
             outPad.ChangeOutMode("edit");
             mode = "edit";
+            SendEditValue();
+            
         }
 
         void ExeEditEnter()
         {
-
+            MessageBox.Show("d");
         }
 
         void SaveButtonData(string jsonFilePath)
