@@ -23,6 +23,10 @@ namespace IME
         private List<(RectangleF bounds, string text)> textRegions = new();
         private HashSet<RectangleF> processedBounds = new();
 
+        private bool brutalMode = true;
+
+        public bool BrutalMode { get => brutalMode; set => brutalMode = value; }
+
         public CryForm(Form1 person, OutPad outPad, List<string> cryValues)
         {
             InitializeComponent();
@@ -59,10 +63,10 @@ namespace IME
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            GenerateGraphics(e.Graphics); 
+            GenerateGraphics(e.Graphics);
         }
 
-       
+
         private void GenerateGraphics(Graphics g)
         {
             Random rand = new Random();
@@ -84,8 +88,8 @@ namespace IME
                         float baseX = centerX + (col - gridSize / 2) * cellSize;
                         float baseY = centerY + (row - gridSize / 2) * cellSize;
 
-                        float offsetX = (float)(rand.NextDouble() - 0.5) * cellSize * 0.7f; 
-                        float offsetY = (float)(rand.NextDouble() - 0.5) * cellSize * 0.7f; 
+                        float offsetX = (float)(rand.NextDouble() - 0.5) * cellSize * 0.7f;
+                        float offsetY = (float)(rand.NextDouble() - 0.5) * cellSize * 0.7f;
 
                         float x = baseX + offsetX;
                         float y = baseY + offsetY;
@@ -95,7 +99,7 @@ namespace IME
                         System.Drawing.Font font = new System.Drawing.Font("Arial", fontSize);
 
                         // 描画する位置がエリア内かチェック（ケーキカット範囲）
-                        if (IsInsideArea(x, y, area))
+                        if (BrutalMode || IsInsideArea(x, y, area))
                         {
                             SizeF textSize = g.MeasureString(text, font);
                             RectangleF bounds = new RectangleF(x, y, textSize.Width * 0.5f, textSize.Height * 0.5f);
@@ -108,7 +112,7 @@ namespace IME
             }
         }
 
-        // エリア内角度判定用関数
+        //エリア内角度判定用関数
         private bool IsInsideArea(float x, float y, (float startAngle, float endAngle) area)
         {
             // 中心点を基準にエリアの角度範囲と距離をチェック
@@ -119,6 +123,19 @@ namespace IME
 
             // 境界を少し緩くする
             return angle >= area.startAngle && angle <= area.endAngle; // 境界値を少し広げた
+        }
+
+        public void BrutalChange()
+        {
+            if (brutalMode)
+            {
+                brutalMode = false;
+            }
+            else
+            {
+                brutalMode |= true;
+            }
+            this.Invalidate();
         }
 
         private void CryForm_MouseMove(object sender, MouseEventArgs e)

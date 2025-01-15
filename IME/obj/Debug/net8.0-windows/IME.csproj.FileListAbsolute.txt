@@ -49,3 +49,5 @@ D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.CryForm.resources
 D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.EditForm.resources
 C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.EditForm.resources
 C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.PaintForm.resources
+D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.PaintForms.colorForm.resources
+D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.PaintForm.resources

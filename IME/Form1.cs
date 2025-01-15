@@ -231,6 +231,10 @@ namespace IME
                     ExePaint();
                     return;
 
+                case "Brutal":
+                    ExeBrutal();
+                    return;
+
                 case "EditEnter":
                     MessageBox.Show("ExeEditEnterはなくなりました。");
                     return;
@@ -239,6 +243,13 @@ namespace IME
                     MessageBox.Show("不明なボタン処理");
                     return;
             }
+        }
+
+        void ExeBrutal()
+        {
+            if (cryForm == null) return;
+
+            cryForm.BrutalChange();
         }
 
         void ExePaint()

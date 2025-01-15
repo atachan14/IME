@@ -13,16 +13,10 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form3.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="OutPad.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="PaintForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="PaintForms\colorForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
