@@ -96,6 +96,30 @@
     }
   },
   {
+    "Id": "B21",
+    "Value0": [ "Paint" ],
+    "Value1": [ "←" ],
+    "Value2": [ "↑" ],
+    "Value3": [ "" ],
+    "Value4": [ "↓" ],
+    "ExeTags": {
+      "Short": {
+        "0": "Paint",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
     "Id": "B25",
     "Value0": [ "→" ],
     "Value1": [ "←" ],

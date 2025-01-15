@@ -7,8 +7,8 @@ namespace IME
 {
     public partial class Form1 : Form
     {
-        string startParettePath = @"..\..\..\StartParette.json";
-        string ABDataPath = @"..\..\..\ActionButtonData.json";
+        string startParettePath = @"..\..\..\json\StartParette.json";
+        string ABDataPath = @"..\..\..\json\ActionButtonData.json";
         private OutPad outPad;
         private CryForm? cryForm;
         //private DebugForm df;
@@ -56,7 +56,6 @@ namespace IME
             GenerateBL();
 
             JsonToBDL();
-            MessageBox.Show("1");
             updateParette();
             SetupButtonText();
 
@@ -119,12 +118,12 @@ namespace IME
             outerBDL = new List<ButtonData>();
             string ABData = File.ReadAllText(ABDataPath);
             outerBDL = JsonSerializer.Deserialize<List<ButtonData>>(ABData);
-            MessageBox.Show($"outer{outerBDL.Count}");
+
 
             innerBDL = new List<ButtonData>();
             string startParette = File.ReadAllText(startParettePath);
             innerBDL = JsonSerializer.Deserialize<List<ButtonData>>(startParette);
-            MessageBox.Show($"inner{innerBDL.Count}");
+
         }
 
         void updateParette()
@@ -145,7 +144,14 @@ namespace IME
                     MessageBox.Show($"{match.bd.Id}==null");
                     continue;
                 }
-                match.b.Text = match.bd.Value0[0];
+                if (match.bd.Text == null)
+                {
+                    match.b.Text = match.bd.Value0[0];
+                }
+                else
+                {
+                    match.b.Text = match.bd.Text;
+                }
             }
         }
 
@@ -221,6 +227,10 @@ namespace IME
                     ExeEdit();
                     return;
 
+                case "Paint":
+                    ExePaint();
+                    return;
+
                 case "EditEnter":
                     MessageBox.Show("ExeEditEnterはなくなりました。");
                     return;
@@ -231,16 +241,36 @@ namespace IME
             }
         }
 
+        void ExePaint()
+        {
+
+            OpenPaintForm();
+
+        }
+
+        void OpenPaintForm()
+        {
+            PaintForm paintForm = new();
+            paintForm.TopLevel = false; // 子ウィンドウとして扱う
+            paintForm.FormBorderStyle = FormBorderStyle.None; // 枠を消す
+
+            //paintForm.Dock = DockStyle.Fill; // 親フォーム内にぴったり埋め込む
+            this.Controls.Add(paintForm); // 親フォームに追加
+            paintForm.BringToFront(); // 手前に持ってくる
+            paintForm.Show(); // 表示
+        }
+
+
         void ExeParette(string ftag1)
         {
             ButtonData paretteBD = innerBDL.FirstOrDefault(b => b.Id == "Parette");
-            if(paretteBD == null)
+            if (paretteBD == null)
             {
                 MessageBox.Show("paretteBDがnull");
                 return;
             }
 
-            string jsonPath = @"..\..\..\";
+            string jsonPath = @"..\..\..\json\";
             jsonPath += paretteBD.Value0[int.Parse(ftag1)];
             innerBDL = new List<ButtonData>();
             string jsonText = File.ReadAllText(jsonPath);
@@ -250,7 +280,7 @@ namespace IME
             SetupButtonText();
         }
 
-        
+
 
         private void ExeCurrent(string ftag1)
         {
@@ -283,29 +313,36 @@ namespace IME
                     MessageBox.Show("ftag1 error");
                     return;
             }
-
             if (mode != "edit") lastBdInfo = (selectBd, ftag1, 0);
-
             SendPendingAndCurrent();
         }
 
         private void ExeTrans(string ftag1)
         {
+            if (targetPT == null) MessageBox.Show("taPTNull");
+            if (lastBdInfo.bd == null) MessageBox.Show("lastBdNull");
+
             if (targetPT.Count == 0 || lastBdInfo.bd.Id == "B42")
             {
+                Debug.WriteLine("targetPT||bd nullみたいな");
                 ExeCurrent(ftag1);
                 return;
             }
-            int index = int.Parse(ftag1);
-            int current = frontPT.Count - 1;
-            if (frontPT.Last().index == index)
-            {
-                frontPT[current] = (frontPT[current].values, 0);
-                SendPendingAndCurrent();
-                return;
-            }
 
-            frontPT[current] = (frontPT[current].values, index);
+            int index = int.Parse(ftag1);
+            int current = targetPT.Count - 1;
+            if (targetPT.Last().index == index)
+            {
+                Debug.WriteLine("index==index");
+
+                index = 0;
+            }
+            Debug.WriteLine($"代入前　targetPT.Count:{targetPT.Count}   targetPT[current]:{targetPT[current]}");
+
+            targetPT[current] = (targetPT[current].values, index);
+            Debug.WriteLine($"代入後　targetPT.Count:{targetPT.Count}   targetPT[current]:{targetPT[current]}");
+
+            if (mode != "edit") lastBdInfo.trans = index;
             SendPendingAndCurrent();
             return;
         }
@@ -316,7 +353,7 @@ namespace IME
             string type = match.Value;
             string direction = ftag1.Substring(match.Length);
 
-            switch ((type, frontPT.Count != 0 || backPT.Count != 0))
+            switch ((type, targetPT.Count != 0 || backPT.Count != 0))
             {
                 case ("Short", true):
                     PendingShortDelete(direction);
@@ -337,7 +374,7 @@ namespace IME
             switch (direction)
             {
                 case "1":
-                    if (frontPT.Count == 0) return;
+                    if (targetPT.Count == 0) return;
                     targetPT.RemoveAt(targetPT.Count - 1);
                     SendPendingAndCurrent();
                     return;
@@ -492,26 +529,13 @@ namespace IME
             if (frontPT.Count > 0) fpen = PendingTapleToString(frontPT, 1);
             if (backPT.Count > 0) bpen = PendingTapleToString(backPT, 0);
 
-            outPad.UpdatePendingAndCurrent(fpen, current, bpen);
-        }
+            if (mode == "edit") current = NewValuePTtoNewValue();
 
-        void SendEditValue()
-        {
-            if (mode != "edit")
-            {
-                MessageBox.Show("SendEditValue Error -> mode:" + mode);
-                return;
-            }
-            string current = "";
-            string fpen = "";
-            string bpen = "";
-
-            if (frontPT.Count > 0) current = NewValuePTtoNewValue();
-            if (frontPT.Count > 0) fpen = PendingTapleToString(frontPT, 1);
-            if (backPT.Count > 0) bpen = PendingTapleToString(backPT, 0);
 
             outPad.UpdatePendingAndCurrent(fpen, current, bpen);
         }
+
+
 
         string PendingTapleToString(List<(string[] values, int index)> PT, int range)
         {
@@ -521,6 +545,16 @@ namespace IME
                 value += PT[i].values[PT[i].index];
             }
             return value;
+        }
+        string NewValuePTtoNewValue()
+        {
+            newValue = "";
+            foreach ((string[] value, int index) taple in newValuePT)
+            {
+                newValue += taple.value[taple.index];
+            }
+            Debug.WriteLine("NewValuePTtoNewValue:" + newValue);
+            return newValue;
         }
         void ChangeCryMode()
         {
@@ -602,14 +636,7 @@ namespace IME
                     return;
             }
         }
-        string NewValuePTtoNewValue()
-        {
-            foreach ((string[] value, int index) taple in newValuePT)
-            {
-                newValue += taple.value[taple.index];
-            }
-            return newValue;
-        }
+
 
 
         List<string> CatchCryValue()
@@ -636,7 +663,6 @@ namespace IME
             cryForm.FormBorderStyle = FormBorderStyle.None;  // 枠を消す
 
             this.Controls.Add(cryForm);
-            cryForm.Show();
             cryForm.BringToFront();
             cryForm.Show();
         }
@@ -648,12 +674,21 @@ namespace IME
 
         void ExeEdit()
         {
-            mode = "edit";
-            targetPT = newValuePT;
-            outPad.ChangeOutMode("edit");
+            Debug.WriteLine("1" + frontPT.Count);
+
+            frontPT.RemoveAt(frontPT.Count - 1);
+            Debug.WriteLine("2" + frontPT.Count);
+            SendPendingAndCurrent();
             Confirmed();
 
-            SendEditValue();
+            mode = "edit";
+            newValuePT.Clear();
+            newValue = "";
+            targetPT = newValuePT;
+            outPad.ChangeOutMode("edit");
+
+
+            SendPendingAndCurrent();
         }
 
 
@@ -701,7 +736,6 @@ namespace IME
             lastSender = sender;
 
             dragStartPoint = e.Location;
-            Debug.WriteLine($"down IsPressing: {IsPressing}, Time: {stopwatch.ElapsedMilliseconds}");
         }
 
         private void Button_MouseUp(object sender, MouseEventArgs e)
@@ -715,7 +749,6 @@ namespace IME
                 string exeTags = CatchExeTags(selectBd, "Short", pos);
                 ButtonExe(exeTags);
             }
-            Debug.WriteLine($"up IsPressing: {IsPressing}, Time: {stopwatch.ElapsedMilliseconds}");
         }
 
 
@@ -725,8 +758,6 @@ namespace IME
             {
                 if (stopwatch.ElapsedMilliseconds >= longPressThreshold)
                 {
-                    Debug.WriteLine($"Tick IsPressing: {IsPressing}, Time: {stopwatch.ElapsedMilliseconds}");
-
                     pressTimer.Stop();
                     IsPressing = false;
 
@@ -740,7 +771,6 @@ namespace IME
 
         void Form_MouseMove(object sender, MouseEventArgs e)
         {
-            Debug.WriteLine($"move IsPressing: {IsPressing}, Time: {stopwatch.ElapsedMilliseconds}");
             stopwatch.Restart();
             lastMouseLocation = e.Location;
         }
