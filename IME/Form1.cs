@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace IME
 {
@@ -15,8 +14,10 @@ namespace IME
         //private DebugForm df;
 
         private List<ButtonData>? BDL;
-        List<ButtonData> startBDL;
+        private List<ButtonData>? outerBDL;
+        private List<ButtonData> innerBDL;
         private readonly List<Button> BL = [];
+        private ButtonData selectBd;
 
         private bool isPressing = false;
         private System.Windows.Forms.Timer pressTimer;
@@ -36,10 +37,10 @@ namespace IME
         private List<(string[] values, int index)> cryPT = new();
 
         private bool exeMode;
-        List<(string[], int)> targetPT = new();
+        private List<(string[] values, int index)> targetPT = new();
         private List<(string[] values, int index)> newValuePT = new();
         private string newValue = "";
-        private (ButtonData bd, string pos, int trans) editTarget = new();
+        private (ButtonData bd, string pos, int trans) lastBdInfo = new();
 
 
 
@@ -55,6 +56,8 @@ namespace IME
             GenerateBL();
 
             JsonToBDL();
+            MessageBox.Show("1");
+            updateParette();
             SetupButtonText();
 
             this.MouseMove += Form_MouseMove;
@@ -63,7 +66,7 @@ namespace IME
             pressTimer.Interval = 100;  // 100msごとにTickイベント発生
             pressTimer.Tick += PressTimer_Tick;
 
-
+            targetPT = frontPT;
 
             //df = new DebugForm(this);
             //df.Show();
@@ -113,18 +116,20 @@ namespace IME
                 MessageBox.Show("JSONファイルが見つかりません: " + startParettePath);
                 return;
             }
-
+            outerBDL = new List<ButtonData>();
             string ABData = File.ReadAllText(ABDataPath);
-            BDL = JsonSerializer.Deserialize<List<ButtonData>>(ABData);
+            outerBDL = JsonSerializer.Deserialize<List<ButtonData>>(ABData);
+            MessageBox.Show($"outer{outerBDL.Count}");
 
-            startBDL = new List<ButtonData>();
+            innerBDL = new List<ButtonData>();
             string startParette = File.ReadAllText(startParettePath);
-            startBDL = JsonSerializer.Deserialize<List<ButtonData>>(startParette);
+            innerBDL = JsonSerializer.Deserialize<List<ButtonData>>(startParette);
+            MessageBox.Show($"inner{innerBDL.Count}");
+        }
 
-            foreach (ButtonData bd in startBDL)
-            {
-                BDL.Add(bd);
-            }
+        void updateParette()
+        {
+            BDL = [.. outerBDL, .. innerBDL];
         }
 
         private void SetupButtonText()
@@ -148,7 +153,7 @@ namespace IME
         {
             string[] ftag = new string[2];
 
-            var match = Regex.Match(exeTags, @"^(current|trans|move|delete)");
+            var match = Regex.Match(exeTags, @"^(current|trans|move|delete|parette)");
 
             if (match.Success)
             {
@@ -163,7 +168,7 @@ namespace IME
             return ftag;
         }
 
-        private void ButtonExe(string exeTags, ButtonData selectBd)
+        private void ButtonExe(string exeTags)
         {
             string[] ftag = ToFtag(exeTags);
             switch (ftag[0])
@@ -172,7 +177,7 @@ namespace IME
                     return;
 
                 case "current":
-                    ExeCurrent(ftag[1], selectBd);
+                    ExeCurrent(ftag[1]);
                     return;
 
                 case "trans":
@@ -204,6 +209,10 @@ namespace IME
                     this.Dispose();
                     return;
 
+                case "parette":
+                    ExeParette(ftag[1]);
+                    return;
+
                 case "Enter":
                     ExeEnter();
                     return;
@@ -213,7 +222,7 @@ namespace IME
                     return;
 
                 case "EditEnter":
-                    ExeEditEnter();
+                    MessageBox.Show("ExeEditEnterはなくなりました。");
                     return;
 
                 default:
@@ -222,46 +231,71 @@ namespace IME
             }
         }
 
-        private void ExeCurrent(string ftag1, ButtonData selectBd)
+        void ExeParette(string ftag1)
         {
-            List<(string[], int)> currentPT;
+            ButtonData paretteBD = innerBDL.FirstOrDefault(b => b.Id == "Parette");
+            if(paretteBD == null)
+            {
+                MessageBox.Show("paretteBDがnull");
+                return;
+            }
+
+            string jsonPath = @"..\..\..\";
+            jsonPath += paretteBD.Value0[int.Parse(ftag1)];
+            innerBDL = new List<ButtonData>();
+            string jsonText = File.ReadAllText(jsonPath);
+            innerBDL = JsonSerializer.Deserialize<List<ButtonData>>(jsonText);
+
+            updateParette();
+            SetupButtonText();
+        }
+
+        
+
+        private void ExeCurrent(string ftag1)
+        {
             if (mode == "edit")
             {
-                currentPT = newValuePT;
+                targetPT = newValuePT;
             }
             else
             {
-                currentPT = frontPT;
+                targetPT = frontPT;
             }
             switch (ftag1)
             {
                 case "0":
-                    currentPT.Add((selectBd.Value0, 0));
+                    targetPT.Add((selectBd.Value0, 0));
                     break;
                 case "1":
-                    currentPT.Add((selectBd.Value1, 0));
+                    targetPT.Add((selectBd.Value1, 0));
                     break;
                 case "2":
-                    currentPT.Add((selectBd.Value2, 0));
+                    targetPT.Add((selectBd.Value2, 0));
                     break;
                 case "3":
-                    currentPT.Add((selectBd.Value3, 0));
+                    targetPT.Add((selectBd.Value3, 0));
                     break;
                 case "4":
-                    currentPT.Add((selectBd.Value4, 0));
+                    targetPT.Add((selectBd.Value4, 0));
                     break;
                 default:
                     MessageBox.Show("ftag1 error");
                     return;
             }
 
-            if (mode != "edit") editTarget = (selectBd, ftag1, 0);
+            if (mode != "edit") lastBdInfo = (selectBd, ftag1, 0);
 
             SendPendingAndCurrent();
         }
 
         private void ExeTrans(string ftag1)
         {
+            if (targetPT.Count == 0 || lastBdInfo.bd.Id == "B42")
+            {
+                ExeCurrent(ftag1);
+                return;
+            }
             int index = int.Parse(ftag1);
             int current = frontPT.Count - 1;
             if (frontPT.Last().index == index)
@@ -501,14 +535,19 @@ namespace IME
 
             SendPendingAndCurrent();
         }
+
+        void Confirmed()
+        {
+            outPad.Confirmed();
+            frontPT.Clear();
+            backPT.Clear();
+        }
         void ExeEnter()
         {
             switch (mode)
             {
                 case "none":
-                    outPad.Confirmed();
-                    frontPT.Clear();
-                    backPT.Clear();
+                    Confirmed();
                     return;
                 case "set":
                     mode = "write";
@@ -540,23 +579,23 @@ namespace IME
 
         void EditButtonData(string newValue)
         {
-            switch (editTarget.pos)
+            switch (lastBdInfo.pos)
             {
                 case "0":
-                    editTarget.bd.Value0[editTarget.trans] = newValue;
+                    lastBdInfo.bd.Value0[lastBdInfo.trans] = newValue;
                     break;
                 case "1":
-                    editTarget.bd.Value1[editTarget.trans] = newValue;
+                    lastBdInfo.bd.Value1[lastBdInfo.trans] = newValue;
                     break;
                 case "2":
-                    editTarget.bd.Value2[editTarget.trans] = newValue;
+                    lastBdInfo.bd.Value2[lastBdInfo.trans] = newValue;
                     break;
                 case "3":
-                    editTarget.bd.Value3[editTarget.trans] = newValue;
+                    lastBdInfo.bd.Value3[lastBdInfo.trans] = newValue;
                     break;
                 case "4":
-                    editTarget.bd.Value4[editTarget.trans] = newValue;
-                    MessageBox.Show($"{editTarget.bd.Value4[editTarget.trans]}に{newValuePT}を登録");
+                    lastBdInfo.bd.Value4[lastBdInfo.trans] = newValue;
+                    MessageBox.Show($"{lastBdInfo.bd.Value4[lastBdInfo.trans]}に{newValuePT}を登録");
                     break;
                 default:
                     MessageBox.Show("ExeEnter.Edit error");
@@ -612,18 +651,15 @@ namespace IME
             mode = "edit";
             targetPT = newValuePT;
             outPad.ChangeOutMode("edit");
-            
+            Confirmed();
+
             SendEditValue();
         }
 
-        void ExeEditEnter()
-        {
-
-        }
 
         void SaveBDLtoJson()
         {
-            string updatedJson = JsonSerializer.Serialize(startBDL, new JsonSerializerOptions { WriteIndented = true });
+            string updatedJson = JsonSerializer.Serialize(innerBDL, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(startParettePath, updatedJson);
 
             Debug.Write("JSONファイルを保存しました！");
@@ -642,8 +678,6 @@ namespace IME
                 ? (deltaX > 0 ? "3" : "1")  // X軸で右（2）か左（4）
                 : (deltaY > 0 ? "4" : "2"); // Y軸で下（3）か上（1）
         }
-
-
 
         private ButtonData CatchSelectBd(object sender)
         {
@@ -677,9 +711,9 @@ namespace IME
                 pressTimer.Stop();
                 isPressing = false;
                 string pos = CalcSwipePos(e.Location);
-                ButtonData selectBd = CatchSelectBd(sender);
+                selectBd = CatchSelectBd(sender);
                 string exeTags = CatchExeTags(selectBd, "Short", pos);
-                ButtonExe(exeTags, selectBd);
+                ButtonExe(exeTags);
             }
             Debug.WriteLine($"up IsPressing: {IsPressing}, Time: {stopwatch.ElapsedMilliseconds}");
         }
@@ -699,7 +733,7 @@ namespace IME
                     string pos = CalcSwipePos(lastMouseLocation);
                     ButtonData selectBd = CatchSelectBd(lastSender);
                     string exeTags = CatchExeTags(selectBd, "Long", pos);
-                    ButtonExe(exeTags, selectBd);
+                    ButtonExe(exeTags);
                 }
             }
         }

@@ -120,6 +120,30 @@
     }
   },
   {
+    "Id": "B31",
+    "Value0": [ "Parette" ],
+    "Value1": [ "b" ],
+    "Value2": [ "c" ],
+    "Value3": [ "d" ],
+    "Value4": [ "e" ],
+    "ExeTags": {
+      "Short": {
+        "0": "parette0",
+        "1": "none",
+        "2": "parette1",
+        "3": "parette2",
+        "4": "parette3"
+      },
+      "Long": {
+        "0": "none",
+        "1": "none",
+        "2": "none",
+        "3": "none",
+        "4": "none"
+      }
+    }
+  },
+  {
     "Id": "B35",
     "Value0": [ "　", "—", "⸺", "￣", "⸻", "＿" ],
     "Value1": [ "cry mode" ],
@@ -177,11 +201,11 @@
   },
   {
     "Id": "B42",
-    "Value0": [ "小文字/゛/゜" ],
-    "Value1": [ "゛" ],
-    "Value2": [ "゜" ],
+    "Value0": [ "変態" ],
+    "Value1": [ "" ],
+    "Value2": [ "゛" ],
     "Value3": [ "" ],
-    "Value4": [ "" ],
+    "Value4": [ "゜" ],
     "ExeTags": {
       "Short": {
         "0": "trans1",

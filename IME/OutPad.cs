@@ -50,6 +50,7 @@ namespace IME
             switch (mode)
             {
                 case "edit":
+                    Confirmed();
                     editSetup();
                     return;
                 default:

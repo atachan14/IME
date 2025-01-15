@@ -10,10 +10,15 @@ namespace IME
     {
         public string? Id { get; set; }
         public string[]? Value0 { get; set; }
+        = ["a", "b", "c", "d", "e","f"];
         public string[]? Value1 { get; set; }
+        = ["a", "b", "c", "d", "e", "f"];
         public string[]? Value2 { get; set; }
+        = ["a", "b", "c", "d", "e", "f"];
         public string[]? Value3 { get; set; }
+        = ["a", "b", "c", "d", "e", "f"];
         public string[]? Value4 { get; set; }
+        = ["a", "b", "c", "d", "e", "f"];
 
         public Dictionary<string, Dictionary<string, Dictionary<string, string>>> TagType { get; set; }
       = new Dictionary<string, Dictionary<string, Dictionary<string, string>>>();

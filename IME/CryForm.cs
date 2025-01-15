@@ -59,78 +59,10 @@ namespace IME
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            GenerateGraphics(e.Graphics); // PaintイベントでGraphicsを使用
+            GenerateGraphics(e.Graphics); 
         }
 
-        private void GenerateGraphicsWithPanels()
-        {
-            Random rand = new Random();
-            int gridSize = 20; // グリッドサイズ
-            int cellSize = 20; // グリッドセルの基本サイズ
-            int centerX = this.Width / 2;
-            int centerY = this.Height / 2;
-
-            for (int i = 0; i < areas.Count; i++)
-            {
-                (float startAngle, float endAngle) area = areas[i];
-                string text = cryValues[i % cryValues.Count];
-
-                for (int row = 0; row < gridSize; row++)
-                {
-                    for (int col = 0; col < gridSize; col++)
-                    {
-                        // 座標計算
-                        float baseX = centerX + (col - gridSize / 2) * cellSize;
-                        float baseY = centerY + (row - gridSize / 2) * cellSize;
-
-                        float offsetX = (float)(rand.NextDouble() - 0.5) * cellSize * 0.7f;
-                        float offsetY = (float)(rand.NextDouble() - 0.5) * cellSize * 0.7f;
-
-                        float x = baseX + offsetX;
-                        float y = baseY + offsetY;
-
-                        // フォントサイズ
-                        int fontSize = rand.Next(9, 20);
-                        System.Drawing.Font font = new System.Drawing.Font("Arial", fontSize);
-
-                        // エリアチェック
-                        if (IsInsideArea(x, y, area))
-                        {
-                            // 文字列描画
-                            using (Graphics g = this.CreateGraphics())
-                            {
-                                g.DrawString(text, font, Brushes.Black, x, y);
-                            }
-
-                            // 文字列サイズ計算
-                            SizeF textSize = TextRenderer.MeasureText(text, font);
-
-                            // パネル生成
-                            Panel panel = new Panel
-                            {
-                                Location = new Point((int)x, (int)y),
-                                Size = new Size((int)textSize.Width, (int)textSize.Height),
-                                BackColor = Color.Transparent, // 透明に設定
-                                Tag = text // パネルに文字列を紐付ける
-                            };
-
-                            panel.MouseClick += (s, e) =>
-
-                            panel.MouseMove += (s, e) =>
-                            {
-                                if (isDragging) // ドラッグ中のみ
-                                {
-                                    string hoveredText = (string)panel.Tag;
-                                    Console.WriteLine($"Hovered Text: {hoveredText}");
-                                }
-                            };
-
-                            this.Controls.Add(panel);
-                        }
-                    }
-                }
-            }
-        }
+       
         private void GenerateGraphics(Graphics g)
         {
             Random rand = new Random();
@@ -145,18 +77,15 @@ namespace IME
                 (float startAngle, float endAngle) area = areas[i];
                 string text = cryValues[i % cryValues.Count]; // ケーキカット方式で文字列を選択
 
-                // グリッド配置
                 for (int row = 0; row < gridSize; row++)
                 {
                     for (int col = 0; col < gridSize; col++)
                     {
-                        // グリッド座標を計算 (中央基準)
                         float baseX = centerX + (col - gridSize / 2) * cellSize;
                         float baseY = centerY + (row - gridSize / 2) * cellSize;
 
-                        // ランダム補正を加える
-                        float offsetX = (float)(rand.NextDouble() - 0.5) * cellSize * 0.7f; // ±0.7セル分
-                        float offsetY = (float)(rand.NextDouble() - 0.5) * cellSize * 0.7f; // ±0.7セル分
+                        float offsetX = (float)(rand.NextDouble() - 0.5) * cellSize * 0.7f; 
+                        float offsetY = (float)(rand.NextDouble() - 0.5) * cellSize * 0.7f; 
 
                         float x = baseX + offsetX;
                         float y = baseY + offsetY;
