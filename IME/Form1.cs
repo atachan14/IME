@@ -42,6 +42,7 @@ namespace IME
         private string newValue = "";
         private (ButtonData bd, string pos, int trans) lastBdInfo = new();
 
+        private PaintForm[] pfList = new PaintForm[4];
 
 
         private int debugCount = 0;
@@ -159,7 +160,7 @@ namespace IME
         {
             string[] ftag = new string[2];
 
-            var match = Regex.Match(exeTags, @"^(current|trans|move|delete|parette)");
+            var match = Regex.Match(exeTags, @"^(current|trans|move|delete|parette|paint)");
 
             if (match.Success)
             {
@@ -227,8 +228,8 @@ namespace IME
                     ExeEdit();
                     return;
 
-                case "Paint":
-                    ExePaint();
+                case "paint":
+                    ExePaint(ftag[1]);
                     return;
 
                 case "Brutal":
@@ -252,23 +253,30 @@ namespace IME
             cryForm.BrutalChange();
         }
 
-        void ExePaint()
+        void ExePaint(string ftag1)
         {
-
-            OpenPaintForm();
+            int index = int.Parse(ftag1);
+            if (pfList[index] == null)
+            {
+                OpenPaintForm(index);
+            }
+            else
+            {
+                pfList[index].Visible = true;
+            }
 
         }
 
-        void OpenPaintForm()
+        void OpenPaintForm(int index)
         {
-            PaintForm paintForm = new();
-            paintForm.TopLevel = false; // 子ウィンドウとして扱う
-            paintForm.FormBorderStyle = FormBorderStyle.None; // 枠を消す
+            pfList[index]= new(index);
+            pfList[index].TopLevel = false; // 子ウィンドウとして扱う
+            pfList[index].FormBorderStyle = FormBorderStyle.None; // 枠を消す
 
             //paintForm.Dock = DockStyle.Fill; // 親フォーム内にぴったり埋め込む
-            this.Controls.Add(paintForm); // 親フォームに追加
-            paintForm.BringToFront(); // 手前に持ってくる
-            paintForm.Show(); // 表示
+            this.Controls.Add(pfList[index]); // 親フォームに追加
+            pfList[index].BringToFront(); // 手前に持ってくる
+            pfList[index].Show(); // 表示
         }
 
 

@@ -32,7 +32,6 @@ D:\source\repos\C#\IME\IME\bin\Debug\net8.0-windows\IME.dll
 D:\source\repos\C#\IME\IME\bin\Debug\net8.0-windows\IME.pdb
 D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.genruntimeconfig.cache
 D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\ref\IME.dll
-C:\Users\240925PM\Desktop\murota atari\C#\IME\IME\obj\Debug\net8.0-windows\IME.Form3.resources
 D:\source\repos\C#\IME\IME\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
 D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.csproj.AssemblyReference.cache
 D:\source\repos\C#\IME\IME\obj\Debug\net8.0-windows\IME.Form3.resources

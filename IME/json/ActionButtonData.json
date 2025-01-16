@@ -104,11 +104,11 @@
     "Value4": [ "↓" ],
     "ExeTags": {
       "Short": {
-        "0": "Paint",
+        "0": "paint0",
         "1": "none",
-        "2": "none",
-        "3": "none",
-        "4": "none"
+        "2": "paint1",
+        "3": "paint2",
+        "4": "paint3"
       },
       "Long": {
         "0": "none",

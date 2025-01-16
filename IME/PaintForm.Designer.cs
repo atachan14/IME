@@ -40,17 +40,21 @@
             c3 = new Button();
             c4 = new Button();
             c5 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            save = new Button();
+            cansel = new Button();
             trackBar = new TrackBar();
+            pictureBoxColorMap = new PictureBox();
+            New = new Button();
+            saveOption = new Button();
             ((System.ComponentModel.ISupportInitialize)trackBar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxColorMap).BeginInit();
             SuspendLayout();
             // 
             // color
             // 
             color.BackColor = Color.Black;
             color.FlatStyle = FlatStyle.Flat;
-            color.Location = new Point(3, 1);
+            color.Location = new Point(3, 4);
             color.Name = "color";
             color.Size = new Size(30, 30);
             color.TabIndex = 0;
@@ -63,7 +67,7 @@
             width.Name = "width";
             width.Size = new Size(30, 30);
             width.TabIndex = 1;
-            width.Text = "1";
+            width.Text = "16";
             width.UseVisualStyleBackColor = true;
             width.Click += size_Click;
             // 
@@ -73,12 +77,13 @@
             pen.Name = "pen";
             pen.Size = new Size(25, 25);
             pen.TabIndex = 2;
-            pen.Text = "書";
+            pen.Text = "描";
             pen.UseVisualStyleBackColor = true;
+            pen.Click += pen_Click;
             // 
             // bg
             // 
-            bg.Location = new Point(246, 1);
+            bg.Location = new Point(237, 7);
             bg.Name = "bg";
             bg.Size = new Size(25, 25);
             bg.TabIndex = 3;
@@ -104,96 +109,105 @@
             bucket.TabIndex = 5;
             bucket.Text = "塗";
             bucket.UseVisualStyleBackColor = true;
+            bucket.Click += bucket_Click;
             // 
             // c0
             // 
             c0.BackColor = SystemColors.MenuHighlight;
             c0.FlatAppearance.BorderSize = 0;
             c0.FlatStyle = FlatStyle.Flat;
-            c0.Location = new Point(39, 4);
+            c0.Location = new Point(39, 7);
             c0.Name = "c0";
             c0.Size = new Size(25, 25);
             c0.TabIndex = 6;
             c0.UseVisualStyleBackColor = false;
-            c0.Click += Cb_Click;
+            c0.MouseDown += cb_MouseDown;
+            c0.MouseUp += cb_MouseUp;
             // 
             // c1
             // 
             c1.BackColor = SystemColors.MenuHighlight;
             c1.FlatAppearance.BorderSize = 0;
             c1.FlatStyle = FlatStyle.Flat;
-            c1.Location = new Point(70, 4);
+            c1.Location = new Point(70, 7);
             c1.Name = "c1";
             c1.Size = new Size(25, 25);
             c1.TabIndex = 7;
             c1.UseVisualStyleBackColor = false;
-            c1.Click += Cb_Click;
+            c1.MouseDown += cb_MouseDown;
+            c1.MouseUp += cb_MouseUp;
             // 
             // c2
             // 
             c2.BackColor = SystemColors.MenuHighlight;
             c2.FlatAppearance.BorderSize = 0;
             c2.FlatStyle = FlatStyle.Flat;
-            c2.Location = new Point(101, 4);
+            c2.Location = new Point(101, 7);
             c2.Name = "c2";
             c2.Size = new Size(25, 25);
             c2.TabIndex = 8;
             c2.UseVisualStyleBackColor = false;
-            c2.Click += Cb_Click;
+            c2.MouseDown += cb_MouseDown;
+            c2.MouseUp += cb_MouseUp;
             // 
             // c3
             // 
             c3.BackColor = SystemColors.MenuHighlight;
             c3.FlatAppearance.BorderSize = 0;
             c3.FlatStyle = FlatStyle.Flat;
-            c3.Location = new Point(132, 4);
+            c3.Location = new Point(132, 7);
             c3.Name = "c3";
             c3.Size = new Size(25, 25);
             c3.TabIndex = 9;
             c3.UseVisualStyleBackColor = false;
-            c3.Click += Cb_Click;
+            c3.MouseDown += cb_MouseDown;
+            c3.MouseUp += cb_MouseUp;
             // 
             // c4
             // 
             c4.BackColor = SystemColors.MenuHighlight;
             c4.FlatAppearance.BorderSize = 0;
             c4.FlatStyle = FlatStyle.Flat;
-            c4.Location = new Point(163, 4);
+            c4.Location = new Point(163, 7);
             c4.Name = "c4";
             c4.Size = new Size(25, 25);
             c4.TabIndex = 10;
             c4.UseVisualStyleBackColor = false;
-            c4.Click += Cb_Click;
+            c4.MouseDown += cb_MouseDown;
+            c4.MouseUp += cb_MouseUp;
             // 
             // c5
             // 
             c5.BackColor = SystemColors.MenuHighlight;
             c5.FlatAppearance.BorderSize = 0;
             c5.FlatStyle = FlatStyle.Flat;
-            c5.Location = new Point(194, 4);
+            c5.Location = new Point(194, 6);
             c5.Name = "c5";
             c5.Size = new Size(25, 25);
             c5.TabIndex = 11;
             c5.UseVisualStyleBackColor = false;
-            c5.Click += Cb_Click;
+            c5.MouseDown += cb_MouseDown;
+            c5.MouseUp += cb_MouseUp;
             // 
-            // button2
+            // save
             // 
-            button2.Location = new Point(246, 195);
-            button2.Name = "button2";
-            button2.Size = new Size(25, 25);
-            button2.TabIndex = 12;
-            button2.Text = "保";
-            button2.UseVisualStyleBackColor = true;
+            save.Location = new Point(237, 195);
+            save.Name = "save";
+            save.Size = new Size(25, 25);
+            save.TabIndex = 12;
+            save.Text = "保";
+            save.UseVisualStyleBackColor = true;
+            save.Click += save_Click;
             // 
-            // button3
+            // cansel
             // 
-            button3.Location = new Point(215, 195);
-            button3.Name = "button3";
-            button3.Size = new Size(25, 25);
-            button3.TabIndex = 13;
-            button3.Text = "戻";
-            button3.UseVisualStyleBackColor = true;
+            cansel.Location = new Point(3, 73);
+            cansel.Name = "cansel";
+            cansel.Size = new Size(25, 25);
+            cansel.TabIndex = 13;
+            cansel.Text = "戻";
+            cansel.UseVisualStyleBackColor = true;
+            cansel.Click += cansel_Click;
             // 
             // trackBar
             // 
@@ -206,14 +220,46 @@
             trackBar.Value = 1;
             trackBar.ValueChanged += trackBar_ValueChanged;
             // 
+            // pictureBoxColorMap
+            // 
+            pictureBoxColorMap.Location = new Point(39, 37);
+            pictureBoxColorMap.Name = "pictureBoxColorMap";
+            pictureBoxColorMap.Size = new Size(223, 40);
+            pictureBoxColorMap.TabIndex = 15;
+            pictureBoxColorMap.TabStop = false;
+            pictureBoxColorMap.MouseClick += pictureBoxColorMap_MouseClick;
+            // 
+            // New
+            // 
+            New.Location = new Point(194, 195);
+            New.Name = "New";
+            New.Size = new Size(25, 25);
+            New.TabIndex = 16;
+            New.Text = "新";
+            New.UseVisualStyleBackColor = true;
+            New.Click += New_Click;
+            // 
+            // saveOption
+            // 
+            saveOption.Location = new Point(237, 164);
+            saveOption.Name = "saveOption";
+            saveOption.Size = new Size(25, 25);
+            saveOption.TabIndex = 17;
+            saveOption.Text = "設";
+            saveOption.UseVisualStyleBackColor = true;
+            saveOption.Click += saveOption_Click;
+            // 
             // PaintForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(274, 221);
+            Controls.Add(saveOption);
+            Controls.Add(New);
+            Controls.Add(pictureBoxColorMap);
             Controls.Add(trackBar);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(cansel);
+            Controls.Add(save);
             Controls.Add(c5);
             Controls.Add(c4);
             Controls.Add(c3);
@@ -230,6 +276,7 @@
             Text = "PaintForm";
             Load += PaintForm_Load;
             ((System.ComponentModel.ISupportInitialize)trackBar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxColorMap).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -248,8 +295,11 @@
         private Button c3;
         private Button c4;
         private Button c5;
-        private Button button2;
-        private Button button3;
+        private Button save;
+        private Button cansel;
         private TrackBar trackBar;
+        private PictureBox pictureBoxColorMap;
+        private Button New;
+        private Button saveOption;
     }
 }
