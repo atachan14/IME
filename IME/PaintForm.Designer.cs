@@ -195,7 +195,7 @@
             save.Name = "save";
             save.Size = new Size(25, 25);
             save.TabIndex = 12;
-            save.Text = "保";
+            save.Text = "出";
             save.UseVisualStyleBackColor = true;
             save.Click += save_Click;
             // 
@@ -224,7 +224,7 @@
             // 
             pictureBoxColorMap.Location = new Point(39, 37);
             pictureBoxColorMap.Name = "pictureBoxColorMap";
-            pictureBoxColorMap.Size = new Size(223, 40);
+            pictureBoxColorMap.Size = new Size(223, 121);
             pictureBoxColorMap.TabIndex = 15;
             pictureBoxColorMap.TabStop = false;
             pictureBoxColorMap.MouseClick += pictureBoxColorMap_MouseClick;
@@ -245,7 +245,7 @@
             saveOption.Name = "saveOption";
             saveOption.Size = new Size(25, 25);
             saveOption.TabIndex = 17;
-            saveOption.Text = "設";
+            saveOption.Text = "保";
             saveOption.UseVisualStyleBackColor = true;
             saveOption.Click += saveOption_Click;
             // 

@@ -246,6 +246,11 @@ namespace IME
             richTextBox1.SelectionColor = colors[1].font;
             richTextBox1.SelectionBackColor = colors[1].bg;
 
+            // 表示処理のあとに自動スクロール
+            richTextBox1.SelectionStart = start; // currentの開始位置
+            richTextBox1.ScrollToCaret();        // カーソルの位置までスクロール
+
+
             //start = richTextBox1.Text.Length;
             //richTextBox1.AppendText("|");
             //richTextBox1.Select(start, "|".Length);

@@ -769,8 +769,6 @@ namespace IME
                 ButtonExe(exeTags);
             }
         }
-
-
         public void PressTimer_Tick(object? sender, EventArgs e)
         {
             if (isPressing)
@@ -781,7 +779,7 @@ namespace IME
                     IsPressing = false;
 
                     string pos = CalcSwipePos(lastMouseLocation);
-                    ButtonData selectBd = CatchSelectBd(lastSender);
+                    selectBd = CatchSelectBd(lastSender);
                     string exeTags = CatchExeTags(selectBd, "Long", pos);
                     ButtonExe(exeTags);
                 }
@@ -792,6 +790,12 @@ namespace IME
         {
             stopwatch.Restart();
             lastMouseLocation = e.Location;
+        }
+
+        void DisplayUI()
+        {
+            selectBd = CatchSelectBd(lastSender);
+
         }
 
         private void IME_Load(object sender, EventArgs e)

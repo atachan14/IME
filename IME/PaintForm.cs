@@ -424,21 +424,32 @@ namespace IME
 
             using (Graphics g = Graphics.FromImage(colorMap))
             {
-                // 上から下にかけて色を変える横グラデーション
+                // 横方向: 色相（Hue）、縦方向: 明度（Lightness）
                 for (int x = 0; x < width; x++)
                 {
-                    // 色をHSLベースで生成
-                    float hue = (float)x / width * 360; // 色相を計算 (0～360度)
-                    Color color = FromHSL(hue, 1.0f, 0.5f); // 彩度:1.0、明度:0.5
-                    using (Pen pen = new Pen(color))
+                    for (int y = 0; y < height; y++)
                     {
-                        g.DrawLine(pen, x, 0, x, height); // 縦ラインを描画
+                        // 色相を横方向にマッピング (0～360度)
+                        float hue = (float)x / width * 360;
+
+                        // 明度を縦方向にマッピング (1.0～0.0)
+                        float lightness = 1 - (float)y / height;
+
+                        // 彩度は固定値 (例: 1.0)
+                        float saturation = 1.0f;
+
+                        // HSLから色を生成
+                        Color color = FromHSL(hue, saturation, lightness);
+
+                        // ピクセルに設定
+                        colorMap.SetPixel(x, y, color);
                     }
                 }
             }
 
             pictureBoxColorMap.Image = colorMap;
         }
+
 
         // HSLからColorを生成するヘルパー関数
         private Color FromHSL(float hue, float saturation, float lightness)
