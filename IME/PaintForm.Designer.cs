@@ -45,7 +45,6 @@
             trackBar = new TrackBar();
             pictureBoxColorMap = new PictureBox();
             New = new Button();
-            saveOption = new Button();
             ((System.ComponentModel.ISupportInitialize)trackBar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxColorMap).BeginInit();
             SuspendLayout();
@@ -217,14 +216,14 @@
             trackBar.Name = "trackBar";
             trackBar.Size = new Size(237, 45);
             trackBar.TabIndex = 14;
-            trackBar.Value = 1;
+            trackBar.Value = 20;
             trackBar.ValueChanged += trackBar_ValueChanged;
             // 
             // pictureBoxColorMap
             // 
-            pictureBoxColorMap.Location = new Point(39, 37);
+            pictureBoxColorMap.Location = new Point(39, 38);
             pictureBoxColorMap.Name = "pictureBoxColorMap";
-            pictureBoxColorMap.Size = new Size(223, 121);
+            pictureBoxColorMap.Size = new Size(223, 85);
             pictureBoxColorMap.TabIndex = 15;
             pictureBoxColorMap.TabStop = false;
             pictureBoxColorMap.MouseClick += pictureBoxColorMap_MouseClick;
@@ -239,22 +238,11 @@
             New.UseVisualStyleBackColor = true;
             New.Click += New_Click;
             // 
-            // saveOption
-            // 
-            saveOption.Location = new Point(237, 164);
-            saveOption.Name = "saveOption";
-            saveOption.Size = new Size(25, 25);
-            saveOption.TabIndex = 17;
-            saveOption.Text = "保";
-            saveOption.UseVisualStyleBackColor = true;
-            saveOption.Click += saveOption_Click;
-            // 
             // PaintForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(274, 221);
-            Controls.Add(saveOption);
             Controls.Add(New);
             Controls.Add(pictureBoxColorMap);
             Controls.Add(trackBar);
@@ -300,6 +288,5 @@
         private TrackBar trackBar;
         private PictureBox pictureBoxColorMap;
         private Button New;
-        private Button saveOption;
     }
 }

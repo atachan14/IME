@@ -1,7 +1,10 @@
-﻿using System.Data;
+﻿//using Newtonsoft.Json;
+using Newtonsoft.Json;
+using System.Data;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using static System.Windows.Forms.AxHost;
 
 namespace IME
 {
@@ -9,6 +12,7 @@ namespace IME
     {
         string startParettePath = @"..\..\..\json\StartParette.json";
         string ABDataPath = @"..\..\..\json\ActionButtonData.json";
+       
         private OutPad outPad;
         private CryForm? cryForm;
         //private DebugForm df;
@@ -17,7 +21,11 @@ namespace IME
         private List<ButtonData>? outerBDL;
         private List<ButtonData> innerBDL;
         private readonly List<Button> BL = [];
+
         private ButtonData selectBd;
+
+        private bool onUI = false;
+        private Label[] lbls = new Label[5];
 
         private bool isPressing = false;
         private System.Windows.Forms.Timer pressTimer;
@@ -28,7 +36,7 @@ namespace IME
         private Stopwatch stopwatch = new Stopwatch();
 
         private int threshold = 10;
-        private int longPressThreshold = 1000;
+        private int longPressThreshold = 800;
 
         private List<(string[] values, int index)> frontPT = new();
         private List<(string[] values, int index)> backPT = new();
@@ -45,6 +53,7 @@ namespace IME
         private PaintForm[] pfList = new PaintForm[4];
 
 
+
         private int debugCount = 0;
         public bool IsPressing { get => isPressing; set => isPressing = value; }
         public int DebugCount { get => debugCount; set => debugCount = value; }
@@ -52,6 +61,8 @@ namespace IME
         public Form1(OutPad outPad)
         {
             InitializeComponent();
+
+            //KanjiTo();
 
             this.outPad = outPad;
             GenerateBL();
@@ -73,7 +84,55 @@ namespace IME
 
         }
 
+        
+        //void KanjiTo()
+        //{
+        //    string inputFilePath = @"..\..\..\joyo2010.txt";
+        //    // 出力するJSONファイルのパス
+        //    string outputFilePath = @"..\..\..\kanjiDict.json";
 
+        //    // ファイルが存在するか確認
+        //    if (File.Exists(inputFilePath))
+        //    {
+        //        // テキストデータを行ごとに読み込む
+        //        string[] lines = File.ReadAllLines(inputFilePath);
+
+        //        // Dictionaryを作成
+        //        Dictionary<string, List<string>> kanjiDict = new Dictionary<string, List<string>>();
+
+        //        foreach (string line in lines)
+        //        {
+        //            // 空行をスキップ
+        //            if (string.IsNullOrWhiteSpace(line)) continue;
+
+        //            // タブ区切りで分割
+        //            string[] parts = line.Split('\t');
+
+        //            if (parts.Length >= 6)
+        //            {
+        //                string kanji = parts[0]; // 漢字
+        //                string kana = parts[5];  // 読み（ヨミ）
+
+        //                // 読みをキーに漢字を追加
+        //                if (!kanjiDict.ContainsKey(kana))
+        //                {
+        //                    kanjiDict[kana] = new List<string>();
+        //                }
+        //                kanjiDict[kana].Add(kanji);
+        //            }
+        //        }
+
+        //        // JSONに変換して保存
+        //        string outputJson = JsonConvert.SerializeObject(kanjiDict, Formatting.Indented);
+        //        File.WriteAllText(outputFilePath, outputJson);
+
+        //        MessageBox.Show($"変換が完了しました！JSONファイル: {outputFilePath}");
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("テキストファイルが見つかりませんでした。");
+        //    }
+        //}
 
         private void GenerateBL()
         {
@@ -118,12 +177,12 @@ namespace IME
             }
             outerBDL = new List<ButtonData>();
             string ABData = File.ReadAllText(ABDataPath);
-            outerBDL = JsonSerializer.Deserialize<List<ButtonData>>(ABData);
+            outerBDL = System.Text.Json.JsonSerializer.Deserialize<List<ButtonData>>(ABData);
 
 
             innerBDL = new List<ButtonData>();
             string startParette = File.ReadAllText(startParettePath);
-            innerBDL = JsonSerializer.Deserialize<List<ButtonData>>(startParette);
+            innerBDL = System.Text.Json.JsonSerializer.Deserialize<List<ButtonData>>(startParette);
 
         }
 
@@ -240,10 +299,25 @@ namespace IME
                     MessageBox.Show("ExeEditEnterはなくなりました。");
                     return;
 
+                case "UI":
+                    onUI = !onUI;
+                    return;
+
+                case "kanji":
+                    ExeKanji();
+                    return;
+
                 default:
                     MessageBox.Show("不明なボタン処理");
                     return;
             }
+        }
+
+        void ExeKanji()
+        {
+            outPad.transKanji();
+            frontPT.Clear();
+            backPT.Clear();
         }
 
         void ExeBrutal()
@@ -269,7 +343,7 @@ namespace IME
 
         void OpenPaintForm(int index)
         {
-            pfList[index]= new(index);
+            pfList[index] = new(index);
             pfList[index].TopLevel = false; // 子ウィンドウとして扱う
             pfList[index].FormBorderStyle = FormBorderStyle.None; // 枠を消す
 
@@ -293,7 +367,7 @@ namespace IME
             jsonPath += paretteBD.Value0[int.Parse(ftag1)];
             innerBDL = new List<ButtonData>();
             string jsonText = File.ReadAllText(jsonPath);
-            innerBDL = JsonSerializer.Deserialize<List<ButtonData>>(jsonText);
+            innerBDL = System.Text.Json.JsonSerializer.Deserialize<List<ButtonData>>(jsonText);
 
             updateParette();
             SetupButtonText();
@@ -685,12 +759,10 @@ namespace IME
             cryForm.BringToFront();
             cryForm.Show();
         }
-
         void CloseCryForm()
         {
             if (cryForm != null) { cryForm.Close(); }
         }
-
         void ExeEdit()
         {
             Debug.WriteLine("1" + frontPT.Count);
@@ -709,11 +781,9 @@ namespace IME
 
             SendPendingAndCurrent();
         }
-
-
         void SaveBDLtoJson()
         {
-            string updatedJson = JsonSerializer.Serialize(innerBDL, new JsonSerializerOptions { WriteIndented = true });
+            string updatedJson = System.Text.Json.JsonSerializer.Serialize(innerBDL, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(startParettePath, updatedJson);
 
             Debug.Write("JSONファイルを保存しました！");
@@ -732,7 +802,6 @@ namespace IME
                 ? (deltaX > 0 ? "3" : "1")  // X軸で右（2）か左（4）
                 : (deltaY > 0 ? "4" : "2"); // Y軸で下（3）か上（1）
         }
-
         private ButtonData CatchSelectBd(object sender)
         {
             Button b = sender as Button;
@@ -747,7 +816,6 @@ namespace IME
         {
             return selectBd.ExeTags[type][pos];
         }
-
         private void Button_MouseDown(object sender, MouseEventArgs e)
         {
             pressTimer.Start();
@@ -755,8 +823,8 @@ namespace IME
             lastSender = sender;
 
             dragStartPoint = e.Location;
+            generateUI(sender, e);
         }
-
         private void Button_MouseUp(object sender, MouseEventArgs e)
         {
             if (IsPressing)
@@ -767,6 +835,7 @@ namespace IME
                 selectBd = CatchSelectBd(sender);
                 string exeTags = CatchExeTags(selectBd, "Short", pos);
                 ButtonExe(exeTags);
+                LblsDelete();
             }
         }
         public void PressTimer_Tick(object? sender, EventArgs e)
@@ -782,21 +851,121 @@ namespace IME
                     selectBd = CatchSelectBd(lastSender);
                     string exeTags = CatchExeTags(selectBd, "Long", pos);
                     ButtonExe(exeTags);
+                    LblsDelete();
                 }
             }
         }
-
         void Form_MouseMove(object sender, MouseEventArgs e)
         {
             stopwatch.Restart();
             lastMouseLocation = e.Location;
         }
 
-        void DisplayUI()
+        void LblsDelete()
         {
-            selectBd = CatchSelectBd(lastSender);
 
+            foreach (Label lbl in lbls)
+            {
+                if (lbl == null) return;
+                lbl.Dispose();
+            }
         }
+        void generateUI(object sender, MouseEventArgs e)
+        {
+            if (!onUI) return;
+
+            selectBd = CatchSelectBd(sender);
+            if (selectBd.ExeTags["Short"]["4"] != "current4") return;
+
+            for (int i = 0; i < 5; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        lbls[i] = new Label()
+                        {
+                            Text = selectBd.Value0[0].Length < 3 ? selectBd.Value0[0] : selectBd.Value0[0].Substring(3) + "..",
+                        };
+                        break;
+                    case 1:
+                        lbls[i] = new()
+                        {
+                            Text = selectBd.Value1[0].Length < 3 ? selectBd.Value1[0] : selectBd.Value1[0].Substring(3) + "..",
+                        };
+                        break;
+                    case 2:
+                        lbls[i] = new()
+                        {
+                            Text = selectBd.Value2[0].Length < 3 ? selectBd.Value2[0] : selectBd.Value2[0].Substring(3) + "..",
+                        };
+                        break;
+                    case 3:
+                        lbls[i] = new()
+                        {
+                            Text = selectBd.Value3[0].Length < 3 ? selectBd.Value3[0] : selectBd.Value3[0].Substring(3) + "..",
+                        };
+                        break;
+                    case 4:
+                        lbls[i] = new()
+                        {
+                            Text = selectBd.Value4[0].Length < 3 ? selectBd.Value4[0] : selectBd.Value4[0].Substring(3) + "..",
+                        };
+                        break;
+                    default:
+                        break;
+                }
+
+
+                lbls[i].Left = (ClientSize.Width / 2) - lbls[i].PreferredWidth; // 配置位置（X）
+                lbls[i].Top = (ClientSize.Height / 2) - 20; // 配置位置（Y）
+                this.Controls.Add(lbls[i]);
+                lbls[i].BackColor = Color.FromArgb(128, 255, 192, 203);
+                lbls[i].Font = new Font(lbls[i].Font.FontFamily, 20);
+                lbls[i].AutoSize = true;
+                lbls[i].BringToFront();
+            };
+            lbls[1].Left = 0;
+            lbls[3].Left = ClientSize.Width - lbls[4].PreferredWidth;
+            lbls[2].Top -= 80;
+            lbls[4].Top += 80;
+        }
+
+        //private System.Windows.Forms.Timer fadeTimer;
+        //private double opacity = 1.0; // 初期の不透明度（完全に表示）
+
+        //private void StartLblsFadeOut()
+        //{
+        //    foreach (Label lbl in lbls)
+        //    {
+        //        opacity = 1.0; // 最初は完全に表示されている
+        //        lbl.Visible = true;
+
+        //        fadeTimer = new System.Windows.Forms.Timer();
+        //        fadeTimer.Interval = 50; // 毎50msごとに実行
+        //        fadeTimer.Tick += FadeOut;
+        //        fadeTimer.Start();
+        //    }
+        //}
+
+        //private void FadeOut(object sender, EventArgs e)
+        //{
+        //    foreach (Label lbl in lbls)
+        //    {
+        //        opacity -= 0.05; // 徐々に透明度を下げる
+        //        if (opacity <= 0)
+        //        {
+        //            fadeTimer.Stop();
+        //            lbl.Visible = false;
+        //            lbl.Dispose(); // 完全に消す
+        //        }
+        //        else
+        //        {
+        //            // alphaが0～255の範囲になるように修正
+        //            lbl.ForeColor = Color.FromArgb((int)(opacity * 255), lbl.ForeColor.R, lbl.ForeColor.G, lbl.ForeColor.B);
+        //        }
+        //    }
+        //}
+
 
         private void IME_Load(object sender, EventArgs e)
         {

@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,6 +26,9 @@ namespace IME
         string outMode = "none";
         bool showSourceMode = false;
 
+        string kanjiJsonPath = @"..\..\..\kanjiDict.json";
+        Dictionary<string, List<string>> kanjiDict;
+
         public string OutMode { get => outMode; set => outMode = value; }
 
         public OutPad()
@@ -30,6 +36,57 @@ namespace IME
             InitializeComponent();
             updateDisplay();
             OpenIme();
+
+            GenerateKanjiDict();
+
+        }
+
+        void ToJson(string jsonContent)
+        {
+
+
+            // JSONをDictionaryに変換
+            var originalDict = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, List<string>>>(jsonContent);
+
+            // 変換後のDictionary
+            var normalizedDict = new Dictionary<string, List<string>>();
+
+            // カタカナをひらがなに変換するための正規表現
+            Regex katakanaRegex = new Regex("[ァ-ン]", RegexOptions.Compiled);
+
+            foreach (var entry in originalDict)
+            {
+                // 読み仮名をひらがなに変換
+                string normalizedKey = katakanaRegex.Replace(entry.Key, m => ((char)(m.Value[0] - 'ァ' + 'ぁ')).ToString());
+
+                // 「、」や「-」で区切られた複数の読み仮名を単一のキーにまとめる
+                string[] keys = normalizedKey.Split('、', '-', '・');
+                foreach (var key in keys)
+                {
+                    string trimmedKey = key.Trim(); // 空白を除去
+
+                    if (!normalizedDict.ContainsKey(trimmedKey))
+                    {
+                        normalizedDict[trimmedKey] = new List<string>();
+                    }
+
+                    // 漢字をマージ
+                    normalizedDict[trimmedKey].AddRange(entry.Value);
+                }
+            }
+
+            // 重複を削除
+            foreach (var key in normalizedDict.Keys)
+            {
+                normalizedDict[key] = new HashSet<string>(normalizedDict[key]).ToList();
+            }
+
+            // JSON形式に変換して出力
+            string resultJson = System.Text.Json.JsonSerializer.Serialize(normalizedDict, new JsonSerializerOptions { WriteIndented = true });
+            Console.WriteLine(resultJson);
+            File.WriteAllText(kanjiJsonPath, resultJson);
+
+            Console.WriteLine("ファイルが保存されました: " + kanjiJsonPath);
         }
 
         void OpenIme()
@@ -61,6 +118,22 @@ namespace IME
         void editSetup()
         {
 
+        }
+
+        void GenerateKanjiDict()
+        {
+
+
+            // ファイルが存在するか確認
+            if (File.Exists(kanjiJsonPath))
+            {
+                // JSONファイルを文字列として読み込む
+                string jsonContent = File.ReadAllText(kanjiJsonPath);
+                //ToJson(jsonContent);
+                // JSONをDictionaryにデシリアライズ
+                kanjiDict = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(jsonContent);
+
+            }
         }
 
         public void ConfShortDelete(string direction)
@@ -216,7 +289,7 @@ namespace IME
                 (richTextBox1.ForeColor,Color.LightGray)
                 ];
 
-            if (OutMode=="cry")
+            if (OutMode == "cry")
             {
                 colors[0] = (Color.Purple, Color.Orange);
                 colors[1] = (Color.Purple, Color.Red);
@@ -320,6 +393,39 @@ namespace IME
             if (showSourceMode) { showSourceMode = false; }
             else { showSourceMode = true; }
             updateDisplay();
+        }
+
+        public void transKanji()
+        {
+            Random random = new Random();
+            List<string> kanjiList = new();
+
+            string target = pending[0] + current;
+            for (int i = target.Length; i > 0; i--)
+            {
+                if (kanjiDict.TryGetValue(target.Substring(0, i), out List<string> value))
+                {
+                    kanjiList = kanjiDict[target.Substring(0, i)];
+                    string kanji = kanjiList[random.Next(kanjiList.Count)];
+
+                    pending[0] = kanji + target.Substring(i);
+                    current = "";
+                    break;
+                }
+            }
+
+            for (int i = 0; i > pending[1].Length; i++)
+            {
+                if (kanjiDict.TryGetValue(pending[1].Substring(1), out List<string> value))
+                {
+                    kanjiList = kanjiDict[pending[1].Substring(1)];
+                    string kanji = kanjiList[random.Next(kanjiList.Count)];
+
+                    pending[1] = kanji + pending[1].Substring(i);
+                    break;
+                }
+            }
+            Confirmed();
         }
     }
 }

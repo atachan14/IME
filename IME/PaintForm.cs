@@ -126,6 +126,7 @@ namespace IME
 
             color.BackColor = ColorTranslator.FromHtml(settings.CurrentColor);
             width.Text = settings.PenWidth;
+            trackBar.Value = int.Parse(width.Text);
 
             bgBitmap = Base64ToBitmap(settings.BackgroundImage);
             drawBitmap = Base64ToBitmap(settings.DrawingImage);
@@ -261,6 +262,7 @@ namespace IME
 
         private void color_Click(object sender, EventArgs e)
         {
+            pictureBoxColorMap.Visible = false;
             CblVisible();
         }
 
@@ -278,10 +280,7 @@ namespace IME
                 cbl[i].Visible = !cbl[i].Visible;
             }
         }
-        private void Cb_Click(object sender, EventArgs e)
-        {
-
-        }
+       
         private void cb_MouseDown(object sender, MouseEventArgs e)
         {
             isPress = true;
@@ -310,7 +309,7 @@ namespace IME
         {
             if (isPress)
             {
-                if (stopwatch.ElapsedMilliseconds >= 1000)
+                if (stopwatch.ElapsedMilliseconds >= 800)
                 {
 
                     isPress = false;
@@ -404,6 +403,7 @@ namespace IME
 
             // 完了メッセージ
             MessageBox.Show($"画像を保存しました！\n{fullPath}", "成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            SaveSettings();
         }
 
         private void save_Click(object sender, EventArgs e)
@@ -413,6 +413,7 @@ namespace IME
 
         private void cansel_Click(object sender, EventArgs e)
         {
+            SaveSettings();
             this.Visible = false;
         }
 

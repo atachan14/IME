@@ -7,16 +7,20 @@
       "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\outpad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|d:\\source\\repos\\c#\\ime\\ime\\outpad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\outpad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|d:\\source\\repos\\c#\\ime\\ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|d:\\source\\repos\\c#\\ime\\ime\\json\\startparette.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\json\\startparette.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|d:\\source\\repos\\c#\\ime\\ime\\kanjidict.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\kanjidict.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|d:\\source\\repos\\c#\\ime\\ime\\kanjidict-1.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\kanjidict-1.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|d:\\source\\repos\\c#\\ime\\ime\\json\\actionbuttondata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\json\\actionbuttondata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|D:\\source\\repos\\C#\\IME\\ime\\paintform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -25,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|d:\\source\\repos\\c#\\ime\\ime\\paintform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\paintform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|d:\\source\\repos\\c#\\ime\\ime\\pfdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|solutionrelative:ime\\pfdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{75DAE3EE-DDC5-4C18-8456-402135F8C523}|IME\\IME.csproj|d:\\source\\repos\\c#\\ime\\ime\\cryform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -70,66 +70,62 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "OutPad.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\OutPad.cs",
-              "RelativeDocumentMoniker": "IME\\OutPad.cs",
-              "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\OutPad.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "RelativeToolTip": "IME\\OutPad.cs [\u30C7\u30B6\u30A4\u30F3]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T15:25:44.373Z",
-              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "StartParette.json",
-              "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\json\\StartParette.json",
-              "RelativeDocumentMoniker": "IME\\json\\StartParette.json",
-              "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\json\\StartParette.json",
-              "RelativeToolTip": "IME\\json\\StartParette.json",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA4AAAASAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "kanjiDict.json",
+              "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\kanjiDict.json",
+              "RelativeDocumentMoniker": "IME\\kanjiDict.json",
+              "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\kanjiDict.json",
+              "RelativeToolTip": "IME\\kanjiDict.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-01-16T14:57:33.804Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PaintForm.cs",
-              "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\PaintForm.cs",
-              "RelativeDocumentMoniker": "IME\\PaintForm.cs",
-              "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\PaintForm.cs",
-              "RelativeToolTip": "IME\\PaintForm.cs",
-              "ViewState": "AgIAAKIBAAAAAAAAAAAmwK4BAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T10:40:33.772Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-17T02:33:35.187Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "ActionButtonData.json",
+              "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\json\\ActionButtonData.json",
+              "RelativeDocumentMoniker": "IME\\json\\ActionButtonData.json",
+              "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\json\\ActionButtonData.json",
+              "RelativeToolTip": "IME\\json\\ActionButtonData.json",
+              "ViewState": "AgIAAPYAAAAAAAAAAAAAAAcBAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-17T01:08:55.485Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "kanjiDict-1.json",
+              "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\kanjiDict-1.json",
+              "RelativeDocumentMoniker": "IME\\kanjiDict-1.json",
+              "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\kanjiDict-1.json",
+              "RelativeToolTip": "IME\\kanjiDict-1.json",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACIAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-17T01:00:32.78Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "PaintForm.cs [\u30C7\u30B6\u30A4\u30F3]",
               "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\PaintForm.cs",
               "RelativeDocumentMoniker": "IME\\PaintForm.cs",
               "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\PaintForm.cs [\u30C7\u30B6\u30A4\u30F3]",
               "RelativeToolTip": "IME\\PaintForm.cs [\u30C7\u30B6\u30A4\u30F3]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T10:38:41.833Z",
-              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
+              "WhenOpened": "2025-01-15T10:38:41.833Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\Form1.cs",
               "RelativeDocumentMoniker": "IME\\Form1.cs",
               "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\Form1.cs",
               "RelativeToolTip": "IME\\Form1.cs",
-              "ViewState": "AgIAAAADAAAAAAAAAAAAwBQDAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAADABAAAAAAAAAAAAAD8BAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-07T09:06:54.382Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-07T09:06:54.382Z"
             },
             {
               "$type": "Document",
@@ -139,7 +135,7 @@
               "RelativeDocumentMoniker": "IME\\OutPad.cs",
               "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\OutPad.cs",
               "RelativeToolTip": "IME\\OutPad.cs",
-              "ViewState": "AgIAAN4AAAAAAAAAAADwv/IAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAAAH8AAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-08T16:39:57.907Z",
               "EditorCaption": ""
@@ -147,14 +143,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "pfData.cs",
-              "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\pfData.cs",
-              "RelativeDocumentMoniker": "IME\\pfData.cs",
-              "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\pfData.cs",
-              "RelativeToolTip": "IME\\pfData.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAcAAAABAAAA",
+              "Title": "PaintForm.cs",
+              "DocumentMoniker": "D:\\source\\repos\\C#\\IME\\IME\\PaintForm.cs",
+              "RelativeDocumentMoniker": "IME\\PaintForm.cs",
+              "ToolTip": "D:\\source\\repos\\C#\\IME\\IME\\PaintForm.cs",
+              "RelativeToolTip": "IME\\PaintForm.cs",
+              "ViewState": "AgIAAKEAAAAAAAAAAAAAALwAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T11:36:11.046Z"
+              "WhenOpened": "2025-01-15T10:40:33.772Z"
             },
             {
               "$type": "Document",
